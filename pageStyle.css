@@ -1,0 +1,477 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-red: #d4435b; /* 可随时更换 */
+  --main-black: #000000;
+  --main-white: #ffffff;
+  --main-gray: #f2f2f2;
+}
+
+body{
+  font-family: "Gabarito", sans-serif;
+  font-weight: 450;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  background: #f9f5f0;
+  color: #222;
+  margin: 10%;
+}
+
+.mycoverImage img{
+  border-radius: 15rem !important;
+   border: 2px solid #000  !important;
+}
+
+.cover {
+  text-align: center;
+}
+
+.cover-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem; /* 原来是0.1rem，设为1rem避免太紧凑 */
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+/* 左侧占比小一些，右侧宽一些 */
+.cover-left {
+  flex: 1;
+  min-width: 200px;
+  max-width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* ✅ 强制所有子元素左对齐 */
+}
+
+
+.cover-right {
+  flex: 2.5; /* 右边是左边的2.5倍宽 */
+  min-width: 300px;
+  max-width: 70%;
+}
+
+
+.cover h1 {
+  font-size: 3rem;
+  margin: 0;
+  font-family: "Bowlby One SC", sans-serif;
+}
+
+.tag {
+  display: flex;
+  flex-wrap: wrap;       /* ✅ 允许自动换行 */
+  gap: 0.5rem 1rem;       /* ✅ 上下、左右间距 */
+  margin-top: 0.5rem;
+  align-items: flex-start; /* ✅ 标签与文字顶端对齐 */
+  padding: 0;              /* 可选，避免内边距引起偏移 */
+}
+
+
+
+.tag p {
+  background: var(--main-red);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 2px solid #000;
+  box-shadow: 2px 3px 0px #000;
+  font-weight: 1000;
+  font-size: 1rem;
+  margin: 0;
+  white-space: nowrap;    /* ✅ 保证单个标签不被断行 */
+}
+
+.app-icons {
+  display: flex;
+  gap: 1vw;
+  margin-top: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap; /* ✅ 小屏幕时自动换行 */
+}
+
+.app-icons img{
+  width: 48px !important;
+  height: 48px !important;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 2px 3px 0px #000;
+}
+
+.itch-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.circle-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.9rem;
+  height: 2.8rem;
+  background-color: white;
+  border: 2px solid #000;
+  border-radius: 50%;
+  box-shadow: 2px 3px 0px black;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.circle-icon:hover {
+  background-color: var(--main-red);
+  transform: scale(1.1);
+}
+
+.circle-icon img {
+  width: 1.8rem !important;
+  height: 1rem;
+  object-fit: contain;
+}
+
+
+.video-container {
+  width: 100%;
+  margin-bottom: 10vh !important;
+  margin: 10vh auto;
+  border: 2px solid #000;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.video-container iframe {
+ width: 100%;
+  aspect-ratio: 16 / 9; /* ✅ 保持常见YouTube比例 */
+  display: block;
+  border: none;
+}
+
+.assetslayout{
+  width: 100%;
+  margin-top: 10vh !important;
+
+}
+
+.assetslayout img{
+   width: 100%;
+  border: 2px solid #000;
+  border-radius: 2rem;
+}
+
+.details {
+  border: 2px solid #000;
+  border-radius: 2rem;
+  background: var(--main-red);
+  padding: 2rem; /* ✅ 添加内边距 */
+  color: #f9f5f0;
+}
+
+.details h3,
+.details p {
+  margin: 0 0 1rem 0; /* ✅ 清除外边距，只保留底部间距 */
+}
+
+
+img:not(.visual-grid img) {
+  width: 100%;   /* ✅ 直接铺满父容器 */
+  height: auto;
+  display: block;
+  margin: 1em auto;
+}
+
+
+h2{
+   font-size: 2.3rem;
+  font-weight: 700;
+  margin-top: 4rem; /* 与上方的间距大 */
+  margin-bottom: 1rem; /* 与下方内容的间距小 */
+  color: var(--main-red);
+  font-family: "Bowlby One SC", sans-serif;
+}
+
+h3{
+   font-weight: 1000;
+  font-size: 2rem;
+  margin-top: 1rem;   /* 保持与上一部分的距离 */
+  margin-bottom: 0.5rem; /* 与下方文字更紧凑 */
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem; /* 原本是默认1rem，可以设更小 */
+}
+
+.section-divider {
+  display: block;
+  width: 90% !important;     /* 覆盖全局 img 样式 */
+  height: auto;
+  margin: 3rem auto !important;         /* 上下间距足够 */
+  border: none;
+}
+
+
+
+.visual-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem; /* 行距和列距完全一致 */
+}
+
+.visual-grid img {
+  width: 100%;              /* ✅ 让图片铺满 grid 单元格 */
+  height: auto;
+  display: block;
+  border: 2px solid black;
+  border-radius: 2rem;
+  margin: 0;                /* ✅ 移除默认间距 */
+  padding: 0;
+  background-color: #ffffff6d;
+}
+
+.highlight-link {
+  font-weight: 700;
+  text-decoration: underline;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.highlight-link:hover {
+  color: var(--main-red); /* 使用你定义的主红色变量 */
+  cursor: pointer;
+}
+
+
+.star {
+  position: absolute;
+  opacity: 0;
+  animation: starFadeMove 4s ease-in-out forwards;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+/* 动画：淡入 + 上下浮动 + 淡出 */
+@keyframes starFadeMove {
+  0% {
+    opacity: 0;
+    transform: translateY(0px) scale(1) rotate(var(--rotation, 10deg));
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1) rotate(var(--rotation, 0deg));
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(10px) scale(1) rotate(var(--rotation, 10deg));
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0px) scale(1) rotate(var(--rotation, 0deg));
+  }
+}
+
+.zoomable{
+   cursor: pointer;
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 999;
+  padding-top: 60px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.85); 
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+
+.close {
+  position: absolute;
+  top: 3vh;
+  right: 1vh;
+  color: rgb(29, 28, 28);
+  font-size: 3vw;
+  font-weight: bold;
+  cursor: pointer;
+
+  display: flex; /* 让它居中 */
+  align-items: center;
+  justify-content: center;
+
+  width: 3vw;
+  height: 3vw;
+  border: 2px solid black;
+  border-radius: 10px;
+
+}
+
+
+li {
+  list-style: none;
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  font-size: 1rem;
+  color: #000000;
+}
+
+li::before {
+  content: '⬖';
+  color: black;
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0;
+  top: -0.15rem; /* 垂直微调 */
+}
+
+/* @media (min-width: 1921px) {
+  html {
+    font-size: 0.7vw;
+  }
+
+  body {
+    font-size: 1.1vw;
+  }
+
+  h1 {
+    font-size: 3vw;
+  }
+
+  h2 {
+    font-size: 2.3vw;
+  }
+
+  h3 {
+    font-size: 2vw;
+  }
+
+  p, li {
+    font-size: 1.1vw;
+  }
+
+  .tag p {
+    font-size: 1vw;
+  }
+
+  .app-icons img {
+    width: 3vw !important;
+    height: 3vw !important;
+  }
+
+  .circle-icon {
+    width: 3vw;
+    height: 3vw;
+  }
+
+  .circle-icon img {
+    width: 2vw !important;
+    height: auto;
+  }
+
+  .close {
+    font-size: 2vw;
+    width: 3vw;
+    height: 3vw;
+  } */
+
+  @media (max-width: 768px) {
+    .mycoverImage img {
+      border-radius: 3rem !important;
+    }
+
+   
+    body {
+      margin: 5%;
+    }
+
+    .cover-left{
+      max-width: 100%;
+    }
+
+    .app-icons{
+      margin-top: 0rem;
+    }
+    .cover-right {
+      max-width: 100%;
+  }
+  .assetslayout{
+    margin-top: 0 !important;
+  }
+  h2{
+    margin-top: 0;
+  }
+
+    .close {
+      font-size: 1.8rem;
+      width: 3rem;
+      height: 3rem;
+      top: 1.5rem;
+      right: 1rem;
+    }
+
+    .modal-content {
+      max-width: 95%;
+      max-height: 85%;
+    }
+
+    .video-container {
+      margin: 0;
+      margin-bottom: 20px !important;
+    }
+
+    .details {
+      border: 1.5px solid #382626;
+      border-radius: 1rem;
+      background: var(--main-red);
+      padding: 1rem;
+      color: #f9f5f0;
+    }
+    
+    .details h3,
+    .details p {
+      margin: 0 0 1rem 0; 
+    }
+    .section-divider {
+      width: 100% !important; 
+      margin: 0 !important;
+    }
+    .visual-grid{
+      gap:0.3rem;
+    }
+    .visual-grid img {
+      border-radius: 1rem;
+      border: 1.5px solid black;
+    }
+  
+  }
+  
+
