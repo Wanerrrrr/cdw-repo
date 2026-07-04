@@ -169,26 +169,6 @@ Animations are intentionally restrained to preserve readability and avoid distra
 
 ---
 
-# Layout
-
-The page follows a modular archive structure.
-
-```
-Header
-
-↓
-
-Archive Frame
-
-↓
-
-Project Information
-
-↓
-
-Abstract
-
----
 
 # Accessibility
 
