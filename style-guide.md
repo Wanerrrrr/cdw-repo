@@ -15,6 +15,7 @@ Author: Waner Li
 ## Primary Style
 
 **Aliencore**
+Reference: <https://aesthetics.fandom.com/wiki/Aliencore>
 
 Aliencore explores themes of:
 
