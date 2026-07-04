@@ -121,35 +121,21 @@ The interface combines multiple HUD-inspired elements.
 
 ## Header Banner
 
-**File**
+![Header Banner](image/alien_banner.jpg)
 
-```
-image/alien_banner.jpg
-```
+**Purpose**
 
-Purpose
-
-Used as the primary visual banner at the top of the page.
-
-The image establishes the website as an extraterrestrial archive before users enter the main content.
+Used as the primary visual banner at the top of the page. the main content.
 
 ---
 
 ## HUD Border
 
-**File**
+![HUD Border](image/frame.png)
 
-```
-image/frame.png
-```
+**Purpose**
 
-Purpose
-
-A custom sci-fi interface frame surrounding the main content.
-
-Inspired by futuristic HUD interfaces commonly seen in science fiction films and games.
-
-The frame visually separates the archive content from the background while reinforcing the Aliencore aesthetic.
+Custom HUD frame surrounding the archive content.
 
 ---
 
