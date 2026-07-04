@@ -125,12 +125,11 @@ The interface combines multiple HUD-inspired elements.
 
 ```
 image/alien_banner.jpg
-image/frame.png
 ```
 
 Purpose
 
-Used as the primary visual banner at the top of the page and the border.
+Used as the primary visual banner at the top of the page.
 
 The image establishes the website as an extraterrestrial archive before users enter the main content.
 
