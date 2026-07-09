@@ -42,13 +42,7 @@
     color: 0x0f6378 // dark shadow
   });
 
-  // BoxGeometry material order:
-  // 0: right face  (+X)
-  // 1: left face   (-X)
-  // 2: top face    (+Y)
-  // 3: bottom face (-Y)
-  // 4: front face  (+Z)
-  // 5: back face   (-Z)
+
 
   const boxMaterials = [
     matRight,
