@@ -250,10 +250,10 @@ th {
   text-align: left;
 
   font-family: "IBM Plex Mono", monospace;
-  font-size: 11px;
+  font-size: 15px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: var(--ink);
 }
 
 td {
