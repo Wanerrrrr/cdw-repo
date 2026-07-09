@@ -1,99 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Module 1</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waner Li — Computational Design Practices Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <header>
-    <div class="left">Columbia GSAPP</div>
-    
-    <div class="center">
-      <!-- This div creates a container for the center of the header -->
-      Computational Design Practices<br>
-      <!-- This is the main text in the center -->
-      <!-- <br> creates a line break, moving the next text to a new line -->
-      <span>Project Archive</span>
-      <!-- span is an inline element that groups text without creating a new line -->
-      <!-- class="center" allows us to style this span differently -->
-    </div>
-    
-    <div class="right"><a href="#">About</a></div>
-    <!-- This div creates a container for the right side of the header -->
-    <!-- <a href="#">About</a> creates a clickable link (currently goes nowhere with #) -->
+  <div class="grain"></div>
+
+  <header class="nav">
+    <a class="brand" href="#hero">Waner Li</a>
+    <nav>
+      <a href="#intro">Statement</a>
+      <a href="#archive">Archive</a>
+      <a href="#contact">Info</a>
+    </nav>
+    <a class="outline-btn" href="#archive">Project Archive</a>
   </header>
 
   <main>
-    
-    <!-- The main tag contains the primary content of the page -->
-    
-    <div class="project-meta">2025</div>
-    <!-- This div displays the year/project metadata -->
-    <!-- class="project-meta" allows us to style this with CSS -->
-    
-    <div class="project-title">Project Title</div>
-    <!-- This div displays the main project title -->
-    <!-- class="project-title" allows us to style this with CSS -->
-    
-    <div class="project-subtitle">Waner Li</div>
-    <!-- This div displays the student's name as a subtitle -->
-    <!-- class="project-subtitle" allows us to style this with CSS -->
-    
-    <div class="advisor">Advisor<br><strong>Advisor Name</strong></div>
-    <!-- This div displays advisor information -->
-    <!-- <br> creates a line break -->
-    <!-- <strong> makes the text bold for emphasis -->
-    
-    <div class="section-title">Abstract</div>
-    <!-- This div creates a section heading -->
-    <!-- class="section-title" allows us to style all section titles consistently -->
-    
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-    <!-- <p> creates a paragraph element for text content -->
-    <!-- This is placeholder text (Lorem ipsum) commonly used in web design -->
+    <section id="hero" class="hero panel">
+      <div class="sky"></div>
+      <div class="sun"></div>
+      <div class="birds b1">⌁ ⌁ ⌁</div>
+      <div class="birds b2">⌁ ⌁</div>
+      <div class="mountain mountain-back"></div>
+      <div class="mountain mountain-mid"></div>
+      <div class="waterfall"></div>
+      <div class="lake"></div>
+      <div class="foreground left-rock"></div>
+      <div class="foreground right-rock"></div>
+      <div class="scanlines"></div>
 
-    
-    <div class="section-title">Motivation</div>
-    <!-- Another section heading for the Motivation section -->
-    
-    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
-    <!-- Another paragraph with placeholder text for the Motivation section -->
-    
-    <div class="section-title">Methodology</div>
-    <!-- Section heading for the Methodology section -->
-    
-    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-    <!-- Another paragraph with placeholder text for the Methodology section -->
-    
-    <div class="section-title">Interactive Demo</div>
-    <!-- Section heading for our JavaScript demonstration -->
-    
-    <p>Click the button below to see JavaScript in action:</p>
-    <!-- Instructions for the user -->
-    
-    <button id="demoButton">Click Me!</button>
-    <!-- This creates a clickable button -->
-    <!-- id="demoButton" gives this button a unique identifier so JavaScript can find it -->
-    <!-- The text "Click Me!" is what users will see on the button -->
-    
-    <div id="messageDisplay"></div>
-    <!-- This div will be used by JavaScript to show messages -->
-    <!-- id="messageDisplay" gives this div a unique identifier -->
-    <!-- It starts empty but JavaScript will add content to it -->
+      <div class="hero-content">
+        <p class="kicker">Columbia GSAPP</p>
+        <h1>Computational<br>Design Practices</h1>
+        <p class="subtitle">A playful archive for precedent analysis, generative motion, p5.js, three.js, image systems, and computational aesthetics.</p>
+        <div class="hero-actions">
+          <a class="solid-btn" href="#archive">Enter the archive <span>→</span></a>
+          <a class="ghost-btn" href="#intro">Read statement</a>
+        </div>
+      </div>
 
-    <a href="precedent_study.html">Precedent Study</a>
+      <div class="hero-meta">
+        <span>Summer 2026</span>
+        <span>Project Index</span>
+        <span>Waner Li</span>
+      </div>
+    </section>
+
+
+    <section id="archive" class="archive panel">
+      <div class="archive-heading">
+        <h2 class="archive-title">Project Gallery</h2>
+        <p>Hover a project to bring it into the center. Click to open the project page.</p>
+      </div>
+
+      <div class="gallery-stage">
+        <div class="gallery-ring" id="galleryRing">
+          <a class="gallery-card" href="precedent_study.html" data-title="Precedent Study" data-label="Project 01">
+            <img src="image/GNDsiteHeader.png" alt="Precedent Study">
+          </a>
+          <a class="gallery-card" href="motion-studies/index.html" data-title="Motion Studies" data-label="Project 02">
+            <img src="assets/images/project02.svg" alt="Motion Studies">
+          </a>
+          <a class="gallery-card" href="#" data-title="Coming Soon" data-label="Project 03"><img src="assets/images/project03.svg" alt="Project 03"></a>
+          <a class="gallery-card" href="#" data-title="Coming Soon" data-label="Project 04"><img src="assets/images/project04.svg" alt="Project 04"></a>
+          <a class="gallery-card" href="#" data-title="Coming Soon" data-label="Project 05"><img src="assets/images/project05.svg" alt="Project 05"></a>
+          <a class="gallery-card" href="#" data-title="Coming Soon" data-label="Project 06"><img src="assets/images/project06.svg" alt="Project 06"></a>
+          <a class="gallery-card" href="#" data-title="Coming Soon" data-label="Project 07"><img src="assets/images/project07.svg" alt="Project 07"></a>
+          <a class="gallery-card" href="#" data-title="Coming Soon" data-label="Project 08"><img src="assets/images/project08.svg" alt="Project 08"></a>
+          <a class="gallery-card" href="#" data-title="Coming Soon" data-label="Project 09"><img src="assets/images/project09.svg" alt="Project 09"></a>
+          <a class="gallery-card" href="#" data-title="Coming Soon" data-label="Project 10"><img src="assets/images/project10.svg" alt="Project 10"></a>
+        </div>
+
+        <div class="gallery-caption glass">
+          <span id="captionLabel">Project 01</span>
+          <h3 id="captionTitle">Precedent Study</h3>
+          <p>Hover the floating images to rotate the archive.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="footer panel">
+      <div>
+        <p class="kicker">Columbia GSAPP</p>
+        <h2>Project Archive</h2>
+      </div>
+      <p>Computational Design Practices · Waner Li · 2026</p>
+    </footer>
   </main>
-  <!-- End of main content area -->
-  
+
   <script src="script.js"></script>
-  <!-- This links our JavaScript file to the HTML page -->
-  <!-- The script tag is placed at the end of the body so the HTML loads first -->
-  <!-- src="script.js" tells the browser to load and run our JavaScript file -->
 </body>
-<!-- End of body - all visible content goes above this line -->
 </html>
-<!-- End of HTML document -->

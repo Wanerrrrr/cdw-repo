@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap');
+
+:root {
+  --bg: #04020b;
+  --panel: rgba(18, 12, 32, 0.72);
+  --line: rgba(240, 232, 255, 0.7);
+  --line-soft: rgba(234, 224, 255, 0.7);
+  --purple: #d8c4ff;
+  --purple-light: #f6f1ff;
+  --purple-dark: #9f79ff;
+  --text: #f6f1ff;
+  --muted: #c7b7ef;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(216, 196, 255, 0.16), transparent 24%),
+    radial-gradient(circle at 82% 12%, rgba(159, 121, 255, 0.22), transparent 28%),
+    radial-gradient(circle at 55% 90%, rgba(216, 196, 255, 0.12), transparent 32%),
+    linear-gradient(180deg, #04020b 0%, #10091e 52%, #020108 100%);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(246,241,255,.95) 2px, transparent 2.2px),
+    radial-gradient(circle, rgba(216,196,255,.85) 1.8px, transparent 2px),
+    radial-gradient(circle, rgba(159,121,255,.9) 2.3px, transparent 2.5px);
+  background-size: 240px 240px, 180px 180px, 320px 320px;
+  background-position: 30px 40px, 120px 100px, 200px 60px;
+  opacity: .65;
+  animation: stars1 7s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.035),
+      rgba(255,255,255,0.035) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    radial-gradient(circle, rgba(246,241,255,.95) 2.5px, transparent 2.7px),
+    radial-gradient(circle, rgba(216,196,255,.9) 1.6px, transparent 1.8px);
+  background-size: auto, 300px 300px, 210px 210px;
+  background-position: 0 0, 80px 150px, 200px 50px;
+  opacity: .42;
+  animation: stars2 5s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes stars1 {
+  0% { opacity: .2; }
+  20% { opacity: .75; }
+  45% { opacity: .32; }
+  70% { opacity: .9; }
+  100% { opacity: .4; }
+}
+
+@keyframes stars2 {
+  0% { opacity: .65; }
+  25% { opacity: .25; }
+  55% { opacity: .8; }
+  80% { opacity: .35; }
+  100% { opacity: .7; }
+}
+
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 180px;
+  padding: 28px 52px;
+  border: 2px solid var(--line);
+  margin: 24px;
+  position: relative;
+  font-family: "IBM Plex Mono", monospace;
+  background-image:
+    linear-gradient(rgba(4,2,11,.45), rgba(4,2,11,.75)),
+    url("image/alien_banner.jpg");
+  background-size: contain;
+  box-shadow:
+    0 0 18px rgba(216,196,255,.55),
+    0 0 70px rgba(159,121,255,.24);
+}
+
+header::before,
+header::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--purple-light);
+  box-shadow: 0 0 14px rgba(216,196,255,.85);
+}
+
+header::before {
+  top: -8px;
+  left: -8px;
+}
+
+header::after {
+  top: -8px;
+  right: -8px;
+}
+
+header .left,
+header .center,
+header .right a {
+  color: var(--purple-light);
+  text-shadow: 0 0 12px rgba(216,196,255,.9), 0 0 28px rgba(159,121,255,.55);
+  text-decoration: none;
+  letter-spacing: .08em;
+}
+
+header .center {
+  text-align: center;
+  font-size: 18px;
+}
+
+header .center span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+header .right a:hover {
+  color: white;
+}
+
+
+main {
+  max-width: 980px;
+  margin: 70px auto;
+  padding: 100px;
+  position: relative;
+  border: 1px solid var(--line);
+  background: rgba(4, 2, 11, 0.36);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.05) inset,
+    0 0 30px rgba(216,196,255,.22),
+    0 0 90px rgba(159,121,255,.24),
+    0 0 150px rgba(159,121,255,.13);
+}
+
+main::before {
+  content: "ARCHIVE TRANSMISSION / CDP-2026";
+  position: absolute;
+  top: -13px;
+  left: 24px;
+  padding: 0 10px;
+  background: var(--bg);
+  color: var(--purple-light);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-shadow: 0 0 10px rgba(216,196,255,.85);
+}
+
+main::after {
+  content: "";
+  position: absolute;
+  inset: 30px;
+  border: 5px double var(--line-soft);
+  box-shadow: 0 0 24px rgba(216,196,255,.18);
+  pointer-events: none;
+}
+
+.summary-panel{
+  background: var(--panel);
+  border: 20px solid transparent;
+  border-radius: 2px;
+  border-image: url(image/frame.png) 10% round;
+  padding: 26px;
+  color: #eee7ff;
+  line-height: 1.75;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.1) inset,
+    0 0 28px rgba(216,196,255,.5),
+    0 0 58px rgba(159,121,255,.3);
+  overflow: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.summary-panel p {
+  background: none;
+  border: none;
+  border-image: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+.summary-image {
+  float: left;
+  width: 340px;
+  margin: 0 20px 0px 0;
+  position: relative;
+  z-index: 5;
+  border: 5px double var(--line-soft);
+}
+
+
+.project-meta,
+.project-title,
+.project-subtitle,
+.advisor,
+.section-title,
+.table-title,
+p,
+iframe,
+table,
+button,
+#messageDisplay,
+a {
+  position: relative;
+  z-index: 1;
+}
+
+.project-meta {
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--purple);
+  letter-spacing: .15em;
+  margin-bottom: 12px;
+  text-shadow: 0 0 14px rgba(216,196,255,.75);
+}
+
+.project-title {
+  font-family: "Rubik Gemstones", system-ui;
+  font-size: 11vw;
+  line-height: 1;
+  color: var(--purple-light);
+  margin-bottom: 14px;
+
+  text-shadow:
+    0 0 8px rgba(216,196,255,.9),
+    0 0 24px rgba(216,196,255,.75),
+    0 0 48px rgba(159,121,255,.55);
+}
+
+.project-subtitle {
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--muted);
+  margin-bottom: 42px;
+}
+
+.advisor {
+  color: var(--muted);
+  font-family: "IBM Plex Mono", monospace;
+  margin-bottom: 64px;
+}
+
+.advisor strong {
+  color: var(--purple-light);
+}
+
+.section-title,
+.table-title 
+{
+  font-family: "Rubik Moonrocks", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--purple-light);
+  margin-top: 56px;
+  margin-bottom: 16px;
+  font-size: 25px;
+  text-shadow: 0 0 10px rgba(216,196,255,.85), 0 0 24px rgba(159,121,255,.55);
+}
+
+.section-title::before,
+.table-title::before {
+  content: "◉ ";
+  color: var(--purple-light);
+}
+
+p,
+#messageDisplay {
+  background: var(--panel);
+  border: 20px solid transparent;
+  border-radius: 2px;
+  border-image:url(image/frame.png)10% round;
+  padding: 26px;
+  color: #eee7ff;
+  line-height: 1.75;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.1) inset,
+    0 0 28px rgba(216,196,255,.5),
+    0 0 58px rgba(159,121,255,.3);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 48px;
+  background: var(--panel);
+  border: 2px solid var(--line);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.04) inset,
+    0 0 28px rgba(216,196,255,.2),
+    0 0 58px rgba(159,121,255,.12);
+}
+
+th {
+  font-family: "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: 20px;
+  padding: 14px 16px;
+  color: var(--purple-light);
+  background: rgba(216,196,255,.5);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+td {
+  padding: 16px;
+  line-height: 1.65;
+  color: #eee7ff;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background: rgba(216,196,255,.1);
+}
+
+button,
+.button-link {
+  font-family: "IBM Plex Mono", monospace;
+  background: transparent;
+  color: var(--purple-light);
+  border: 1px solid var(--line);
+  padding: 12px 20px;
+  border-radius: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+button:hover,
+.button-link:hover {
+  background: rgba(216,196,255,.1);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(216,196,255,.8), 0 0 30px rgba(159,121,255,.6);
+}
+
+a {
+  color: var(--purple);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(216,196,255,.95), 0 0 22px rgba(159,121,255,.7);
+}
+
+@media (max-width: 760px) {
+  header {
+    padding: 20px;
+  }
+
+  main {
+    margin: 44px 16px;
+    padding: 54px 28px;
+  }
+
+  main::after {
+    inset: 28px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  th,
+  td {
+    min-width: 160px;
+  }
+}
