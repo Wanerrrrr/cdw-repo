@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixar Films Through Out the Years— D3 Timeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="viz-card" aria-labelledby="chart-title">
+      <header class="chart-header">
+        <div>
+          <p class="eyebrow">A D3 TEMPORAL STRUCTURE</p>
+          <h1 id="chart-title">Pixar Films Through Out the Years</h1>
+          <p class="subtitle">Thirty years of feature films, mapped by release date, worldwide theatrical gross, and runtime.</p>
+        </div>
+
+        <div class="controls" role="group" aria-label="Filter films">
+          <button class="filter-btn active" data-filter="All">All films</button>
+          <button class="filter-btn" data-filter="Original">Originals</button>
+          <button class="filter-btn" data-filter="Sequel">Sequels</button>
+        </div>
+      </header>
+
+      <div class="legend" aria-label="Chart legend">
+        <span><i class="legend-orbit"></i> Original story</span>
+        <span><i class="legend-double"></i> Sequel / spinoff</span>
+        <span><i class="legend-size"><i></i><i></i></i> Ring size = runtime</span>
+        <span><i class="legend-limited"></i> Limited / interrupted theatrical release due to pandemic</span>
+      </div>
+
+      <div id="chart-wrap">
+        <svg id="pixar-chart" role="img" aria-label="Bubble timeline of Pixar feature films from 1995 to 2025"></svg>
+        <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+      </div>
+
+      <footer class="chart-footer">
+        <p><strong>How to read:</strong> move left to right through time. Higher bubbles earned more worldwide theatrical gross; larger orbit rings represent longer films. Movie titles curve around each ring.</p>
+        <p class="source">Data range: 1995–2025. Worldwide grosses are rounded to the nearest million; pandemic-era streaming releases had limited theatrical availability.</p>
+      </footer>
+    </section>
+  </main>
+
+  <script src="vendor/d3.v7.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
