@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Did the Button Work? — an interactive research proposal about pedestrian signal interfaces, waiting, trust, and public infrastructure." />
+  <title>Did the Button Work?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <svg class="svg-defs" aria-hidden="true" width="0" height="0">
+    <defs>
+      <symbol id="icon-hand" viewBox="0 0 120 150">
+        <rect x="49" y="14" width="18" height="76" rx="9" />
+        <rect x="72" y="23" width="17" height="70" rx="8.5" />
+        <rect x="94" y="37" width="16" height="59" rx="8" />
+        <rect x="27" y="25" width="17" height="72" rx="8.5" />
+        <path d="M28 74 C18 64, 10 62, 6 69 C2 76, 7 84, 17 94 L39 116 C48 126, 64 132, 79 129 C98 125, 111 111, 111 91 L111 75 L94 75 L94 88 C94 93, 91 96, 87 96 C83 96, 80 93, 80 88 L80 76 L64 76 L64 91 C64 96, 61 99, 57 99 C53 99, 50 96, 50 91 L50 77 L35 77 L35 91 Z" />
+      </symbol>
+      <symbol id="icon-walk" viewBox="0 0 120 150">
+        <circle cx="65" cy="22" r="14" />
+        <path d="M56 42 C61 38, 70 38, 75 44 L85 58 L102 67 C108 70, 109 77, 106 82 C103 87, 97 88, 92 85 L76 76 L69 92 L84 108 C88 112, 88 119, 84 123 C80 127, 74 127, 70 123 L55 108 L43 134 C40 141, 33 143, 27 139 C22 136, 21 129, 24 123 L43 82 L32 66 L20 82 C16 87, 9 88, 5 84 C1 80, 1 74, 5 69 L24 46 C28 41, 35 40, 40 44 L52 52 Z" />
+      </symbol>
+      <symbol id="icon-car" viewBox="0 0 180 85">
+        <path d="M27 54 L40 27 C44 18, 51 14, 62 14 H117 C127 14, 135 18, 141 27 L155 54 H163 C170 54, 175 59, 175 66 V72 H5 V66 C5 59, 10 54, 17 54 Z" />
+        <circle cx="45" cy="69" r="11" />
+        <circle cx="137" cy="69" r="11" />
+        <path class="car-window" d="M55 24 H83 V47 H45 Z" />
+        <path class="car-window" d="M92 24 H118 C124 24, 128 27, 132 34 L139 47 H92 Z" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <span class="brand-dot"></span>
+      WALK/WAIT
+    </a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">MENU</button>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="#experience">Experience</a>
+      <a href="#questions">Questions</a>
+      <a href="#lineage">Lineage</a>
+      <a href="#methods">Methods</a>
+      <a href="#outline">Outline</a>
+      <a href="#exhibition">Exhibition</a>
+    </nav>
+  </header>
+
+  <main class="site-shell">
+    <section class="hero panel panel-sky" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">RESEARCH FOUNDATIONS + PROJECT OUTLINE</p>
+        <h1 id="hero-title">DID THE<br />BUTTON<br />WORK?</h1>
+        <p class="hero-subtitle">Making pedestrian signal systems visible, understandable, and contestable.</p>
+        <a class="pill-button" href="#experience">ENTER THE CROSSING <span aria-hidden="true">↘</span></a>
+      </div>
+
+      <div class="signal-stack" aria-label="Stacked pedestrian signal icons">
+        <div class="signal-card card-1 red-signal">
+          <svg viewBox="0 0 120 150" role="img" aria-label="Red stop hand"><use href="#icon-hand"></use></svg>
+        </div>
+        <div class="signal-card card-2 walk-signal">
+          <svg viewBox="0 0 120 150" role="img" aria-label="White walking figure"><use href="#icon-walk"></use></svg>
+        </div>
+        <div class="signal-card card-3 red-signal">
+          <svg viewBox="0 0 120 150" role="img" aria-label="Red stop hand"><use href="#icon-hand"></use></svg>
+        </div>
+        <div class="signal-card card-4 walk-signal">
+          <svg viewBox="0 0 120 150" role="img" aria-label="White walking figure"><use href="#icon-walk"></use></svg>
+        </div>
+        <div class="signal-card card-5 red-signal">
+          <svg viewBox="0 0 120 150" role="img" aria-label="Red stop hand"><use href="#icon-hand"></use></svg>
+        </div>
+        <span class="stack-caption">PRESS<br />WAIT<br />DECIDE</span>
+      </div>
+
+      <div class="hero-sticker sticker-one">REQUEST?</div>
+      <div class="hero-sticker sticker-two">WAIT.</div>
+      <div class="hero-star star-one">✦</div>
+      <div class="hero-star star-two">✦</div>
+    </section>
+
+    <section class="experience panel panel-green" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading centered">
+        <p class="section-number">00 / EXPERIENCE</p>
+        <h2 id="experience-title">YOU ARRIVE AT AN EMPTY INTERSECTION.</h2>
+        <p>The pedestrian signal says DON’T WALK. What do you do?</p>
+      </div>
+
+      <div class="simulator-layout">
+        <div class="intersection" aria-live="polite">
+          <div class="road road-horizontal"></div>
+          <div class="road road-vertical"></div>
+          <div class="crosswalk crosswalk-top"></div>
+          <div class="crosswalk crosswalk-right"></div>
+          <div class="corner corner-a"></div>
+          <div class="corner corner-b"></div>
+          <div class="corner corner-c"></div>
+          <div class="corner corner-d"></div>
+          <div class="pedestrian" aria-hidden="true">
+            <span class="person-head"></span><span class="person-body"></span><span class="person-leg leg-left"></span><span class="person-leg leg-right"></span>
+          </div>
+          <div class="moving-car car-a" aria-hidden="true"><svg viewBox="0 0 180 85"><use href="#icon-car"></use></svg></div>
+          <div class="moving-car car-b" aria-hidden="true"><svg viewBox="0 0 180 85"><use href="#icon-car"></use></svg></div>
+
+          <div class="ped-signal" id="pedSignal" aria-label="Pedestrian signal currently showing stop">
+            <svg class="signal-hand active" viewBox="0 0 120 150"><use href="#icon-hand"></use></svg>
+            <svg class="signal-walk" viewBox="0 0 120 150"><use href="#icon-walk"></use></svg>
+          </div>
+          <div class="push-box">
+            <button id="physicalButton" class="physical-button" aria-label="Press pedestrian signal button"></button>
+            <span>BUTTON</span>
+          </div>
+          <div class="sim-timer" id="simTimer">00:00</div>
+        </div>
+
+        <aside class="choice-panel">
+          <p class="mini-label">CHOOSE A RESPONSE</p>
+          <div class="choice-grid">
+            <button class="choice-button" data-scenario="press-wait"><b>01</b><span>PRESS + WAIT</span></button>
+            <button class="choice-button" data-scenario="wait-only"><b>02</b><span>WAIT WITHOUT PRESSING</span></button>
+            <button class="choice-button" data-scenario="press-cross"><b>03</b><span>PRESS, THEN CROSS</span></button>
+            <button class="choice-button" data-scenario="cross-now"><b>04</b><span>CROSS NOW</span></button>
+          </div>
+          <div class="outcome-card" id="outcomeCard">
+            <p class="mini-label">SYSTEM MESSAGE</p>
+            <h3 id="outcomeTitle">NO REQUEST DETECTED</h3>
+            <p id="outcomeText">Choose a response to begin the simulated crossing.</p>
+            <button id="revealButton" class="text-button" disabled>SEE WHAT THE SYSTEM KNEW →</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="reveal panel panel-cream" id="reveal" aria-labelledby="reveal-title">
+      <p class="section-number">WHAT JUST HAPPENED?</p>
+      <div class="split-statement">
+        <h2 id="reveal-title">YOU WERE ASKED TO MAKE A SAFETY DECISION—</h2>
+        <p>without knowing whether your request had been received, why the system required you to wait, or what traffic conflict might be approaching.</p>
+      </div>
+      <div class="timeline-strip" aria-label="Example pedestrian signal timeline">
+        <div class="timeline-row"><span>PEDESTRIAN</span><i class="bar bar-red long"></i><i class="bar bar-walk short"></i></div>
+        <div class="timeline-row"><span>VEHICLES</span><i class="bar bar-green medium"></i><i class="bar bar-empty short"></i><i class="bar bar-green short"></i></div>
+        <div class="timeline-row"><span>BUTTON</span><i class="timeline-dot"></i><em>request?</em></div>
+        <div class="timeline-row"><span>USER</span><b>WAIT</b><b>DOUBT</b><b>DECIDE</b></div>
+      </div>
+    </section>
+
+    <section class="questions panel panel-coral" id="questions" aria-labelledby="questions-title">
+      <div class="section-heading">
+        <p class="section-number">01 / RESEARCH QUESTIONS</p>
+        <h2 id="questions-title">HOW CAN PEDESTRIAN SIGNAL INTERFACES MAKE WAITING AND SYSTEM RESPONSE MORE LEGIBLE?</h2>
+      </div>
+      <div class="question-cards">
+        <article><span>01</span><h3>WAS MY REQUEST RECEIVED?</h3></article>
+        <article><span>02</span><h3>WHAT DID THE BUTTON CHANGE?</h3></article>
+        <article><span>03</span><h3>WHY AM I STILL WAITING?</h3></article>
+        <article><span>04</span><h3>WHEN WILL WALK APPEAR?</h3></article>
+      </div>
+    </section>
+
+    <section class="keywords panel panel-sky" id="keywords" aria-labelledby="keywords-title">
+      <p class="section-number">02 / FIVE KEYWORDS</p>
+      <h2 id="keywords-title" class="sr-only">Five keywords</h2>
+      <div class="sign-grid">
+        <div class="street-sign sign-a">PEDESTRIAN<br />INTERFACES</div>
+        <div class="street-sign sign-b">INFRASTRUCTURE<br />LEGIBILITY</div>
+        <div class="street-sign sign-c">SIGNAL<br />TIMING</div>
+        <div class="street-sign sign-d">CIVIC<br />TECHNOLOGY</div>
+        <div class="street-sign sign-e">BEHAVIORAL<br />SIMULATION</div>
+      </div>
+    </section>
+
+    <section class="fields panel panel-green" id="fields" aria-labelledby="fields-title">
+      <div class="section-heading centered narrow">
+        <p class="section-number">03 / INTERSECTING FIELDS</p>
+        <h2 id="fields-title">THE PROJECT SITS AT A FIVE-WAY INTERSECTION.</h2>
+      </div>
+      <div class="field-intersection" aria-label="Intersecting fields diagram">
+        <div class="field-road horizontal"></div>
+        <div class="field-road vertical"></div>
+        <div class="field-road diagonal"></div>
+        <div class="field-label fl-1">INTERACTION DESIGN</div>
+        <div class="field-label fl-2">TRANSPORTATION PLANNING</div>
+        <div class="field-label fl-3">ACCESSIBILITY</div>
+        <div class="field-label fl-4">URBAN INFORMATICS</div>
+        <div class="field-label fl-5">GAME + SIMULATION</div>
+        <div class="field-center">DID THE<br />BUTTON<br />WORK?</div>
+      </div>
+    </section>
+
+    <section class="lineage panel panel-cream" id="lineage" aria-labelledby="lineage-title">
+      <div class="section-heading">
+        <p class="section-number">04 / HISTORICAL LINEAGE</p>
+        <h2 id="lineage-title">FROM TRAFFIC CONTROL DEVICE TO INTERACTIVE PUBLIC INTERFACE.</h2>
+      </div>
+      <div class="lineage-track">
+        <article><b>01</b><span class="lineage-icon">●</span><h3>TRAFFIC SIGNAL</h3><p>Standardized commands regulate movement.</p></article>
+        <article><b>02</b><span class="lineage-icon">WALK</span><h3>PEDESTRIAN SIGNAL</h3><p>A separate but limited pedestrian interface.</p></article>
+        <article><b>03</b><span class="lineage-icon">PRESS</span><h3>PUSHBUTTON</h3><p>The pedestrian becomes an input.</p></article>
+        <article><b>04</b><span class="lineage-icon">)))</span><h3>ACCESSIBLE SIGNAL</h3><p>Sound and vibration communicate signal states.</p></article>
+        <article><b>05</b><span class="lineage-icon">↔</span><h3>CIVIC SIMULATION</h3><p>Alternative systems become visible and testable.</p></article>
+      </div>
+    </section>
+
+    <section class="community panel panel-green" id="community" aria-labelledby="community-title">
+      <div class="section-heading centered narrow">
+        <p class="section-number">05 / COMMUNITY OF PRACTICE</p>
+        <h2 id="community-title">A NETWORK OF PLANNERS, ADVOCATES, DESIGNERS, AND SIMULATION DEVELOPERS.</h2>
+      </div>
+      <div class="network-map">
+        <div class="network-node core-node">MY PROJECT<br /><small>pedestrian uncertainty</small></div>
+        <div class="network-node node-1">NYC DOT<br /><small>signal infrastructure</small></div>
+        <div class="network-node node-2">ACCESSIBILITY ADVOCATES<br /><small>audible + tactile access</small></div>
+        <div class="network-node node-3">NACTO<br /><small>pedestrian-first streets</small></div>
+        <div class="network-node node-4">A/B STREET<br /><small>traffic simulation</small></div>
+        <div class="network-node node-5">MOLLEINDUSTRIA<br /><small>playable systems</small></div>
+        <svg class="network-lines" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="500" y1="310" x2="205" y2="130" />
+          <line x1="500" y1="310" x2="780" y2="120" />
+          <line x1="500" y1="310" x2="850" y2="360" />
+          <line x1="500" y1="310" x2="650" y2="535" />
+          <line x1="500" y1="310" x2="205" y2="500" />
+        </svg>
+      </div>
+      <p class="community-position">I borrow the playable systems of civic simulation, but shift the focus from traffic optimization toward the pedestrian’s uncertainty inside the system.</p>
+    </section>
+
+    <section class="situated panel panel-coral" id="situated" aria-labelledby="situated-title">
+      <div class="section-heading">
+        <p class="section-number">06 / SITUATED TECHNOLOGY</p>
+        <h2 id="situated-title">THIS PROJECT BEGINS WITH A BUTTON I PRESS NEAR MY HOME.</h2>
+      </div>
+      <div class="situated-grid">
+        <div class="field-photo-placeholder">
+          <div class="photo-road"></div>
+          <div class="photo-crosswalk"></div>
+          <span>ADD FIELD PHOTO / VIDEO HERE</span>
+        </div>
+        <blockquote>“I pressed the button every day, but I never knew whether it changed anything.”</blockquote>
+        <div class="situated-notes">
+          <span>REQUEST RECEIVED?</span>
+          <span>FIXED CYCLE?</span>
+          <span>APS?</span>
+          <span>HIDDEN CONFLICT?</span>
+          <span>MALFUNCTION?</span>
+          <span>WHOSE TIME IS PRIORITIZED?</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="methods panel panel-sky" id="methods" aria-labelledby="methods-title">
+      <div class="section-heading centered narrow">
+        <p class="section-number">07 / METHODS</p>
+        <h2 id="methods-title">OBSERVE → RECORD → VISUALIZE → SIMULATE → REDESIGN → TEST</h2>
+      </div>
+      <div class="method-loop">
+        <div class="method-node mn-1"><b>01</b>FIELD OBSERVATION</div>
+        <div class="method-node mn-2"><b>02</b>TIMED DATA</div>
+        <div class="method-node mn-3"><b>03</b>INTERACTIVE TIMELINES</div>
+        <div class="method-node mn-4"><b>04</b>SIGNAL SIMULATION</div>
+        <div class="method-node mn-5"><b>05</b>INTERFACE PROTOTYPE</div>
+        <div class="method-node mn-6"><b>06</b>USER TESTING</div>
+        <div class="loop-core">QUALITATIVE<br />+<br />QUANTITATIVE</div>
+      </div>
+      <div class="method-tags">
+        <span>JavaScript</span><span>D3.js</span><span>Three.js</span><span>GIS</span><span>Field Video</span><span>Physical Computing</span>
+      </div>
+    </section>
+
+    <section class="experiments panel panel-green" id="experiments" aria-labelledby="experiments-title">
+      <div class="section-heading">
+        <p class="section-number">08 / COMPUTATIONAL DESIGN EXPERIMENTS</p>
+        <h2 id="experiments-title">PREVIOUS EXPERIMENTS BECOME TECHNICAL AND CONCEPTUAL BUILDING BLOCKS.</h2>
+      </div>
+      <div class="experiment-stack">
+        <article class="experiment-card exp-one"><div class="exp-visual visual-system"><i></i><i></i><i></i><i></i></div><h3>PLAYABLE SYSTEMS</h3><p>Green New Deal Simulator precedent study</p></article>
+        <article class="experiment-card exp-two"><div class="exp-visual visual-time"><span></span><span></span><span></span><span></span></div><h3>TEMPORAL DATA</h3><p>D3.js timelines and duration</p></article>
+        <article class="experiment-card exp-three"><div class="exp-visual visual-perception"><i></i></div><h3>INTERACTIVE PERCEPTION</h3><p>p5.js and Three.js experiments</p></article>
+        <article class="experiment-card exp-four"><div class="exp-visual visual-map"><i></i><i></i><i></i><i></i><i></i></div><h3>SITUATED URBAN DATA</h3><p>GIS and urban analysis</p></article>
+      </div>
+    </section>
+
+    <section class="visual-language panel panel-cream" id="visual" aria-labelledby="visual-title">
+      <div class="section-heading">
+        <p class="section-number">09 / VISUAL REPRESENTATION</p>
+        <h2 id="visual-title">A PLAYABLE INTERSECTION MEETS THE PRECISION OF SIGNAL DIAGRAMS.</h2>
+      </div>
+      <div class="visual-grid">
+        <div class="palette-card"><span style="--swatch:#f45b69"></span><span style="--swatch:#2ca4d9"></span><span style="--swatch:#2e9f67"></span><span style="--swatch:#f8efd0"></span><span style="--swatch:#16362e"></span></div>
+        <div class="type-card"><b>WAIT</b><strong>WALK</strong><em>REQUEST RECEIVED</em></div>
+        <div class="icon-card"><svg viewBox="0 0 120 150"><use href="#icon-hand"></use></svg><svg viewBox="0 0 120 150"><use href="#icon-walk"></use></svg></div>
+        <p>The intersection first appears familiar and simple. Hidden timing, inputs, conflicts, and uncertainty are gradually revealed as visual layers.</p>
+      </div>
+    </section>
+
+    <section class="argument panel panel-coral" id="argument" aria-labelledby="argument-title">
+      <p class="section-number">10 / RHETORICAL ARGUMENT</p>
+      <h2 id="argument-title">PEDESTRIANS ARE EXPECTED TO OBEY THE SYSTEM, YET THE INTERFACE RARELY TELLS THEM HOW THE SYSTEM RESPONDED.</h2>
+      <div class="argument-comparison">
+        <div><span>EXISTING</span><b>PRESS</b><i>→</i><b>NO RESPONSE</b><i>→</i><b>WAIT</b></div>
+        <div><span>PROPOSED</span><b>REQUEST RECEIVED</b><i>→</i><b>PHASE EXPLAINED</b><i>→</i><b>WALK NEXT</b></div>
+      </div>
+    </section>
+
+    <section class="outline panel panel-green" id="outline" aria-labelledby="outline-title">
+      <div class="section-heading centered narrow">
+        <p class="section-number">11 / POTENTIAL CAPSTONE OUTLINE</p>
+        <h2 id="outline-title">AN INTERACTIVE WEBSITE MOVING FROM EXPERIENCE TO RESEARCH TO REDESIGN.</h2>
+      </div>
+      <div class="outline-flow">
+        <article><b>01</b><h3>EXPERIENCE</h3><p>Press, wait, or cross.</p></article>
+        <article><b>02</b><h3>REVEAL</h3><p>See the hidden timeline.</p></article>
+        <article><b>03</b><h3>RESEARCH</h3><p>Compare real observations.</p></article>
+        <article><b>04</b><h3>SIMULATE</h3><p>Test signal feedback.</p></article>
+        <article><b>05</b><h3>REDESIGN</h3><p>Prototype a legible interface.</p></article>
+      </div>
+      <p class="scope-note">The project will not claim to reproduce or optimize New York City’s complete traffic system. It focuses on how signal logic is perceived, communicated, and experienced by pedestrians.</p>
+    </section>
+
+    <section class="challenges panel panel-sky" id="challenges" aria-labelledby="challenges-title">
+      <div class="section-heading">
+        <p class="section-number">12 / THE CHALLENGE</p>
+        <h2 id="challenges-title">REVEAL HIDDEN LOGIC WITHOUT INVENTING A FALSELY COMPLETE MODEL.</h2>
+      </div>
+      <div class="challenge-columns">
+        <article><span>RESEARCH</span><p>Distinguish fixed cycles, actuated buttons, APS devices, and real malfunctions.</p></article>
+        <article><span>DESIGN</span><p>Represent uncertainty without blaming pedestrians or overwhelming users.</p></article>
+        <article><span>TECHNICAL</span><p>Connect field data, a signal state machine, timelines, and a physical prototype.</p></article>
+        <article><span>SCOPE</span><p>Begin with one intersection and expand only after the observation method works.</p></article>
+      </div>
+    </section>
+
+    <section class="exhibition panel panel-cream" id="exhibition" aria-labelledby="exhibition-title">
+      <div class="section-heading centered narrow">
+        <p class="section-number">13 / EXHIBITION COMPONENTS</p>
+        <h2 id="exhibition-title">WAITING BECOMES A PRINTED TIMELINE AND A PHYSICAL BUTTON EXPERIENCE.</h2>
+      </div>
+      <div class="exhibition-grid">
+        <article class="drawing-proposal">
+          <div class="proposal-label">PROPOSAL FOR DRAWING TYPE</div>
+          <h3>WAITING FOR WALK</h3>
+          <div class="vertical-drawing-mockup">
+            <div class="vd-title">64 SECONDS</div>
+            <div class="vd-track t-red"></div>
+            <div class="vd-track t-green"></div>
+            <div class="vd-track t-black"></div>
+            <div class="vd-dot d-1"></div><div class="vd-dot d-2"></div><div class="vd-dot d-3"></div>
+            <span class="vd-note n-1">PRESS</span><span class="vd-note n-2">NO CARS?</span><span class="vd-note n-3">WALK</span>
+          </div>
+          <p>A tall synchronized data-scape translating button input, signal states, observed traffic, waiting, and uncertainty into physical length.</p>
+        </article>
+
+        <article class="material-proposal">
+          <div class="proposal-label">PROPOSAL FOR MATERIAL GESTURE</div>
+          <h3>DID THE BUTTON WORK?</h3>
+          <div class="button-object-mockup">
+            <div class="object-screen"><span>REQUEST<br />RECEIVED</span><small>WALK NEXT</small></div>
+            <div class="object-button"></div>
+            <div class="object-label">PRESS TO CROSS</div>
+          </div>
+          <p>An interactive pushbutton prototype comparing opaque feedback, request confirmation, and a more legible signal state.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="site-footer panel panel-sky">
+      <div>
+        <p class="eyebrow">SUMMER COLLOQUIUM / FIRST DRAFT</p>
+        <h2>DID THE BUTTON WORK?</h2>
+      </div>
+      <a class="pill-button" href="#top">BACK TO TOP ↑</a>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
