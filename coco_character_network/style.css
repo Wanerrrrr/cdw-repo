@@ -355,17 +355,8 @@ h1 span {
   transform-box: fill-box;
   transform-origin: center;
 
-  /* Cuts away most of the rectangular screenshot background
-     and gives the node a skull-like silhouette. */
-  clip-path: polygon(
-    19% 1%, 81% 1%,
-    91% 8%, 97% 22%, 98% 42%,
-    92% 55%, 79% 62%, 70% 64%,
-    70% 84%, 62% 96%, 50% 100%,
-    38% 96%, 30% 84%, 30% 64%,
-    21% 62%, 8% 55%, 2% 42%,
-    3% 22%, 9% 8%
-  );
+  /* The replacement PNG already has a transparent skull outline,
+     so no CSS clipping is needed. */
 
   filter:
     saturate(1.18)
