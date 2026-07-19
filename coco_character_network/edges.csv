@@ -1,0 +1,36 @@
+source,target,relationship,weight,note
+miguel,enrique,family,3,father and son
+miguel,luisa,family,3,mother and son
+miguel,socorro,family,2,siblings
+miguel,elena,family,3,grandmother and grandson
+miguel,coco,family,4,great-grandmother and great-grandson
+miguel,hector,family,5,great-great-grandfather and great-great-grandson
+miguel,imelda,family,4,great-great-grandmother and great-great-grandson
+enrique,luisa,family,3,married couple
+enrique,elena,family,3,mother and son
+enrique,berto,family,2,brothers
+elena,berto,family,3,mother and son
+coco,elena,family,4,mother and daughter
+coco,victoria,family,3,mother and daughter
+coco,julio,family,4,married couple
+hector,imelda,family,5,married couple
+hector,coco,family,5,father and daughter
+imelda,coco,family,5,mother and daughter
+julio,elena,family,3,father and daughter
+julio,victoria,family,3,father and daughter
+imelda,oscar,family,3,siblings
+imelda,felipe,family,3,siblings
+oscar,felipe,family,4,identical twins
+julio,rosita,family,2,siblings
+miguel,dante,companion,5,loyal companions
+imelda,pepita,companion,5,spirit guide and companion
+hector,chicharron,friendship,3,friends in the Land of the Dead
+miguel,hector,friendship,5,travel companions
+miguel,frida,friendship,2,meet during performance preparations
+miguel,ernesto,music-conflict,4,idol becomes antagonist
+hector,ernesto,music-conflict,5,former musical partners and betrayal
+frida,ernesto,music,2,artist connected to Ernesto's spectacular
+hector,miguel,music,4,share songs and musical knowledge
+coco,hector,memory,5,Remember Me preserves their bond
+miguel,coco,memory,5,Miguel restores Coco's memory through song
+dante,pepita,spirit,2,animal spirit guides

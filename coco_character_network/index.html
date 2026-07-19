@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An interactive D3.js relational network of characters from Disney and Pixar's Coco." />
+  <title>Remember Me | Coco Character Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="sky-glow" aria-hidden="true"></div>
+  <main class="page-shell">
+    <header class="hero">
+      <div class="papel-picado" aria-hidden="true">
+        <span>✦</span><span>❀</span><span>♫</span><span>☠</span><span>✦</span><span>❀</span><span>♫</span>
+      </div>
+      <p class="eyebrow">D3.JS CSV INTEGRATION · RELATIONAL STRUCTURE</p>
+      <h1><span>Remember Me</span><br>Coco Character Network</h1>
+      <p class="intro">
+        This network maps the family, friendship, music, memory, and spirit-guide relationships that connect
+        the characters of <em>Coco</em>. Drag any character to reorganize the constellation—the connecting lines
+        remain attached because D3 continuously updates every relationship during the force simulation.
+      </p>
+    </header>
+
+    <section class="dashboard" aria-label="Coco character network dashboard">
+      <div class="marigold-border" aria-hidden="true"></div>
+      <div class="toolbar">
+        <div class="stat-group" aria-label="Dataset statistics">
+          <div class="stat-card">
+            <span class="stat-value" id="node-count">—</span>
+            <span class="stat-label">characters</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="edge-count">—</span>
+            <span class="stat-label">connections</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <label class="search-control">
+            <span>Find a character</span>
+            <input id="search-input" type="search" placeholder="e.g. Miguel or Héctor" autocomplete="off" />
+          </label>
+
+          <div class="filter-control" aria-label="Realm filter">
+            <span>Realm</span>
+            <div class="segmented-control">
+              <button class="filter-button active" data-filter="all" type="button">All</button>
+              <button class="filter-button" data-filter="Living" type="button">Living</button>
+              <button class="filter-button" data-filter="Dead" type="button">Dead</button>
+              <button class="filter-button" data-filter="Spirit" type="button">Spirit</button>
+            </div>
+          </div>
+
+          <button id="reset-button" class="reset-button" type="button">Reset view</button>
+        </div>
+      </div>
+
+      <div class="chart-wrap">
+        <div class="chart-note">Scroll to zoom · drag background to pan · drag characters to move · double-click to release</div>
+        <svg id="network" role="img" aria-label="Interactive relationship network of Coco characters">
+          <defs>
+            <radialGradient id="living-gradient" cx="35%" cy="30%">
+              <stop offset="0%" stop-color="#ffb3c7" />
+              <stop offset="55%" stop-color="#ee467b" />
+              <stop offset="100%" stop-color="#9d185e" />
+            </radialGradient>
+            <radialGradient id="dead-gradient" cx="35%" cy="30%">
+              <stop offset="0%" stop-color="#79f6df" />
+              <stop offset="55%" stop-color="#13b7b0" />
+              <stop offset="100%" stop-color="#11638f" />
+            </radialGradient>
+            <radialGradient id="spirit-gradient" cx="35%" cy="30%">
+              <stop offset="0%" stop-color="#fff29a" />
+              <stop offset="45%" stop-color="#ff9f1c" />
+              <stop offset="100%" stop-color="#e33b7e" />
+            </radialGradient>
+            <filter id="soft-glow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="3.2" result="blur" />
+              <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+          </defs>
+        </svg>
+        <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="legend-row">
+        <div class="legend-block">
+          <span class="legend-title">Characters</span>
+          <span class="legend-item"><i class="swatch living"></i>Land of the Living</span>
+          <span class="legend-item"><i class="swatch dead"></i>Land of the Dead</span>
+          <span class="legend-item"><i class="swatch spirit"></i>Spirit guides</span>
+        </div>
+        <div class="legend-block relationship-legend">
+          <span class="legend-title">Relationships</span>
+          <span class="legend-item"><i class="line-swatch family"></i>Family</span>
+          <span class="legend-item"><i class="line-swatch friendship"></i>Friendship</span>
+          <span class="legend-item"><i class="line-swatch music"></i>Music / conflict</span>
+          <span class="legend-item"><i class="line-swatch memory"></i>Memory</span>
+        </div>
+        <p class="size-note">Larger skulls have more direct connections.</p>
+      </div>
+    </section>
+
+    <section class="about-grid">
+      <article>
+        <p class="section-kicker">HOW TO READ IT</p>
+        <h2>Family holds the network together.</h2>
+        <p>
+          The Rivera family forms the dense center of the graph. Music creates both bridges and conflict,
+          while memory links the living and the dead. Hover over a character to isolate their immediate relationships.
+        </p>
+      </article>
+
+      <article>
+        <p class="section-kicker">DATA METHOD</p>
+        <h2>Film relationships translated into two CSV files.</h2>
+        <p>
+          <code>nodes.csv</code> stores character attributes and <code>edges.csv</code> stores pairwise relationships.
+          The visualization loads both external files with D3, calculates each character's degree, and uses it to scale the skull icons.
+        </p>
+        <a href="nodes.csv">Open nodes.csv ↗</a>
+        <a href="edges.csv">Open edges.csv ↗</a>
+      </article>
+    </section>
+
+    <footer>
+      Fan-made educational visualization. Character names and story references belong to their respective rights holders.
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="script.js"></script>
+</body>
+</html>
