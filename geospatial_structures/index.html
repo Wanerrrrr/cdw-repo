@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An interactive Mapbox visualization of New York City's Heat Vulnerability Index by 2020 ZIP Code Tabulation Area." />
+  <title>Heat Vulnerability Across NYC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="map-page">
+    <section class="map-shell" aria-label="Interactive heat vulnerability map">
+      <div id="mapbox-container-6" role="application" aria-label="Map of Heat Vulnerability Index rankings across New York City"></div>
+
+      <header class="information-panel">
+        <p class="eyebrow">GEOSPATIAL STRUCTURES · ASSIGNMENT 06</p>
+        <h1>Heat Vulnerability<br />Across New York City</h1>
+        <p class="intro">
+          A situated view of neighborhood-level risk during and immediately after extreme heat.
+          Zoom out for neighborhood names, or search a ZIP Code to inspect its ranking.
+        </p>
+
+        <form id="zip-search" class="zip-search" role="search" novalidate>
+          <label for="zip-search-input">SEARCH ZIP CODE</label>
+          <div class="zip-search__row">
+            <input
+              id="zip-search-input"
+              name="zip-code"
+              type="text"
+              inputmode="numeric"
+              maxlength="5"
+              autocomplete="postal-code"
+              placeholder="e.g. 10027"
+              aria-describedby="zip-search-feedback"
+            />
+            <button type="submit">Locate</button>
+          </div>
+          <p id="zip-search-feedback" class="zip-search__feedback" aria-live="polite">
+            Enter a five-digit NYC ZIP Code.
+          </p>
+        </form>
+
+        <div class="panel-actions">
+          <button id="reset-map" type="button">Reset view</button>
+          <button id="toggle-high-risk" type="button" aria-pressed="false">Show HVI 4–5</button>
+          <button id="save-screenshot" type="button">Save map PNG</button>
+        </div>
+
+        <p id="map-status" class="status" aria-live="polite">Loading HVI data…</p>
+      </header>
+
+      <aside class="legend" aria-label="Heat Vulnerability Index legend">
+        <div class="legend-heading">
+          <span>HVI RANKING</span>
+          <span>LOW → HIGH</span>
+        </div>
+        <div class="legend-scale" aria-hidden="true">
+          <span style="--legend-color:#f7e8c6"></span>
+          <span style="--legend-color:#f5bb7b"></span>
+          <span style="--legend-color:#ef795f"></span>
+          <span style="--legend-color:#bd416d"></span>
+          <span style="--legend-color:#611b60"></span>
+        </div>
+        <div class="legend-labels">
+          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+        </div>
+        <p>1 = lowest relative risk<br />5 = highest relative risk</p>
+      </aside>
+
+      <aside class="data-note">
+        <span class="data-note__label">DATA</span>
+        <p>NYC Health Department HVI rankings + 2020 Census ZCTA boundaries</p>
+      </aside>
+
+      <div id="token-message" class="token-message" hidden>
+        <strong>Add your Mapbox token</strong>
+        <p>Open <code>config.js</code> and replace the placeholder with your public token.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <script src="config.js"></script>
+  <script src="mapBox_Sketch_06.js"></script>
+</body>
+</html>
