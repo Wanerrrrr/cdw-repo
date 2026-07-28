@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Open Streets Lab — a research foundation and project outline for a civic planning platform that helps communities find, design, and prepare Open Street proposals." name="description"/>
+<title>Open Streets Lab</title>
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<svg aria-hidden="true" class="svg-defs" height="0" width="0">
+<defs>
+<symbol id="icon-tree" viewbox="0 0 100 120">
+<rect height="45" rx="4" width="14" x="43" y="65"></rect>
+<circle cx="50" cy="42" r="30"></circle>
+<circle cx="30" cy="54" r="19"></circle>
+<circle cx="70" cy="55" r="19"></circle>
+</symbol>
+<symbol id="icon-chair" viewbox="0 0 110 110">
+<rect height="54" rx="5" width="14" x="22" y="20"></rect>
+<rect height="14" rx="5" width="52" x="36" y="48"></rect>
+<rect height="34" rx="4" width="11" x="37" y="61"></rect>
+<rect height="34" rx="4" width="11" x="75" y="61"></rect>
+</symbol>
+<symbol id="icon-bike" viewbox="0 0 140 90">
+<circle cx="35" cy="61" fill="none" r="23" stroke="currentColor" stroke-width="9"></circle>
+<circle cx="105" cy="61" fill="none" r="23" stroke="currentColor" stroke-width="9"></circle>
+<path d="M35 61 L58 27 L75 61 L47 61 L64 42 L105 61 M58 27 H78 M88 19 L105 61" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></path>
+</symbol>
+<symbol id="icon-person" viewbox="0 0 80 130">
+<circle cx="40" cy="18" r="14"></circle>
+<path d="M35 38 H47 L55 73 L72 96 L61 104 L45 83 L42 122 H29 L30 78 L11 103 L1 94 L27 60 Z"></path>
+</symbol>
+<symbol id="icon-car" viewbox="0 0 170 90">
+<path d="M24 59 L39 28 C43 20 51 15 61 15 H111 C124 15 132 20 139 31 L151 59 H160 C166 59 171 64 171 70 V77 H4 V70 C4 64 10 59 16 59 Z"></path>
+<circle cx="43" cy="72" r="12"></circle>
+<circle cx="136" cy="72" r="12"></circle>
+<path class="window" d="M55 27 H83 V51 H44 Z"></path>
+<path class="window" d="M92 27 H116 C123 27 128 31 132 38 L139 51 H92 Z"></path>
+</symbol>
+<pattern height="24" id="crosswalk-pattern" patternunits="userSpaceOnUse" width="24">
+<rect fill="#f7f1dd" height="24" width="13"></rect>
+</pattern>
+</defs>
+</svg>
+<header class="site-header" id="site-menu"><a aria-label="Back to home" class="brand" href="#home"><span class="brand-mark"></span>OPEN STREETS LAB</a><button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle">MENU</button><nav aria-label="Section navigation" class="site-nav"><a href="#home"><span>00</span><b>Home</b></a><a href="#questions"><span>01</span><b>Research Questions</b></a><a href="#keywords"><span>02</span><b>Keywords</b></a><a href="#fields"><span>03</span><b>Intersecting Fields</b></a><a href="#lineage"><span>04</span><b>Historical Lineage</b></a><a href="#community"><span>05</span><b>Community of Practice</b></a><a href="#situated"><span>06</span><b>Situated Technology</b></a><a href="#methods"><span>07</span><b>Methods</b></a><a href="#experiments"><span>08</span><b>Computational Experiments</b></a><a href="#visual-language"><span>09</span><b>Visual Representation</b></a><a href="#argument"><span>10</span><b>Rhetorical Argument</b></a><a href="#outline"><span>11</span><b>Capstone Outline</b></a><a href="#challenges"><span>12</span><b>The Challenge</b></a><a href="#exhibition"><span>13</span><b>Exhibition Proposals</b></a><a class="nav-output" href="#platform"><span>14</span><b>Proposed Platform</b></a><a class="nav-output" href="#explorer"><span>15</span><b>Tool 01 · Equity Explorer</b></a><a class="nav-output" href="#builder"><span>16</span><b>Tool 02 · Scenario Builder</b></a><a class="nav-output" href="#assistant"><span>17</span><b>Tool 03 · Application Assistant</b></a><a href="#sources"><span>18</span><b>Sources</b></a></nav></header>
+<main class="site-shell">
+<section aria-labelledby="hero-title" class="hero panel panel-yellow" id="home">
+<div class="hero-copy">
+<p class="eyebrow">RESEARCH FOUNDATIONS + PROJECT OUTLINE</p>
+<h1 id="hero-title">OPEN<br/>STREETS<br/>LAB</h1>
+<p class="hero-subtitle">A civic planning platform for finding, designing, and preparing community-led Open Streets.</p>
+<div class="hero-actions">
+<a class="pill-button" href="#questions">VIEW THE RESEARCH <span>↘</span></a>
+<span class="hero-note">RESEARCH → CONTEXT → METHODS → OUTPUT</span>
+</div>
+</div>
+<div aria-label="Stacked street scenarios" class="street-stack">
+<article class="street-card street-card-back">
+<div class="street-scene car-street">
+<div class="sidewalk sidewalk-top"></div><div class="sidewalk sidewalk-bottom"></div>
+<div class="lane-line"></div>
+<svg class="tiny-car car-one" viewbox="0 0 170 90"><use href="#icon-car"></use></svg>
+<svg class="tiny-car car-two" viewbox="0 0 170 90"><use href="#icon-car"></use></svg>
+</div>
+<b>STREET AS TRAFFIC</b>
+</article>
+<article class="street-card street-card-middle">
+<div class="street-scene slow-street">
+<div class="sidewalk sidewalk-top"></div><div class="sidewalk sidewalk-bottom"></div>
+<svg class="scene-bike" viewbox="0 0 140 90"><use href="#icon-bike"></use></svg>
+<svg class="tiny-car car-three" viewbox="0 0 170 90"><use href="#icon-car"></use></svg>
+<span class="speed-badge">5 MPH</span>
+</div>
+<b>STREET AS SHARED SPACE</b>
+</article>
+<article class="street-card street-card-front">
+<div class="street-scene open-street">
+<div class="sidewalk sidewalk-top"></div><div class="sidewalk sidewalk-bottom"></div>
+<svg class="scene-tree tree-a" viewbox="0 0 100 120"><use href="#icon-tree"></use></svg>
+<svg class="scene-tree tree-b" viewbox="0 0 100 120"><use href="#icon-tree"></use></svg>
+<svg class="scene-chair chair-a" viewbox="0 0 110 110"><use href="#icon-chair"></use></svg>
+<svg class="scene-person person-a" viewbox="0 0 80 130"><use href="#icon-person"></use></svg>
+<svg class="scene-person person-b" viewbox="0 0 80 130"><use href="#icon-person"></use></svg>
+<span class="play-mark">PLAY</span>
+</div>
+<b>STREET AS PUBLIC SPACE</b>
+</article>
+<span class="stack-sticker sticker-community">WHO GETS<br/>THE STREET?</span>
+<span class="spark spark-a">✦</span><span class="spark spark-b">✦</span>
+</div>
+</section><section class="panel panel-cream" id="questions">
+<div class="section-heading split-heading"><div><p class="section-number">01 / RESEARCH QUESTIONS</p><h2>HOW CAN A CIVIC TOOL EXPAND THE CAPACITY TO IMAGINE AND INITIATE OPEN STREETS?</h2></div><p>Without treating data, scoring, or software as a substitute for community knowledge and public investment.</p></div>
+<div class="question-grid">
+<article><span>01</span><h3>WHERE ARE THE GAPS?</h3><p>Which neighborhoods could benefit from more public street space but have limited program access?</p></article>
+<article><span>02</span><h3>WHAT COULD FIT?</h3><p>How can communities compare street types, uses, access needs, and operating demands?</p></article>
+<article><span>03</span><h3>WHO CAN PARTICIPATE?</h3><p>How do data, bureaucracy, money, and volunteer labor shape who can create an Open Street?</p></article>
+<article><span>04</span><h3>WHAT CAN A TOOL DO?</h3><p>How can software support—but not replace—organizing, outreach, and situated decision-making?</p></article>
+</div>
+</section><section class="panel panel-yellow" id="keywords">
+<p class="section-number">02 / FIVE KEYWORDS</p>
+<div class="keyword-scatter">
+<span class="tag tag-a">PUBLIC-SPACE EQUITY</span><span class="tag tag-b">PARTICIPATORY PLANNING</span><span class="tag tag-c">TACTICAL URBANISM</span><span class="tag tag-d">CIVIC TECHNOLOGY</span><span class="tag tag-e">STREET PROTOTYPING</span>
+</div>
+</section><section class="panel panel-ink" id="fields">
+<p class="section-number light">03 / INTERSECTING FIELDS</p>
+<h2 class="center-title light">THE PROJECT SITS AT THE INTERSECTION OF PUBLIC SPACE, DATA, PARTICIPATION, AND PLAYABLE SYSTEMS.</h2>
+<div class="intersection-diagram">
+<div class="field-card f1">URBAN<br/>PLANNING</div><div class="field-card f2">GIS + DATA<br/>VISUALIZATION</div><div class="field-card f3">PARTICIPATORY<br/>DESIGN</div><div class="field-card f4">GAME +<br/>SIMULATION</div><div class="field-card f5">PUBLIC-INTEREST<br/>TECHNOLOGY</div><div class="field-core">OPEN<br/>STREETS<br/>LAB</div>
+</div>
+</section><section class="panel panel-mint" id="lineage">
+<div class="section-heading"><p class="section-number">04 / HISTORICAL LINEAGE</p><h2>FROM TEMPORARY PLAY STREETS TO COMMUNITY-RUN PUBLIC SPACE AND PERMANENT REDESIGN.</h2></div>
+<div class="lineage-river">
+<article><b>PLAY STREETS</b><span>Street closure as space for children and neighborhood recreation.</span></article>
+<article><b>PEDESTRIANIZATION</b><span>Reallocating road space for walking, commerce, and public life.</span></article>
+<article><b>TACTICAL URBANISM</b><span>Low-cost temporary changes as real-world spatial prototypes.</span></article>
+<article><b>2020 OPEN STREETS</b><span>Rapid expansion during the pandemic created a citywide public-space experiment.</span></article>
+<article><b>COMMUNITY STEWARDSHIP</b><span>Local partners operate, maintain, program, and negotiate the street.</span></article>
+<article><b>POP-UP → PERMANENT</b><span>Successful temporary streets can build support for long-term redesign.</span></article>
+</div>
+</section><section class="panel panel-coral" id="community">
+<div class="section-heading centered"><p class="section-number">05 / COMMUNITY OF PRACTICE</p><h2>WHO IS ALREADY MAKING, OPERATING, STUDYING, AND CONTESTING OPEN STREETS?</h2></div>
+<div class="practice-map">
+<div class="practice-node core">OPEN<br/>STREETS<br/>LAB</div>
+<div class="practice-node n1"><b>NYC DOT</b><small>Program, review, data, infrastructure</small></div>
+<div class="practice-node n2"><b>LOCAL PARTNERS</b><small>Schools, CBOs, BIDs, merchants, residents</small></div>
+<div class="practice-node n3"><b>STREET LAB</b><small>Programming and public-space tools</small></div>
+<div class="practice-node n4"><b>OPEN PLANS</b><small>Advocacy, research, community support</small></div>
+<div class="practice-node n5"><b>TRANSPORTATION ALTERNATIVES</b><small>Street safety and public-space advocacy</small></div>
+<div class="practice-node n6"><b>A/B STREET</b><small>Interactive street and traffic simulation</small></div>
+<svg preserveaspectratio="none" viewbox="0 0 1000 600"><line x1="500" x2="190" y1="300" y2="100"></line><line x1="500" x2="500" y1="300" y2="70"></line><line x1="500" x2="820" y1="300" y2="120"></line><line x1="500" x2="850" y1="300" y2="420"></line><line x1="500" x2="500" y1="300" y2="540"></line><line x1="500" x2="160" y1="300" y2="430"></line></svg>
+</div>
+<p class="position-statement"><b>RELATION TO MY PRECEDENT:</b> Green New Deal Simulator showed how simplified, playable choices can communicate policy trade-offs. This project reinterprets that approach as a civic planning interface grounded in local streets, operational constraints, and community knowledge.</p>
+</section><section class="panel panel-sky" id="situated">
+<div class="section-heading"><p class="section-number">06 / SITUATED TECHNOLOGY</p><h2>THE TOOL IS SITUATED IN NEW YORK’S UNEVEN DISTRIBUTION OF PUBLIC SPACE—AND IN THE LABOR REQUIRED TO MAINTAIN IT.</h2></div>
+<div class="situated-layout">
+<div class="situated-visual">
+<div class="resource-stack"><span>DATA</span><span>TIME</span><span>STAFF</span><span>STORAGE</span><span>FUNDING</span><span>LOCAL TRUST</span></div>
+<div class="street-access-label">WHO HAS ENOUGH CAPACITY TO APPLY?</div>
+</div>
+<div class="situated-copy">
+<p>Open Streets are public, but their creation often depends on partner organizations that can navigate applications, outreach, programming, storage, maintenance, and reimbursement.</p>
+<p>A scoring system is also situated: the variables and weights chosen by the designer shape which places appear to “need” intervention.</p>
+<blockquote>THE TOOL SHOULD EXPAND COMMUNITY CAPACITY—NOT AUTOMATE AWAY COMMUNITY DECISION-MAKING.</blockquote>
+</div>
+</div>
+</section><section class="panel panel-cream" id="methods">
+<div class="section-heading centered"><p class="section-number">07 / METHODS</p><h2>PUBLIC DATA + FIELD OBSERVATION + PARTICIPATORY TESTING + INTERACTIVE PROTOTYPING.</h2></div>
+<div class="method-grid">
+<article><span>01</span><h3>MAP</h3><p>Open Streets locations, parks, schools, pedestrian need, safety, demographics, and neighborhood context.</p></article>
+<article><span>02</span><h3>OBSERVE</h3><p>Document how existing Open Streets are used, operated, accessed, and negotiated at different times.</p></article>
+<article><span>03</span><h3>LISTEN</h3><p>Interview operators, residents, businesses, schools, and users about goals and burdens.</p></article>
+<article><span>04</span><h3>SIMULATE</h3><p>Build a simplified street configuration system that makes spatial and operational trade-offs visible.</p></article>
+<article><span>05</span><h3>TEST</h3><p>Evaluate whether the tool clarifies decisions, supports outreach, and avoids false certainty.</p></article>
+<article><span>06</span><h3>REVISE</h3><p>Change metrics, language, and interactions based on situated feedback.</p></article>
+</div>
+<div class="method-tags"><span>QGIS</span><span>Python / GeoPandas</span><span>D3.js</span><span>Mapbox or Leaflet</span><span>Three.js</span><span>HTML / CSS / JS</span><span>Interviews</span><span>Participatory workshops</span></div>
+</section><section class="panel panel-yellow" id="experiments">
+<div class="section-heading"><p class="section-number">08 / COMPUTATIONAL DESIGN EXPERIMENTS</p><h2>EXISTING WORK BECOMES A TECHNICAL AND VISUAL FOUNDATION.</h2></div>
+<div class="experiment-grid">
+<article><div class="exp-img exp-map"><i></i><i></i><i></i><i></i></div><b>URBAN DATA</b><p>GIS analysis and spatial equity mapping.</p></article>
+<article><div class="exp-img exp-network"><i></i><i></i><i></i><i></i><i></i></div><b>PLAYABLE SYSTEMS</b><p>Green New Deal Simulator precedent research.</p></article>
+<article><div class="exp-img exp-time"><i></i><i></i><i></i><i></i></div><b>TEMPORAL STRUCTURES</b><p>D3.js interfaces for time, duration, and comparison.</p></article>
+<article><div class="exp-img exp-space"><i></i><i></i><i></i></div><b>INTERACTIVE SPACE</b><p>Three.js, p5.js, and procedural form experiments.</p></article>
+</div>
+<p class="replace-note">Replace these abstract placeholders with your own semester screenshots before final review.</p>
+</section><section class="panel panel-mint" id="visual-language">
+<div class="section-heading split-heading"><div><p class="section-number">09 / VISUAL REPRESENTATION</p><h2>A PLAYFUL MUNICIPAL LANGUAGE BUILT FROM STREET SIGNS, MAPS, BARRIERS, MODULAR PARTS, AND PUBLIC-SPACE COLOR.</h2></div><p>The interface should feel accessible enough to explore, but structured enough to communicate practical constraints.</p></div>
+<div class="visual-kit">
+<div class="paint-swatch swatch-yellow">PUBLIC</div><div class="paint-swatch swatch-coral">CONFLICT</div><div class="paint-swatch swatch-sky">DATA</div><div class="paint-swatch swatch-green">SPACE</div>
+<div class="sign-sample">LIMITED<br/>LOCAL<br/>ACCESS</div>
+<div class="barrier-sample">OPEN<br/>STREET</div>
+<div class="map-sample"><i></i><i></i><i></i><span>NEED + ACCESS</span></div>
+</div>
+</section><section class="panel panel-ink" id="argument">
+<p class="section-number light">10 / RHETORICAL ARGUMENT</p>
+<h2 class="argument-title">ACCESS TO PUBLIC STREET SPACE SHOULD NOT DEPEND ONLY ON A COMMUNITY’S ABILITY TO NAVIGATE DATA, DESIGN, BUREAUCRACY, AND UNPAID LABOR.</h2>
+<div class="argument-sub"><p>A civic tool can make information and early planning more accessible.</p><p>But software cannot replace public funding, community organizing, operational support, or political negotiation.</p></div>
+</section><section class="panel panel-coral" id="outline">
+<div class="section-heading"><p class="section-number">11 / POTENTIAL CAPSTONE OUTLINE</p><h2>AN INTEGRATED WEB PLATFORM WITH THREE WORKING MODULES AND ONE CLEAR USER JOURNEY.</h2></div>
+<div class="journey-line">
+<article><span>01</span><b>FIND</b><p>Use equity and context layers to identify areas for further research.</p></article>
+<article><span>02</span><b>LEARN</b><p>Understand Open Street types, precedent sites, and community responsibilities.</p></article>
+<article><span>03</span><b>BUILD</b><p>Configure a street scenario and expose access and labor trade-offs.</p></article>
+<article><span>04</span><b>DISCUSS</b><p>Use visuals to collect support, concerns, and local knowledge.</p></article>
+<article><span>05</span><b>PREPARE</b><p>Generate an early brief and checklist for official application work.</p></article>
+</div>
+<p class="scope-note">The capstone will prototype a decision-support and capacity-building process. It will not automatically select sites, predict community consent, or submit an official application.</p>
+</section><section class="panel panel-sky" id="challenges">
+<div class="section-heading centered"><p class="section-number">12 / THE CHALLENGE</p><h2>THE PROJECT MUST BE USEFUL WITHOUT TURNING COMPLEX PUBLIC DECISIONS INTO A FALSELY OBJECTIVE SCORE.</h2></div>
+<div class="challenge-grid">
+<article><b>DATA</b><p>Public datasets may be incomplete, differently scaled, or unable to represent lived experience.</p></article>
+<article><b>BIAS</b><p>Every index embeds decisions about what counts as need and whose needs receive weight.</p></article>
+<article><b>RELATIONSHIPS</b><p>A credible project requires contact with real operators, schools, residents, and advocates.</p></article>
+<article><b>CONFLICT</b><p>Delivery, disability access, parking, safety, noise, and public-space goals may collide.</p></article>
+<article><b>TECHNICAL SCOPE</b><p>Three modules must share one data model without becoming a city-scale professional planning system.</p></article>
+<article><b>VALIDATION</b><p>The interface must be tested for clarity and usefulness rather than judged only by visual polish.</p></article>
+</div>
+</section><section class="panel panel-yellow" id="exhibition">
+<div class="section-heading"><p class="section-number">13 / EXHIBITION COMPONENT PROPOSALS</p><h2>THE WEBSITE WILL BE ACCOMPANIED BY TWO PHYSICAL WAYS OF READING AND RECONFIGURING A STREET.</h2></div>
+<div class="exhibition-grid">
+<article class="proposal-card drawing-proposal">
+<div class="proposal-label">PROPOSAL FOR DRAWING TYPE</div>
+<h3>A STREET IS MORE THAN A ROAD</h3>
+<p class="proposal-type">Vertical printed street data-scape</p>
+<div class="drawing-mockup">
+<div class="drawing-layer traffic-layer">TRAFFIC</div>
+<div class="drawing-layer need-layer">NEIGHBORHOOD NEED</div>
+<div class="drawing-layer time-layer">HOURS + DAYS</div>
+<div class="drawing-layer public-layer">PUBLIC USE</div>
+<div class="drawing-layer labor-layer">LABOR + OPERATIONS</div>
+</div>
+<p>The tall drawing will unfold one street block through synchronized layers: its existing road allocation, local public-space needs, possible Open Street schedules, spatial configurations, access conflicts, and the labor required to operate it.</p>
+<p>Rather than repeating the website, it will turn a single block into a dense vertical atlas—showing that an Open Street is simultaneously a spatial design, a timetable, a community process, and an operational system.</p>
+<dl class="proposal-details"><div><dt>Format</dt><dd>Vertical print, approximately 1:3 ratio</dd></div><div><dt>Material</dt><dd>Large-format bond or matte paper</dd></div><div><dt>Source</dt><dd>One selected NYC street + field research + scenario studies</dd></div></dl>
+</article>
+<article class="proposal-card gesture-proposal">
+<div class="proposal-label">PROPOSAL FOR MATERIAL GESTURE</div>
+<h3>ONE BLOCK, MANY STREETS</h3>
+<p class="proposal-type">Reconfigurable physical street kit</p>
+<div class="model-mockup">
+<div class="model-base"><span class="model-building b1"></span><span class="model-building b2"></span><span class="model-building b3"></span><span class="model-piece p1">PLAY</span><span class="model-piece p2">SEAT</span><span class="model-piece p3">TREE</span><span class="model-piece p4">LOAD</span><span class="model-corridor">ACCESS</span></div>
+</div>
+<p>A tabletop street base will be accompanied by modular pieces representing play, seating, greenery, market space, bicycle access, loading, barriers, and an emergency/local-access corridor.</p>
+<p>Reviewers can physically rearrange the same limited street area under different priorities. The gesture materializes the project’s central trade-off: every added use occupies space, creates value, and introduces new operating responsibilities.</p>
+<dl class="proposal-details"><div><dt>Format</dt><dd>Small tabletop model beside the printed drawing</dd></div><div><dt>Material</dt><dd>Foam board, card, wood, magnets, or laser-cut acrylic</dd></div><div><dt>Interaction</dt><dd>Move, remove, and compare modular street elements</dd></div></dl>
+</article>
+</div>
+</section><section class="intro panel panel-ink" id="platform">
+<p class="section-number light">14 / PROPOSED OUTPUT</p>
+<div class="intro-grid">
+<h2>ONE PLATFORM.<br/>THREE CONNECTED TOOLS.</h2>
+<p>Open Streets Lab supports communities from the first question—<em>where could an Open Street help?</em>—to an early, shareable proposal.</p>
+</div>
+<div class="module-jump-grid">
+<a class="module-jump mint" href="#explorer"><span>01</span><b>EXPLORE EQUITY</b><small>Find gaps between neighborhood need and current program access.</small></a>
+<a class="module-jump coral" href="#builder"><span>02</span><b>BUILD A SCENARIO</b><small>Configure access, activities, time, and street elements.</small></a>
+<a class="module-jump sky" href="#assistant"><span>03</span><b>PREPARE TO APPLY</b><small>Turn a concept into a practical first-draft application brief.</small></a>
+</div>
+</section><section aria-labelledby="explorer-title" class="tool-section panel panel-mint" id="explorer">
+<div class="tool-heading">
+<div><p class="section-number">15 / TOOL 01 · EQUITY EXPLORER</p><h2 id="explorer-title">WHERE IS PUBLIC-SPACE NEED HIGH—BUT OPEN STREET ACCESS LOW?</h2></div>
+<p>This prototype combines multiple need lenses with current program presence to surface places for further community investigation.</p>
+</div>
+<div class="explorer-app app-frame">
+<aside class="control-rail">
+<p class="mini-label">CHOOSE NEED LENSES</p>
+<label class="check-row"><input checked="" data-weight="parks" type="checkbox"/><span>Limited park access</span></label>
+<label class="check-row"><input checked="" data-weight="children" type="checkbox"/><span>Children + schools</span></label>
+<label class="check-row"><input checked="" data-weight="heat" type="checkbox"/><span>Heat vulnerability</span></label>
+<label class="check-row"><input checked="" data-weight="safety" type="checkbox"/><span>Traffic safety</span></label>
+<hr/>
+<p class="mini-label">FILTER</p>
+<div class="segmented" id="boroughFilter">
+<button class="active" data-borough="All">All</button>
+<button data-borough="Bronx">BX</button>
+<button data-borough="Brooklyn">BK</button>
+<button data-borough="Queens">QN</button>
+<button data-borough="Manhattan">MN</button>
+<button data-borough="Staten Island">SI</button>
+</div>
+<p class="prototype-note">Prototype interface. Candidate scores are illustrative, not planning recommendations.</p>
+</aside>
+<div aria-label="Stylized map of candidate neighborhoods" class="candidate-map" id="candidateMap">
+<div class="borough-shape shape-mn">MN</div>
+<div class="borough-shape shape-bx">BX</div>
+<div class="borough-shape shape-qn">QN</div>
+<div class="borough-shape shape-bk">BK</div>
+<div class="borough-shape shape-si">SI</div>
+<button class="map-pin" data-place="Jackson Heights" style="--x:68%;--y:34%"><i></i><span>Jackson Heights</span></button>
+<button class="map-pin" data-place="Mott Haven" style="--x:25%;--y:28%"><i></i><span>Mott Haven</span></button>
+<button class="map-pin" data-place="Brownsville" style="--x:54%;--y:71%"><i></i><span>Brownsville</span></button>
+<button class="map-pin" data-place="Jamaica" style="--x:82%;--y:56%"><i></i><span>Jamaica</span></button>
+<button class="map-pin" data-place="Lower East Side" style="--x:35%;--y:49%"><i></i><span>Lower East Side</span></button>
+<button class="map-pin" data-place="St. George" style="--x:10%;--y:82%"><i></i><span>St. George</span></button>
+</div>
+<aside class="result-card" id="candidateResult">
+<p class="mini-label">SELECTED AREA</p>
+<h3 id="candidateName">MOTT HAVEN</h3>
+<div class="score-ring"><strong id="gapScore">84</strong><span>GAP SCORE</span></div>
+<dl class="metric-list">
+<div><dt>Open Street presence</dt><dd id="presenceValue">Low</dd></div>
+<div><dt>Public-space need</dt><dd id="needValue">High</dd></div>
+<div><dt>Potential partners</dt><dd id="partnerValue">Schools + CBOs</dd></div>
+</dl>
+<button class="text-button select-candidate">USE AS TEST SITE →</button>
+</aside>
+</div>
+</section><section aria-labelledby="builder-title" class="tool-section panel panel-coral" id="builder">
+<div class="tool-heading">
+<div><p class="section-number">16 / TOOL 02 · SCENARIO BUILDER</p><h2 id="builder-title">WHAT COULD THIS STREET BECOME—AND WHAT WOULD IT TAKE TO RUN?</h2></div>
+<p>Build a simplified Open Street scenario and compare public-space benefits with access, logistics, and operational effort.</p>
+</div>
+<div class="builder-app app-frame">
+<aside class="builder-controls">
+<p class="mini-label">OPEN STREET TYPE</p>
+<div class="type-switch" id="typeSwitch">
+<button class="active" data-type="limited">Limited Local Access</button>
+<button data-type="closure">Full Closure</button>
+<button data-type="school">School Street</button>
+</div>
+<p class="mini-label">ADD STREET USES</p>
+<div class="program-grid">
+<button class="program-button active" data-program="play">PLAY</button>
+<button class="program-button active" data-program="seating">SEATING</button>
+<button class="program-button" data-program="market">MARKET</button>
+<button class="program-button active" data-program="trees">GREENERY</button>
+<button class="program-button active" data-program="bike">BIKE ACCESS</button>
+<button class="program-button" data-program="loading">LOADING</button>
+</div>
+<label class="slider-row"><span>Days per week <b id="daysValue">3</b></span><input id="daysSlider" max="7" min="1" type="range" value="3"/></label>
+<label class="slider-row"><span>Hours per day <b id="hoursValue">6</b></span><input id="hoursSlider" max="12" min="2" type="range" value="6"/></label>
+</aside>
+<div class="street-builder" id="streetBuilder">
+<div class="building-row top-buildings"><span></span><span></span><span></span><span></span></div>
+<div class="street-canvas">
+<div class="edge edge-top"></div><div class="edge edge-bottom"></div>
+<div class="emergency-corridor">EMERGENCY / ACCESS CORRIDOR</div>
+<div class="street-elements" id="streetElements">
+<div class="element element-play active">HOP<br/>PLAY</div>
+<div class="element element-seating active"><svg viewbox="0 0 110 110"><use href="#icon-chair"></use></svg></div>
+<div class="element element-market">MARKET</div>
+<div class="element element-trees active"><svg viewbox="0 0 100 120"><use href="#icon-tree"></use></svg></div>
+<div class="element element-bike active"><svg viewbox="0 0 140 90"><use href="#icon-bike"></use></svg></div>
+<div class="element element-loading">LOADING</div>
+<svg class="builder-person person-one" viewbox="0 0 80 130"><use href="#icon-person"></use></svg>
+<svg class="builder-person person-two" viewbox="0 0 80 130"><use href="#icon-person"></use></svg>
+</div>
+<div class="barrier barrier-left">OPEN<br/>STREET</div><div class="barrier barrier-right">OPEN<br/>STREET</div>
+</div>
+<div class="building-row bottom-buildings"><span></span><span></span><span></span></div>
+</div>
+<aside class="builder-results">
+<p class="mini-label">SCENARIO FEEDBACK</p>
+<div class="metric-gauge"><span>Public space</span><i><b id="publicBar"></b></i><strong id="publicScore">78</strong></div>
+<div class="metric-gauge"><span>Access clarity</span><i><b id="accessBar"></b></i><strong id="accessScore">72</strong></div>
+<div class="metric-gauge"><span>Operating load</span><i><b id="laborBar"></b></i><strong id="laborScore">64</strong></div>
+<div class="tradeoff-note" id="tradeoffNote">A flexible shared street creates public space while preserving local access, but requires clear barriers and active management.</div>
+<button class="text-button send-to-application">SEND TO APPLICATION →</button>
+</aside>
+</div>
+</section><section aria-labelledby="assistant-title" class="tool-section panel panel-sky" id="assistant">
+<div class="tool-heading">
+<div><p class="section-number">17 / TOOL 03 · APPLICATION ASSISTANT</p><h2 id="assistant-title">HOW CAN A COMMUNITY TURN AN IDEA INTO AN EARLY, SHAREABLE PLAN?</h2></div>
+<p>The assistant organizes a concept, highlights missing information, and produces a first-draft brief—not an automatic approval.</p>
+</div>
+<div class="assistant-app app-frame">
+<div class="form-card">
+<div class="step-tabs">
+<button class="active" data-step="1">1 SITE</button><button data-step="2">2 PEOPLE</button><button data-step="3">3 OPERATIONS</button><button data-step="4">4 REVIEW</button>
+</div>
+<div class="form-step active" data-step-panel="1">
+<label>Proposed street<input id="streetInput" value="E 140th Street between A and B"/></label>
+<label>Open Street type<select id="typeInput"><option>Limited Local Access</option><option>Full Closure</option><option>Full Closure — Schools</option></select></label>
+<label>Primary purpose<textarea id="purposeInput">Create safe outdoor space for play, community events, and walking.</textarea></label>
+</div>
+<div class="form-step" data-step-panel="2">
+<label>Lead organization<input id="orgInput" placeholder="Community group, school, BID, or local partner"/></label>
+<label>Potential supporters<textarea id="supportInput" placeholder="School, businesses, residents, nonprofit partners..."></textarea></label>
+<label class="check-row"><input id="lettersInput" type="checkbox"/><span>At least three potential support letters identified</span></label>
+</div>
+<div class="form-step" data-step-panel="3">
+<label>Proposed schedule<input id="scheduleInput" value="Saturdays, May–October, 10am–6pm"/></label>
+<label>Storage plan<textarea id="storageInput" placeholder="Where will barriers, chairs, and supplies be stored?"></textarea></label>
+<label>Access + delivery plan<textarea id="accessInput" placeholder="How will local access, emergency access, deliveries, and paratransit be handled?"></textarea></label>
+</div>
+<div class="form-step" data-step-panel="4">
+<div class="readiness-list">
+<p><span id="siteCheck">✓</span> Candidate block defined</p>
+<p><span id="partnerCheck">○</span> Lead partner identified</p>
+<p><span id="supportCheck">○</span> Community support documented</p>
+<p><span id="opsCheck">○</span> Operations + storage addressed</p>
+<p><span id="accessCheck">○</span> Access needs addressed</p>
+</div>
+<p class="prototype-note">The tool clarifies preparation needs; it does not replace official review, outreach, or local knowledge.</p>
+</div>
+<div class="form-actions"><button disabled="" id="prevStep">← BACK</button><button id="nextStep">NEXT →</button></div>
+</div>
+<article class="brief-preview" id="briefPreview">
+<p class="mini-label">LIVE CONCEPT BRIEF</p>
+<h3>OPEN STREET CONCEPT</h3>
+<div class="brief-map"><div class="brief-block"></div><span id="briefStreet">E 140th Street</span></div>
+<dl>
+<div><dt>Type</dt><dd id="briefType">Limited Local Access</dd></div>
+<div><dt>Purpose</dt><dd id="briefPurpose">Play, community events, and walking</dd></div>
+<div><dt>Schedule</dt><dd id="briefSchedule">Saturdays, May–October</dd></div>
+<div><dt>Lead</dt><dd id="briefOrg">Partner not yet confirmed</dd></div>
+</dl>
+<div class="readiness-meter"><span>READINESS</span><i><b id="readinessBar"></b></i><strong id="readinessScore">36%</strong></div>
+<button class="pill-button small" id="printBrief">PRINT / SAVE BRIEF</button>
+</article>
+</div>
+</section><section class="sources panel panel-cream" id="sources">
+<p class="section-number">18 / SOURCES</p>
+<div class="source-links">
+<a href="https://www.nyc.gov/html/dot/html/pedestrians/openstreets.shtml" rel="noreferrer" target="_blank">NYC DOT Open Streets Program ↗</a>
+<a href="https://data.cityofnewyork.us/Health/Open-Streets-Locations/uiay-nctu" rel="noreferrer" target="_blank">NYC Open Data: Open Streets Locations ↗</a>
+<a href="https://comptroller.nyc.gov/reports/streets-for-people-open-streets-and-the-future-of-public-space-management-in-nyc/" rel="noreferrer" target="_blank">NYC Comptroller: Streets for People ↗</a>
+</div>
+<p class="source-note">The current interface uses illustrative prototype scores and sample locations. A later version will connect documented methods and verified datasets.</p>
+</section></main>
+<footer><span>OPEN STREETS LAB</span><span>FIRST DRAFT · SUMMER COLLOQUIUM</span><a href="#home">BACK TO TOP ↑</a></footer>
+<script src="script.js"></script>
+</body>
+</html>
