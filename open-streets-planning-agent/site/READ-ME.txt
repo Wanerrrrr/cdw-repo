@@ -1,0 +1,34 @@
+GITHUB PAGES DIRECT FIX
+
+Your current GitHub Pages site is still loading the OLD Firebase Function version.
+This replacement uses a new file name, agent-direct.js, so the browser cannot keep
+using the cached old agent-app.js.
+
+REPLACE / UPLOAD THESE FOUR FILES into exactly:
+
+cdw-repo/open-streets-planning-agent/site/
+
+Files:
+- index.html
+- style.css
+- agent-direct.js
+- openai-config.js
+
+Before uploading, open openai-config.js and replace:
+PASTE_YOUR_OPENAI_API_KEY_HERE
+
+with your temporary sk-proj-... key.
+
+Do not upload this folder as another nested folder.
+The final GitHub path must be:
+open-streets-planning-agent/site/index.html
+
+After GitHub Pages updates, open:
+https://wanerrrrr.github.io/cdw-repo/open-streets-planning-agent/site/index.html
+
+Then press Command + Shift + R.
+
+Correct result:
+- status says: OpenAI direct mode ready · v3
+- Console request goes to: https://api.openai.com/
+- Console must NOT mention: cloudfunctions.net
