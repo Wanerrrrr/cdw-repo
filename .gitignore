@@ -1,0 +1,7 @@
+**/.env
+**/.env.*
+!**/.env.example
+.firebase/
+**/node_modules/
+open-streets-agent-final/functions/.env
+open-streets-agent-final/functions/.env
