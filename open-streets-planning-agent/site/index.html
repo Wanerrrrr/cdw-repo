@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="An NYC Open Streets community poll and AI planning agent using Firebase and the OpenAI API.">
+  <meta name="description" content="An NYC Open Streets community poll and browser-based AI planning agent.">
   <title>Open Streets Community Poll + Planning Agent</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -38,7 +38,7 @@
 
   <header class="assignment-header">
     <div class="brand"><span class="brand-mark"></span>OPEN STREETS COMMUNITY TOOLS</div>
-    <div class="assignment-label">ASSIGNMENT 8 · AGENTS + FIREBASE</div>
+    <div class="assignment-label">ASSIGNMENT 8 · AGENTS + FIREBASE HOSTING</div>
   </header>
 
   <main id="home">
@@ -172,9 +172,9 @@
         <h2 id="agent-section-title">TURN A NEIGHBORHOOD IDEA INTO A FIRST-DRAFT STREET PLAN.</h2>
         <p class="agent-lede">This focused chatbot helps residents and organizers think through possible uses, schedules, access needs, operations, and trade-offs. It does not provide official approval or replace community outreach.</p>
         <div class="agent-meta-row">
-          <span>Firebase Cloud Function · OpenAI Responses API</span>
+          <span>Firebase Hosting · browser-direct OpenAI API</span>
           <div aria-live="polite" class="firebase-status preview" id="agentConnectionStatus" role="status">
-            <i aria-hidden="true"></i><span>Checking agent connection…</span>
+            <i aria-hidden="true"></i><span>Checking OpenAI connection…</span>
           </div>
         </div>
       </div>
@@ -237,9 +237,9 @@
 
   <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-database-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-functions-compat.js"></script>
   <script src="firebase-config.js"></script>
   <script src="poll-app.js"></script>
+  <script src="openai-config.js"></script>
   <script src="agent-app.js"></script>
 </body>
 </html>

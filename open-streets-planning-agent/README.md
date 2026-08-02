@@ -1,91 +1,57 @@
-# Assignment 8 — Open Streets Planning Agent
+# Open Streets Planning Agent — Direct Browser Version
 
-This package keeps the Assignment 7 five-question Firebase poll and adds an Open Streets Planning Assistant powered by an OpenAI model through a Firebase callable Cloud Function.
+This version follows the simplified classroom tutorial: the browser calls the OpenAI API directly. It does **not** deploy Firebase Functions or Realtime Database rules.
 
-## What is already complete
+## 1. Add the OpenAI API key
 
-- Existing poll UI and Realtime Database logic
-- New chatbot interface in the same visual language
-- Firebase callable function named `openStreetsAgent`
-- OpenAI Responses API server call
-- Server-side conversation logging to Realtime Database
-- Preview responses when Firebase/OpenAI are not configured
-- Database rules, Firebase Hosting config, and submission text
+Open:
 
-## Important folder structure
-
-- `site/` — uploadable website files
-- `functions/` — private server-side code; do not put this folder on GitHub Pages as website content
-- `database.rules.json` — poll rules plus server-only agent logs
-- `firebase.json` — Firebase Hosting, Functions, and Database configuration
-
-## One-time setup
-
-### 1. Put your existing Firebase web config in the website
-
-Open `site/firebase-config.js` and replace the `PASTE_...` values with the Firebase Web App configuration from the same project used for Assignment 7.
-
-This web configuration may appear in browser code. The OpenAI key must not.
-
-### 2. Install the Firebase CLI
-
-```bash
-npm install -g firebase-tools
-firebase login
+```text
+site/openai-config.js
 ```
 
-### 3. Connect this folder to your Firebase project
+Replace:
 
-From this project folder:
-
-```bash
-firebase use --add
+```js
+apiKey: "PASTE_YOUR_OPENAI_API_KEY_HERE"
 ```
 
-Choose the existing Assignment 7 Firebase project. Firebase will create a local `.firebaserc` file.
+with a temporary API key, for example:
 
-### 4. Install function packages
-
-```bash
-cd functions
-npm install
-cd ..
+```js
+apiKey: "sk-proj-..."
 ```
 
-### 5. Save the OpenAI API key as a Firebase secret
+Do not add extra spaces or delete the quotation marks.
+
+## 2. Deploy only Firebase Hosting
+
+From the folder containing `firebase.json`, run:
 
 ```bash
-firebase functions:secrets:set OPENAI_API_KEY
+firebase deploy --only hosting
 ```
 
-Paste the key only into the terminal prompt. Do not add it to JavaScript, GitHub, or `firebase-config.js`.
+This avoids Cloud Functions and Realtime Database entirely.
 
-### 6. Deploy
+## 3. Test
 
-```bash
-firebase deploy
+Open the Hosting URL and ask:
+
+```text
+Create a simple Saturday Open Street plan for a residential block. Prioritize children's play and seating, while keeping deliveries and accessible pickup possible.
 ```
 
-The first Functions deployment may ask you to enable billing because Cloud Functions requires the Blaze plan. OpenAI API use is billed separately by OpenAI.
+The status should say:
 
-## Test
+```text
+OpenAI browser connection ready
+```
 
-1. Open the Firebase Hosting URL printed after deployment.
-2. The poll status should say `Firebase connected · live results`.
-3. The agent status should say `Firebase agent connected`.
-4. Ask: `Create a simple Saturday Open Street plan focused on play and seating.`
-5. Confirm the answer is not labeled `PREVIEW RESPONSE`.
-6. In Realtime Database, confirm a record appears under `openStreetsAgent/conversations`.
-7. Take a screenshot showing the chatbot question and reply.
+## Important security limitation
 
-## GitHub Pages option
+The key is visible in the website source and browser network requests. Use a temporary project key with a low budget. After taking the assignment screenshot and submitting, revoke the key in the OpenAI Platform and remove it from the public website.
 
-The files inside `site/` can still be hosted with GitHub Pages. The chatbot will call the deployed Firebase Function across origins. Deploy the Firebase Function first, then upload only the contents of `site/` to the GitHub Pages assignment folder.
+## Firebase poll
 
-## Troubleshooting
-
-- `Preview mode · connect Firebase to use OpenAI`: fill in `site/firebase-config.js`.
-- `Agent request failed`: deploy Functions and set `OPENAI_API_KEY`.
-- Function says billing is required: change the Firebase project to the Blaze plan.
-- Poll works but chatbot does not: ensure `firebase-functions-compat.js` and `agent-app.js` are uploaded.
-- Empty model response: check function logs with `firebase functions:log`.
+The original community poll remains in the page. Without a completed Firebase Web configuration and Realtime Database, it runs in local preview mode. The chatbot itself does not require Realtime Database in this version.

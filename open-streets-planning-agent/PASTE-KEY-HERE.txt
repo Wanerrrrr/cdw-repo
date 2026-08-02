@@ -1,0 +1,13 @@
+OPEN THIS FILE:
+site/openai-config.js
+
+CHANGE THIS:
+apiKey: "PASTE_YOUR_OPENAI_API_KEY_HERE"
+
+TO THIS:
+apiKey: "YOUR ACTUAL sk-proj-... KEY"
+
+THEN, IN TERMINAL FROM THIS PROJECT FOLDER, RUN:
+firebase deploy --only hosting
+
+AFTER GRADING: revoke the key and remove it from the public site.

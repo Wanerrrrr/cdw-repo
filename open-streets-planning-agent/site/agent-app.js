@@ -13,27 +13,23 @@
   const status = document.getElementById('agentConnectionStatus');
   const characterCount = document.getElementById('agentCharacterCount');
 
-  const sessionId = getSessionId();
   const history = [];
-  let callable = null;
   let liveMode = false;
+  let apiKey = '';
+  let model = 'gpt-4o-mini';
+  let lastRequestAt = 0;
 
-  function getSessionId() {
-    const key = 'openStreetsAgentSession';
-    let value = sessionStorage.getItem(key);
-    if (!value) {
-      value = (crypto.randomUUID ? crypto.randomUUID() : `session-${Date.now()}-${Math.random().toString(16).slice(2)}`);
-      sessionStorage.setItem(key, value);
-    }
-    return value;
-  }
+  const SYSTEM_PROMPT = `You are the Open Streets Planning Assistant for a classroom civic-design prototype about NYC Open Streets.
+Help residents and organizers turn a hypothetical block idea into a concise first-draft concept.
+Focus on: purpose, possible schedule, street activities, emergency access, deliveries, accessible pickup and drop-off, staffing, barriers, storage, maintenance, outreach, and trade-offs.
+Do not claim that a proposal is officially approved. Do not invent current NYC regulations, program availability, or site-specific facts. Tell the user to verify official requirements with NYC DOT and local stakeholders.
+Avoid asking for a precise home address. Prefer neighborhood-scale or hypothetical descriptions.
+Use clear headings and short bullet points. Keep most answers under 250 words.`;
 
   function configIsComplete(config) {
     if (!config || typeof config !== 'object') return false;
-    return ['apiKey', 'authDomain', 'projectId', 'appId'].every((key) => {
-      const value = String(config[key] || '');
-      return value && !value.includes('PASTE_') && !value.includes('your-');
-    });
+    const value = String(config.apiKey || '').trim();
+    return value.length > 20 && !value.includes('PASTE_') && !value.includes('your-openai');
   }
 
   function setStatus(state, text) {
@@ -42,31 +38,29 @@
   }
 
   function initializeAgent() {
-    const config = window.OPEN_STREETS_FIREBASE_CONFIG;
-    if (!window.firebase || !firebase.functions || !configIsComplete(config)) {
-      setStatus('preview', 'Preview mode · connect Firebase to use OpenAI');
+    const config = window.OPEN_STREETS_OPENAI_CONFIG;
+    if (!configIsComplete(config)) {
+      setStatus('preview', 'Preview mode · add key in openai-config.js');
       return;
     }
 
-    try {
-      const app = firebase.apps.length ? firebase.app() : firebase.initializeApp(config);
-      callable = app.functions().httpsCallable('openStreetsAgent');
-      liveMode = true;
-      setStatus('connected', 'Firebase agent connected');
-    } catch (error) {
-      console.error('Agent initialization error:', error);
-      setStatus('error', 'Agent setup error · preview mode');
-    }
+    apiKey = String(config.apiKey).trim();
+    model = String(config.model || 'gpt-4o-mini').trim();
+    liveMode = true;
+    setStatus('connected', 'OpenAI browser connection ready');
   }
 
   function appendMessage(role, text, extraClass = '') {
     const article = document.createElement('article');
     article.className = `agent-message ${role === 'user' ? 'user-message' : 'assistant-message'} ${extraClass}`.trim();
+
     const label = document.createElement('span');
     label.className = 'message-label';
     label.textContent = role === 'user' ? 'YOU' : 'PLANNING AGENT';
+
     const paragraph = document.createElement('p');
     paragraph.textContent = text;
+
     article.append(label, paragraph);
     messages.appendChild(article);
     messages.scrollTop = messages.scrollHeight;
@@ -76,47 +70,95 @@
   function previewReply(message) {
     const lower = message.toLowerCase();
     if (lower.includes('deliver') || lower.includes('access') || lower.includes('pickup')) {
-      return `PREVIEW RESPONSE\n\nA first draft could preserve a signed local-access lane or scheduled access window for deliveries and accessible pickup. Keep emergency access clear, identify who moves barriers, and map nearby curb space before choosing hours.\n\nQuestions to verify: Which buildings need regular loading? Where can paratransit stop? Who will communicate the plan to residents and drivers?`;
+      return `PREVIEW RESPONSE\n\nACCESS PLAN\n• Preserve emergency access at all times.\n• Test a signed local-access or scheduled delivery window.\n• Identify a nearby accessible pickup and drop-off point.\n• Map which buildings need regular loading before setting hours.\n\nOPERATIONS TO VERIFY\n• Who moves barriers?\n• How will residents and drivers receive updates?\n• Where can delivery and paratransit vehicles safely stop?`;
     }
-    if (lower.includes('outreach') || lower.includes('ask neighbor')) {
-      return `PREVIEW RESPONSE\n\nStart by asking when the block is busiest, which public-space needs are missing, what access must remain, what concerns residents have, and who could help operate the street. Record disagreements rather than treating one poll result as neighborhood consensus.`;
+
+    if (lower.includes('outreach') || lower.includes('neighbor')) {
+      return `PREVIEW RESPONSE\n\nQUESTIONS FOR OUTREACH\n• When is the block busiest?\n• What public-space use is currently missing?\n• Which deliveries and accessible trips must remain possible?\n• What concerns do residents and businesses have?\n• Who could help operate, clean, and store equipment?\n\nRecord disagreement instead of treating one poll result as neighborhood consensus.`;
     }
-    return `PREVIEW RESPONSE\n\nPossible first draft:\n• Purpose: walking, play, seating, and low-intensity community activity\n• Trial schedule: one weekend day for four to six hours\n• Access: emergency access at all times, with a plan for deliveries and accessible pickup\n• Operations: named partner, trained barrier monitors, storage, cleanup, and neighbor communication\n\nConnect Firebase Functions and add the OpenAI secret to replace this preview with live AI responses.`;
+
+    return `PREVIEW RESPONSE\n\nFIRST-DRAFT CONCEPT\n• Purpose: walking, play, seating, and low-intensity community activity.\n• Trial schedule: one weekend day for four to six hours.\n• Access: emergency access at all times, with planned delivery and accessible pickup windows.\n• Operations: named partner, barrier monitors, storage, cleanup, and neighbor communication.\n\nAdd your temporary API key in openai-config.js to replace this preview with a live AI response.`;
+  }
+
+  async function callOpenAI(message) {
+    const now = Date.now();
+    const minimumInterval = 1800;
+    const remaining = minimumInterval - (now - lastRequestAt);
+    if (remaining > 0) {
+      await new Promise((resolve) => setTimeout(resolve, remaining));
+    }
+    lastRequestAt = Date.now();
+
+    const recentHistory = history.slice(-8).map((item) => ({
+      role: item.role,
+      content: item.content
+    }));
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model,
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          ...recentHistory,
+          { role: 'user', content: message }
+        ],
+        max_tokens: 420,
+        temperature: 0.5
+      })
+    });
+
+    const rawText = await response.text();
+    let data;
+    try {
+      data = JSON.parse(rawText);
+    } catch (_error) {
+      data = null;
+    }
+
+    if (!response.ok) {
+      const apiMessage = data && data.error && data.error.message;
+      if (response.status === 401) throw new Error('The OpenAI API key is invalid or inactive.');
+      if (response.status === 429) throw new Error('The API limit or available credit has been reached.');
+      throw new Error(apiMessage || `OpenAI request failed with status ${response.status}.`);
+    }
+
+    const reply = data?.choices?.[0]?.message?.content?.trim();
+    if (!reply) throw new Error('OpenAI returned an empty response.');
+    return reply;
   }
 
   async function sendMessage(message) {
     appendMessage('user', message);
-    history.push({ role: 'user', content: message });
-    const loading = appendMessage('assistant', 'Thinking through the block, schedule, access, and operations', 'loading');
+    const loading = appendMessage('assistant', 'Thinking through the block, schedule, access, and operations…', 'loading');
     errorMessage.textContent = '';
     sendButton.disabled = true;
     input.disabled = true;
 
     try {
       let reply;
-      if (liveMode && callable) {
-        const result = await callable({
-          message,
-          sessionId,
-          history: history.slice(0, -1).slice(-8)
-        });
-        reply = result.data && result.data.reply;
-        if (!reply) throw new Error('The function returned no reply.');
+      if (liveMode) {
+        reply = await callOpenAI(message);
       } else {
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 450));
         reply = previewReply(message);
       }
 
       loading.remove();
       appendMessage('assistant', reply);
+      history.push({ role: 'user', content: message });
       history.push({ role: 'assistant', content: reply });
       while (history.length > 10) history.shift();
     } catch (error) {
       console.error('Agent request failed:', error);
       loading.remove();
-      appendMessage('assistant', 'I could not reach the planning agent. Check the Firebase Function deployment and OpenAI secret, then try again.', 'error-message');
-      errorMessage.textContent = 'Connection failed. Open the browser console and review README.md troubleshooting.';
-      setStatus('error', 'Agent request failed');
+      appendMessage('assistant', `I could not reach the planning agent. ${error.message}`, 'error-message');
+      errorMessage.textContent = 'Check the API key, available credit, and browser console, then try again.';
+      setStatus('error', 'OpenAI request failed');
     } finally {
       sendButton.disabled = false;
       input.disabled = false;
