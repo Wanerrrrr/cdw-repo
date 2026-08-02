@@ -1,0 +1,17 @@
+{
+  "rules": {
+    "openStreetsPoll": {
+      "responses": {
+        ".read": true,
+        "$responseId": {
+          ".write": "!data.exists()",
+          ".validate": "newData.hasChildren(['support', 'needs', 'concerns', 'schedule', 'priority', 'schemaVersion', 'createdAt']) && newData.child('support').isString() && newData.child('schedule').isString() && newData.child('priority').isString() && newData.child('schemaVersion').val() === 1 && newData.child('createdAt').isNumber()"
+        }
+      }
+    },
+    "openStreetsAgent": {
+      ".read": false,
+      ".write": false
+    }
+  }
+}
