@@ -1,0 +1,12 @@
+{
+  "name": "open-streets-agent-functions",
+  "private": true,
+  "main": "index.js",
+  "engines": { "node": "22" },
+  "scripts": {
+    "deploy": "firebase deploy --only functions:openStreetsAgent"
+  },
+  "dependencies": {
+    "firebase-functions": "^6.4.0"
+  }
+}

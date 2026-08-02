@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An NYC Open Streets community poll and AI planning agent using Firebase and the OpenAI API.">
+  <title>Open Streets Community Poll + Planning Agent</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg aria-hidden="true" class="svg-defs" height="0" width="0">
+    <defs>
+      <symbol id="icon-tree" viewBox="0 0 100 120">
+        <rect height="45" rx="4" width="14" x="43" y="65"></rect>
+        <circle cx="50" cy="42" r="30"></circle>
+        <circle cx="30" cy="54" r="19"></circle>
+        <circle cx="70" cy="55" r="19"></circle>
+      </symbol>
+      <symbol id="icon-chair" viewBox="0 0 110 110">
+        <rect height="54" rx="5" width="14" x="22" y="20"></rect>
+        <rect height="14" rx="5" width="52" x="36" y="48"></rect>
+        <rect height="34" rx="4" width="11" x="37" y="61"></rect>
+        <rect height="34" rx="4" width="11" x="75" y="61"></rect>
+      </symbol>
+      <symbol id="icon-person" viewBox="0 0 80 130">
+        <circle cx="40" cy="18" r="14"></circle>
+        <path d="M35 38 H47 L55 73 L72 96 L61 104 L45 83 L42 122 H29 L30 78 L11 103 L1 94 L27 60 Z"></path>
+      </symbol>
+      <symbol id="icon-car" viewBox="0 0 170 90">
+        <path d="M24 59 L39 28 C43 20 51 15 61 15 H111 C124 15 132 20 139 31 L151 59 H160 C166 59 171 64 171 70 V77 H4 V70 C4 64 10 59 16 59 Z"></path>
+        <circle cx="43" cy="72" r="12"></circle>
+        <circle cx="136" cy="72" r="12"></circle>
+        <path class="window" d="M55 27 H83 V51 H44 Z"></path>
+        <path class="window" d="M92 27 H116 C123 27 128 31 132 38 L139 51 H92 Z"></path>
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="assignment-header">
+    <div class="brand"><span class="brand-mark"></span>OPEN STREETS COMMUNITY TOOLS</div>
+    <div class="assignment-label">ASSIGNMENT 8 · AGENTS + FIREBASE</div>
+  </header>
+
+  <main id="home">
+    <section aria-labelledby="poll-section-title" class="poll-section">
+      <div class="poll-introduction">
+        <p class="section-number">NYC OPEN STREETS · COMMUNITY POLL</p>
+        <h1 id="poll-section-title">IMAGINE AN OPEN STREET IN YOUR NEIGHBORHOOD.</h1>
+        <p class="poll-lede">NYC Open Streets temporarily transforms road space into shared public space for walking, play, cycling, community activities, and local businesses.</p>
+        <a class="official-link" href="https://www.nyc.gov/html/dot/html/pedestrians/openstreets.shtml" target="_blank" rel="noopener noreferrer">Learn more about the NYC Open Streets program ↗</a>
+        <div class="poll-meta-row">
+          <span>5 questions · about 1 minute</span>
+          <div aria-live="polite" class="firebase-status" id="pollConnectionStatus" role="status">
+            <i aria-hidden="true"></i><span>Checking Firebase…</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="poll-app app-frame" id="openStreetsPoll">
+        <div class="poll-main">
+          <div aria-label="Poll progress" class="poll-progress" id="pollProgress">
+            <div class="poll-progress-track"><b id="pollProgressBar"></b></div>
+            <span id="pollProgressText">QUESTION 1 OF 5</span>
+          </div>
+
+          <form class="poll-screen active" data-poll-screen="questions" id="communityPollForm" novalidate>
+            <fieldset class="poll-question active" data-question="1">
+              <legend><span>01</span> Would you like to see one or more blocks in your neighborhood become Open Streets?</legend>
+              <div class="poll-options single-options">
+                <label><input name="support" type="radio" value="yes"><span><b>YES</b><small>I would support an Open Street nearby.</small></span></label>
+                <label><input name="support" type="radio" value="maybe"><span><b>MAYBE</b><small>It would depend on the design and operation.</small></span></label>
+                <label><input name="support" type="radio" value="no"><span><b>NO</b><small>I would not want one nearby.</small></span></label>
+                <label><input name="support" type="radio" value="not-sure"><span><b>NOT SURE</b><small>I need more information about the program.</small></span></label>
+              </div>
+              <div class="poll-explainer" hidden id="openStreetExplainer">An Open Street limits through-traffic during scheduled times to create more room for walking, play, public activities, and local access.</div>
+            </fieldset>
+
+            <fieldset class="poll-question" data-question="2">
+              <legend><span>02</span> What is currently most lacking in the public spaces of your neighborhood?</legend>
+              <p class="selection-instruction">Select up to two.</p>
+              <div class="poll-options multi-options" data-max="2">
+                <label><input name="needs" type="checkbox" value="safe-walking"><span><b>SAFE WALKING</b><small>More comfortable pedestrian space.</small></span></label>
+                <label><input name="needs" type="checkbox" value="children-play"><span><b>CHILDREN'S PLAY</b><small>Outdoor space for children.</small></span></label>
+                <label><input name="needs" type="checkbox" value="trees-shade"><span><b>TREES + SHADE</b><small>Cooling and weather protection.</small></span></label>
+                <label><input name="needs" type="checkbox" value="seating-social"><span><b>SEATING + SOCIAL SPACE</b><small>Places to rest and gather.</small></span></label>
+                <label><input name="needs" type="checkbox" value="cycling"><span><b>CYCLING SPACE</b><small>Safer space for bicycles.</small></span></label>
+                <label><input name="needs" type="checkbox" value="community-events"><span><b>COMMUNITY EVENTS</b><small>Shared cultural and social activity.</small></span></label>
+                <label><input name="needs" type="checkbox" value="markets-business"><span><b>MARKETS + BUSINESS</b><small>Space for vendors and local commerce.</small></span></label>
+                <label><input name="needs" type="checkbox" value="no-lack"><span><b>NOTHING MAJOR</b><small>Public space is currently sufficient.</small></span></label>
+              </div>
+              <p aria-live="polite" class="selection-feedback"></p>
+            </fieldset>
+
+            <fieldset class="poll-question" data-question="3">
+              <legend><span>03</span> What would be your biggest concern about creating an Open Street nearby?</legend>
+              <p class="selection-instruction">Select up to two.</p>
+              <div class="poll-options multi-options" data-max="2">
+                <label><input name="concerns" type="checkbox" value="parking"><span><b>LOSS OF PARKING</b><small>Reduced curb space for parked vehicles.</small></span></label>
+                <label><input name="concerns" type="checkbox" value="loading"><span><b>DELIVERY + LOADING</b><small>Access for goods and services.</small></span></label>
+                <label><input name="concerns" type="checkbox" value="accessible-access"><span><b>ACCESSIBLE PICKUP</b><small>Drop-off and paratransit access.</small></span></label>
+                <label><input name="concerns" type="checkbox" value="emergency"><span><b>EMERGENCY ACCESS</b><small>Clear routes for emergency vehicles.</small></span></label>
+                <label><input name="concerns" type="checkbox" value="traffic-diversion"><span><b>TRAFFIC DIVERSION</b><small>More vehicles on nearby streets.</small></span></label>
+                <label><input name="concerns" type="checkbox" value="noise"><span><b>NOISE + CROWDING</b><small>Impacts from programs and events.</small></span></label>
+                <label><input name="concerns" type="checkbox" value="maintenance"><span><b>MAINTENANCE</b><small>Cleaning, storage, and upkeep.</small></span></label>
+                <label><input name="concerns" type="checkbox" value="management"><span><b>MANAGEMENT CAPACITY</b><small>Who will operate the street?</small></span></label>
+                <label><input name="concerns" type="checkbox" value="no-concern"><span><b>NO MAJOR CONCERN</b><small>I would generally be comfortable.</small></span></label>
+              </div>
+              <p aria-live="polite" class="selection-feedback"></p>
+            </fieldset>
+
+            <fieldset class="poll-question" data-question="4">
+              <legend><span>04</span> When would an Open Street be most useful in your neighborhood?</legend>
+              <div class="poll-options single-options compact-options">
+                <label><input name="schedule" type="radio" value="weekend"><span><b>WEEKEND DAYTIME</b></span></label>
+                <label><input name="schedule" type="radio" value="weekday-evening"><span><b>WEEKDAY EVENINGS</b></span></label>
+                <label><input name="schedule" type="radio" value="school-hours"><span><b>BEFORE + AFTER SCHOOL</b></span></label>
+                <label><input name="schedule" type="radio" value="daily-daytime"><span><b>EVERY DAY, DAYTIME</b></span></label>
+                <label><input name="schedule" type="radio" value="seasonal"><span><b>SEASONAL / EVENTS ONLY</b></span></label>
+                <label><input name="schedule" type="radio" value="time-sharing"><span><b>DIFFERENT USES AT DIFFERENT TIMES</b></span></label>
+                <label><input name="schedule" type="radio" value="no-support"><span><b>I WOULD NOT SUPPORT ONE</b></span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="poll-question" data-question="5">
+              <legend><span>05</span> If one block in your neighborhood became an Open Street, what should it prioritize?</legend>
+              <div class="poll-options priority-options">
+                <label><input name="priority" type="radio" value="children-play"><span><b>CHILDREN'S PLAY</b><small>Safe outdoor recreation.</small></span></label>
+                <label><input name="priority" type="radio" value="trees-shade"><span><b>TREES + SHADE</b><small>Cooling and climate comfort.</small></span></label>
+                <label><input name="priority" type="radio" value="seating-social"><span><b>SEATING + SOCIAL SPACE</b><small>Rest and neighborhood gathering.</small></span></label>
+                <label><input name="priority" type="radio" value="walking-cycling"><span><b>WALKING + CYCLING</b><small>Safe everyday mobility.</small></span></label>
+                <label><input name="priority" type="radio" value="markets-business"><span><b>LOCAL MARKETS + BUSINESS</b><small>Vendors, commerce, and dining.</small></span></label>
+                <label><input name="priority" type="radio" value="arts-events"><span><b>ARTS + COMMUNITY EVENTS</b><small>Culture, performance, and programs.</small></span></label>
+                <label><input name="priority" type="radio" value="accessible-access"><span><b>ACCESSIBLE LOCAL ACCESS</b><small>Pickup, drop-off, and essential vehicles.</small></span></label>
+                <label><input name="priority" type="radio" value="balanced"><span><b>A BALANCED MIX</b><small>Several uses sharing the block.</small></span></label>
+              </div>
+            </fieldset>
+
+            <div class="poll-actions">
+              <button id="pollBack" type="button">← BACK</button>
+              <p aria-live="assertive" id="pollValidation" role="alert"></p>
+              <button id="pollNext" type="button">CONTINUE →</button>
+            </div>
+          </form>
+
+          <section aria-labelledby="poll-results-title" class="poll-screen" data-poll-screen="results">
+            <p class="eyebrow">RESPONSE RECORDED</p>
+            <h2 id="poll-results-title">YOUR COMMUNITY STREET PROFILE</h2>
+            <div class="response-summary" id="responseSummary"></div>
+            <div class="live-results-heading">
+              <div><p class="mini-label">LIVE AGGREGATED RESULTS</p><h3><span id="pollTotalResponses">0</span> RESPONSES</h3></div>
+              <p>Results update when Firebase receives a new response.</p>
+            </div>
+            <div class="poll-result-cards">
+              <article><strong id="pollSupportPercent">—</strong><span>would support or consider an Open Street</span></article>
+              <article><strong id="pollTopNeed">—</strong><span>most reported neighborhood need</span></article>
+              <article><strong id="pollTopConcern">—</strong><span>most common concern</span></article>
+              <article><strong id="pollTopPriority">—</strong><span>top design priority</span></article>
+            </div>
+            <div aria-label="Priority poll results" class="poll-bars" id="pollPriorityBars"></div>
+            <div class="poll-result-actions">
+              <button class="pill-button" id="pollRestart" type="button">SUBMIT ANOTHER RESPONSE</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+
+    <section aria-labelledby="agent-section-title" class="agent-section" id="planning-agent">
+      <div class="agent-introduction">
+        <p class="section-number">NYC OPEN STREETS · PLANNING AGENT</p>
+        <h2 id="agent-section-title">TURN A NEIGHBORHOOD IDEA INTO A FIRST-DRAFT STREET PLAN.</h2>
+        <p class="agent-lede">This focused chatbot helps residents and organizers think through possible uses, schedules, access needs, operations, and trade-offs. It does not provide official approval or replace community outreach.</p>
+        <div class="agent-meta-row">
+          <span>Firebase Cloud Function · OpenAI Responses API</span>
+          <div aria-live="polite" class="firebase-status preview" id="agentConnectionStatus" role="status">
+            <i aria-hidden="true"></i><span>Checking agent connection…</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="agent-app app-frame" id="openStreetsAgent">
+        <aside class="agent-context">
+          <p class="mini-label">AGENT ROLE</p>
+          <h3>OPEN STREETS PLANNING ASSISTANT</h3>
+          <p>Ask about a hypothetical block rather than sharing a precise home address.</p>
+          <div class="agent-context-card">
+            <b>IT CAN HELP WITH</b>
+            <ul>
+              <li>possible street programs</li>
+              <li>operating schedules</li>
+              <li>local and accessible access</li>
+              <li>staffing, barriers, and storage</li>
+              <li>questions for community outreach</li>
+            </ul>
+          </div>
+          <p class="prototype-note">Classroom prototype. Suggestions should be verified with NYC DOT guidance and local stakeholders.</p>
+        </aside>
+
+        <div class="agent-main">
+          <div aria-live="polite" aria-label="Chat conversation" class="agent-messages" id="agentMessages">
+            <article class="agent-message assistant-message">
+              <span class="message-label">PLANNING AGENT</span>
+              <p>Describe the kind of block you are thinking about, the time you want it open, or a concern you need to address. I will help organize a first-draft concept.</p>
+            </article>
+          </div>
+
+          <div aria-label="Suggested questions" class="agent-prompts">
+            <button type="button" data-agent-prompt="What could work on a residential block with children and older adults?">RESIDENTIAL BLOCK</button>
+            <button type="button" data-agent-prompt="Create a simple Saturday Open Street plan focused on play and seating.">SATURDAY PLAN</button>
+            <button type="button" data-agent-prompt="How could deliveries and accessible pickup work during Open Street hours?">ACCESS + DELIVERIES</button>
+            <button type="button" data-agent-prompt="What questions should organizers ask neighbors before applying?">OUTREACH QUESTIONS</button>
+          </div>
+
+          <form class="agent-form" id="agentForm">
+            <label for="agentInput">YOUR QUESTION OR SCENARIO</label>
+            <div class="agent-input-row">
+              <textarea id="agentInput" maxlength="600" placeholder="Example: Imagine a school block open on Saturdays from 10 AM to 4 PM…" required rows="3"></textarea>
+              <button class="agent-send" id="agentSend" type="submit">SEND <span>→</span></button>
+            </div>
+            <div class="agent-form-meta">
+              <span id="agentCharacterCount">0 / 600</span>
+              <button class="agent-clear" id="agentClear" type="button">CLEAR CHAT</button>
+            </div>
+            <p aria-live="polite" class="agent-error" id="agentError"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>OPEN STREETS COMMUNITY POLL + PLANNING AGENT</span>
+    <a href="#home">BACK TO TOP ↑</a>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+  <script src="firebase-config.js?v=final1"></script>
+  <script src="poll-app.js?v=final1"></script>
+  <script src="agent-app.js?v=final1"></script>
+</body>
+</html>
