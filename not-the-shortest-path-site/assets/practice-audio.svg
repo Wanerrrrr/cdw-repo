@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Spatial audio navigation placeholder">
+    <rect width="800" height="500" rx="34" fill="#f4ecd8"/>
+    <rect x="18" y="18" width="764" height="464" rx="27" fill="none" stroke="#2f513c" stroke-opacity=".14" stroke-width="2"/>
+    
+<rect width="800" height="500" fill="#2f513c"/>
+<circle cx="400" cy="250" r="42" fill="#c99a58"/>
+<g fill="none" stroke="#f4ecd8" stroke-linecap="round"><path d="M330 205c-70 70-70 120 0 190" stroke-width="12"/><path d="M280 165c-120 110-120 190 0 275" stroke-width="8"/><path d="M470 205c70 70 70 120 0 190" stroke-width="12"/><path d="M520 165c120 110 120 190 0 275" stroke-width="8"/></g>
+<path d="M120 410 C205 344 280 388 340 330 C420 254 525 300 680 95" fill="none" stroke="#98583f" stroke-width="14" stroke-linecap="round"/>
+
+    </svg>

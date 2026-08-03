@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Word mode experiment placeholder">
+    <rect width="800" height="500" rx="34" fill="#f4ecd8"/>
+    <rect x="18" y="18" width="764" height="464" rx="27" fill="none" stroke="#2f513c" stroke-opacity=".14" stroke-width="2"/>
+    
+<rect width="800" height="500" fill="#cbd3b7"/>
+<text x="55" y="105" fill="#2f513c" font-family="serif" font-size="64" font-style="italic">echo</text>
+<g stroke="#f4ecd8" stroke-width="20" stroke-linecap="round"><path d="M60 170H740"/><path d="M60 290H740"/><path d="M170 115V440"/><path d="M370 115V440"/><path d="M610 115V440"/></g>
+<path d="M80 430 C150 360 225 415 270 330 C315 245 395 315 440 225 C488 128 560 205 720 105" fill="none" stroke="#98583f" stroke-width="14" stroke-linecap="round"/>
+<g fill="#c99a58"><circle cx="270" cy="330" r="15"/><circle cx="440" cy="225" r="15"/></g>
+
+    </svg>

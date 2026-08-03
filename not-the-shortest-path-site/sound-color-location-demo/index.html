@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sound to RGB to location prototype for Not the Shortest Path." />
+  <title>Sound → Color → Place</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <span class="eyebrow">Not the Shortest Path · Mini Prototype</span>
+      <h1>Sound becomes color.<br>Color reveals places.</h1>
+      <p>
+        Make three sounds. Their volumes become the red, green, and blue values
+        of a color. The resulting color opens a set of possible locations.
+      </p>
+      <div class="privacy-note">
+        <strong>Microphone privacy:</strong> audio is analyzed live in your browser.
+        This demo does not record, save, or upload sound.
+      </div>
+    </header>
+
+    <section class="panel input-panel" aria-labelledby="sound-heading">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">01 · Sound Input</span>
+          <h2 id="sound-heading">Create three values</h2>
+        </div>
+        <button id="reset-button" class="text-button" type="button">Reset</button>
+      </div>
+
+      <div class="sound-layout">
+        <div class="meter-card">
+          <div class="meter-topline">
+            <span id="mic-status">Microphone not started</span>
+            <span id="live-value">0</span>
+          </div>
+
+          <div class="meter-track" aria-label="Live microphone volume">
+            <div id="meter-fill" class="meter-fill"></div>
+            <div class="meter-grid" aria-hidden="true"></div>
+          </div>
+
+          <canvas id="waveform" width="900" height="220" aria-label="Live microphone waveform"></canvas>
+
+          <div class="meter-actions">
+            <button id="start-mic" class="primary-button" type="button">Enable microphone</button>
+            <button id="capture-sound" class="primary-button" type="button" disabled>Capture sound</button>
+            <button id="demo-mode" class="secondary-button" type="button">Use demo slider</button>
+          </div>
+
+          <div id="capture-message" class="capture-message" aria-live="polite">
+            Enable the microphone, then make one sound for each channel.
+          </div>
+
+          <div id="demo-control" class="demo-control" hidden>
+            <label for="demo-slider">Demo volume</label>
+            <input id="demo-slider" type="range" min="0" max="255" value="128" />
+            <button id="capture-demo" class="secondary-button" type="button">Use this value</button>
+          </div>
+        </div>
+
+        <div class="channels-card">
+          <span class="mini-label">Three rounds</span>
+          <div class="channel-list">
+            <article class="channel-row active" data-channel="0">
+              <span class="channel-letter channel-red">R</span>
+              <div>
+                <small>Round 01</small>
+                <strong>Red value</strong>
+              </div>
+              <span id="value-r" class="channel-value">—</span>
+            </article>
+
+            <article class="channel-row" data-channel="1">
+              <span class="channel-letter channel-green">G</span>
+              <div>
+                <small>Round 02</small>
+                <strong>Green value</strong>
+              </div>
+              <span id="value-g" class="channel-value">—</span>
+            </article>
+
+            <article class="channel-row" data-channel="2">
+              <span class="channel-letter channel-blue">B</span>
+              <div>
+                <small>Round 03</small>
+                <strong>Blue value</strong>
+              </div>
+              <span id="value-b" class="channel-value">—</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="color-section" class="panel color-panel is-locked" aria-labelledby="color-heading">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">02 · RGB Result</span>
+          <h2 id="color-heading">Your generated color</h2>
+        </div>
+      </div>
+
+      <div class="color-layout">
+        <div id="color-swatch" class="color-swatch">
+          <span>Waiting for three sounds</span>
+        </div>
+        <div class="color-copy">
+          <span class="mini-label">Three numbers create one condition</span>
+          <h3 id="rgb-label">RGB — · — · —</h3>
+          <p id="hex-label">#———</p>
+          <p>
+            The color does not produce one “best” answer. It reveals a field of
+            possible places that share a visual relationship with it.
+          </p>
+          <button id="reveal-places" class="primary-button" type="button" disabled>Reveal places</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="places-section" class="panel places-panel is-locked" aria-labelledby="places-heading">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">03 · Color-Matched Locations</span>
+          <h2 id="places-heading">Choose what catches your attention</h2>
+        </div>
+        <span id="selection-count" class="selection-count">0 selected</span>
+      </div>
+
+      <p class="section-intro">
+        Your generated RGB color is compared with the stored facade colors in this demo location library.
+        The closest color neighborhood is shown as an unranked set—there is no single “best” location.
+      </p>
+
+      <div class="match-banner" aria-live="polite">
+        <span id="places-generated-swatch" class="match-banner-swatch"></span>
+        <div>
+          <small>Searching with your color</small>
+          <strong id="places-generated-label">RGB — · — · —</strong>
+        </div>
+        <span class="match-banner-note">Six related facade colors revealed</span>
+      </div>
+
+      <div id="place-grid" class="place-grid"></div>
+    </section>
+
+    <section id="route-section" class="panel route-panel is-locked" aria-labelledby="route-heading">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">04 · User-Constructed Route</span>
+          <h2 id="route-heading">Connect your own route</h2>
+        </div>
+      </div>
+
+      <div class="route-layout">
+        <div class="route-map-wrap">
+          <svg id="route-map" viewBox="0 0 900 560" role="img" aria-label="Schematic map of selected locations">
+            <rect width="900" height="560" rx="30" class="map-background" />
+            <g class="street-grid" aria-hidden="true">
+              <path d="M50 90 H850" />
+              <path d="M50 205 H850" />
+              <path d="M50 330 H850" />
+              <path d="M50 455 H850" />
+              <path d="M125 35 V525" />
+              <path d="M300 35 V525" />
+              <path d="M500 35 V525" />
+              <path d="M720 35 V525" />
+            </g>
+            <polyline id="route-line" points="" class="route-line" />
+            <g id="route-nodes"></g>
+          </svg>
+        </div>
+
+        <div class="route-sidebar">
+          <span class="mini-label">Route order</span>
+          <p>
+            The system offers places. You decide which ones matter and in what order they should be connected.
+          </p>
+          <div id="route-list" class="route-list"></div>
+          <button id="clear-route" class="secondary-button" type="button">Clear selections</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <strong>Three sounds create a color. The color reveals places. The user makes the route.</strong>
+      <span>Prototype data only · Not for navigation</span>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

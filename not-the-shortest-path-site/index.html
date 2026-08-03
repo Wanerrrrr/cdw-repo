@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Research foundations and project outline for Not the Shortest Path." />
+  <title>Not the Shortest Path — Research Foundations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* =========================================
+       Exhibition
+       ========================================= */
+
+    .exhibition-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 38px;
+    }
+
+    .exhibition-drawing,
+    .exhibition-prototype {
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid rgba(49, 80, 59, 0.16);
+      border-radius: 30px;
+      background: var(--cream-2, #f5f0e2);
+      box-shadow: 0 14px 34px rgba(48, 64, 45, 0.06);
+    }
+
+    .exhibition-drawing {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .exhibition-drawing-image {
+      min-height: 620px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(49, 80, 59, 0.07),
+          rgba(155, 85, 63, 0.08)
+        );
+    }
+
+    .exhibition-drawing-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 620px;
+      object-fit: contain;
+      object-position: center;
+      background: #fffdf6;
+    }
+
+    .exhibition-drawing figcaption {
+      padding: 26px 28px 30px;
+    }
+
+    .exhibition-drawing h3,
+    .exhibition-prototype h3 {
+      margin: 10px 0 12px;
+      color: var(--green-dark, #1f4834);
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+      line-height: 1.18;
+    }
+
+    .exhibition-drawing p,
+    .exhibition-prototype p {
+      margin: 0;
+      color: #5d665f;
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+
+    .exhibition-prototype {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 34px;
+      color: #fff8e8;
+      background: var(--green-dark, #1f4834);
+    }
+
+    .exhibition-prototype .mini-label {
+      color: #d8bd84;
+    }
+
+    .exhibition-prototype h3 {
+      color: #fff8e8;
+    }
+
+    .exhibition-prototype p {
+      color: rgba(255, 248, 232, 0.76);
+    }
+
+    .prototype-flow {
+      display: grid;
+      gap: 10px;
+      margin: 30px 0;
+    }
+
+    .prototype-flow span {
+      padding: 13px 15px;
+      color: #fff8e8;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      font-size: 0.86rem;
+    }
+
+    .exhibition-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      margin-top: 28px;
+      padding: 15px 18px;
+      color: var(--green-dark, #1f4834);
+      background: #efe4c9;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .exhibition-link:hover {
+      transform: translateY(-2px);
+      background: #fff3d6;
+    }
+
+    .exhibition-note {
+      margin-top: 18px !important;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 248, 232, 0.2);
+      font-size: 0.8rem !important;
+    }
+
+    @media (max-width: 1000px) {
+      .exhibition-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .exhibition-drawing-image,
+      .exhibition-drawing-image img {
+        min-height: 480px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .exhibition-prototype {
+        padding: 26px;
+      }
+
+      .exhibition-drawing-image,
+      .exhibition-drawing-image img {
+        min-height: 360px;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <button class="mobile-menu" type="button" aria-label="Open navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <aside class="sidebar" aria-label="Presentation navigation">
+    <a class="brand-plaque" href="#home" aria-label="Back to title">
+      <span class="brand-kicker">Research Foundations</span>
+      <strong>Not the<br>Shortest Path</strong>
+      <span class="brand-year">Summer Colloquium · 2026</span>
+    </a>
+
+    <nav class="side-nav">
+      <a class="active" href="#home"><span>⌂</span>Title</a>
+      <a href="#background"><span>◌</span>Background</a>
+      <a href="#questions"><span>?</span>Research Questions</a>
+      <a href="#keywords-fields"><span>✦</span>Keywords + Fields</a>
+      <a href="#lineage"><span>↝</span>Historical Lineage</a>
+      <a href="#community"><span>♧</span>Community of Practices</a>
+      <a href="#situated"><span>⌖</span>Situated Tech</a>
+      <a href="#methods"><span>⚒</span>Methods</a>
+      <a href="#visual"><span>◫</span>Visual Language</a>
+      <a href="#argument"><span>“</span>Argument</a>
+      <a href="#capstone"><span>➜</span>Capstone Idea</a>
+      <a href="#exhibition"><span>▣</span>Exhibition</a>
+    </nav>
+
+    <div class="sidebar-note">
+      <span class="leaf">❧</span>
+      <p>Follow what catches your attention, not only what saves time.</p>
+    </div>
+  </aside>
+
+  <main>
+    <section id="home" class="hero section-shell">
+      <div class="hero-landscape" aria-hidden="true">
+
+      </div>
+
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Research Foundations + Project Outline</span>
+        <h1>Not the<br><em>Shortest</em> Path</h1>
+        <p class="hero-subtitle">Introducing uncertainty into algorithmic navigation.</p>
+        <p class="hero-statement">What happens when navigation is designed to encourage curiosity, attention, embodied perception, and encounters with the unexpected?</p>
+        <a class="soft-button" href="#questions">Begin the walk <span>→</span></a>
+      </div>
+
+    </section>
+
+    <section id="background" class="section-shell reveal">
+
+      <div class="section-heading">
+        <span class="section-number">00</span>
+    
+        <div>
+          <h2>Background</h2>
+        </div>
+      </div>
+    
+      <p class="background-opening">
+        We increasingly rely on algorithms to decide where we go,
+        what we consume, and what deserves our attention.
+      </p>
+    
+    
+      <!-- =====================================
+           GROUP 01 — Everyday Decisions
+           ===================================== -->
+    
+      <div class="background-group">
+    
+        <div class="background-group-heading">
+    
+          <div>
+            <h3>The “best” answer is already selected.</h3>
+            <p>
+              Everyday decisions are increasingly shaped by systems that rank,
+              filter, and recommend options for us.
+            </p>
+          </div>
+        </div>
+    
+    
+        <div class="background-card-grid">
+    
+          <!-- Shortest Route -->
+          <article class="background-story-card">
+    
+            <div class="background-media background-placeholder">
+              <img
+            src="assets/tra_map1.jpg"
+            alt="Alternative navigation and urban exploration"
+          />
+            </div>
+    
+            <div class="background-story-content">
+              <span class="background-card-label">Navigation</span>
+    
+              <h4>The Shortest Route</h4>
+    
+              <p>
+                We use navigation systems to calculate the fastest and shortest
+                way to move through the city.
+              </p>
+            </div>
+    
+          </article>
+    
+    
+          <!-- Best Restaurant -->
+          <article class="background-story-card">
+    
+            <div class="background-media background-placeholder">
+              <img
+              src="assets/yelp.png"
+              alt="Alternative navigation and urban exploration"
+            />
+            </div>
+    
+            <div class="background-story-content">
+              <span class="background-card-label">Ratings</span>
+    
+              <h4>The Highest-Rated Restaurant</h4>
+    
+              <p>
+                We use ratings and reviews to filter restaurants and identify
+                what appears to be the best available choice.
+              </p>
+            </div>
+    
+          </article>
+    
+        </div>
+      </div>
+    
+    
+      <!-- =====================================
+           GROUP 02 — Similar Experiences
+           ===================================== -->
+    
+      <div class="background-group">
+    
+        <div class="background-group-heading">
+    
+          <div>
+            <h3>Recommendation can narrow possibility.</h3>
+    
+            <p>
+              When highly ranked choices become visible to everyone,
+              different people can begin to follow the same paths.
+            </p>
+          </div>
+        </div>
+    
+    
+        <div class="background-card-grid">
+    
+          <!-- Same Tourist -->
+          <article class="background-story-card">
+    
+            <div class="background-media background-placeholder">
+              <img
+            src="assets/itinerary.jpg"
+            alt="Alternative navigation and urban exploration"
+          />
+            </div>
+    
+            <div class="background-story-content">
+              <span class="background-card-label">Travel</span>
+    
+              <h4>The Same Tourist, Again</h4>
+    
+              <p>
+                While traveling, you may repeatedly encounter the same person
+                because you are both following the same algorithmically promoted
+                travel guide post on social media.
+              </p>
+            </div>
+    
+          </article>
+    
+    
+          <!-- Restaurant Queue -->
+          <article class="background-story-card">
+    
+            <div class="background-media background-placeholder">
+              <img
+            src="assets/HighlyRatedRestaurant.jpg"
+            alt="Alternative navigation and urban exploration"
+          />
+            </div>
+    
+            <div class="background-story-content">
+              <span class="background-card-label">Consumption</span>
+    
+              <h4>Highly Rated Restaurant, Not Necessarily Satisfying</h4>
+    
+              <p>
+                You may wait in a long line for a highly rated restaurant,
+                only to discover that the food does not suit your personal taste.
+              </p>
+            </div>
+    
+          </article>
+    
+        </div>
+      </div>
+    
+    
+      <!-- =====================================
+     GROUP 03 — When Algorithms Fail
+     ===================================== -->
+
+<div class="background-group">
+
+  <div class="background-group-heading">
+
+    <div>
+      <h3>Algorithms Can Fail — But Our Tolerance for Error Is Shrinking.</h3>
+
+      <p>
+        Algorithms can be inaccurate or fail to anticipate unexpected
+        conditions. Yet as we become accustomed to precise predictions
+        and continuous updates, delays and disruptions can quickly lead
+        to frustration, anxiety, and conflict.
+      </p>
+    </div>
+  </div>
+
+
+  <div class="background-card-grid background-three-card-grid">
+
+    <!-- Delivery Delay -->
+    <article class="background-story-card">
+
+      <div class="background-media background-placeholder">
+        <img
+            src="assets/delivery.jpg"
+            alt="Alternative navigation and urban exploration"
+          />
+      </div>
+
+      <div class="background-story-content">
+        <span class="background-card-label">Delivery</span>
+
+        <h4>One Minute Late Delivery</h4>
+
+        <p>
+          When a delivery is only one minute late, we may begin refreshing
+          the tracking page repeatedly because the system is no longer
+          matching its predicted arrival time.
+        </p>
+      </div>
+
+    </article>
+
+
+    <!-- Subway Delay -->
+    <article class="background-story-card">
+
+      <div class="background-media background-placeholder">
+        <img
+            src="assets/trainDelay.png"
+            alt="Alternative navigation and urban exploration"
+          />
+      </div>
+
+      <div class="background-story-content">
+        <span class="background-card-label">Mobility</span>
+
+        <h4>Subway Delay</h4>
+
+        <p>
+          A subway delay can quickly produce frustration because the trip
+          no longer follows the precise schedule shown by the navigation
+          system.
+        </p>
+      </div>
+
+    </article>
+
+
+    <!-- Pandemic Shortage -->
+    <article class="background-story-card">
+
+      <div class="background-media background-placeholder">
+        <img
+            src="assets/emptyshelve.jpg"
+            alt="Alternative navigation and urban exploration"
+          />
+      </div>
+
+      <div class="background-story-content">
+        <span class="background-card-label">Unexpected Conditions</span>
+
+        <h4>Empty Shelves During Pandemic</h4>
+
+        <p>
+          During the pandemic, sudden changes in demand exceeded
+          what inventory systems had predicted. Empty shelves were followed
+          by arguments and blame online as people struggled with a situation
+          that could no longer be controlled as expected.
+        </p>
+      </div>
+
+    </article>
+
+  </div>
+
+</div>
+    
+    
+      <!-- =====================================
+           FINAL SUMMARY
+           ===================================== -->
+    
+      <div class="background-conclusion">
+    
+        <div class="background-conclusion-heading">
+          <span>What Changes?</span>
+          <h3>Calculated certainty becomes a habit.</h3>
+        </div>
+    
+        <div class="background-conclusion-text">
+    
+          <p>
+            We become accustomed to accepting the supposedly best answer selected
+            by an algorithm rather than responding to our own judgment and feelings.
+            Although we appear constantly connected, we may engage less with our
+            full senses and with the environments immediately around us.
+          </p>
+    
+          <p>
+            We increasingly expect life to be precise, predictable, and controllable,
+            as though data could eliminate uncertainty. Yet algorithms are not neutral
+            or infallible. They are shaped by human classifications, assumptions,
+            historical data, and design decisions.
+          </p>
+    
+
+    
+          <p class="background-final-line">
+            Depending on calculated and seemingly guaranteed outcomes can gradually
+            weaken our agency, sensory attention, and ability to respond to the
+            unexpected.
+          </p>
+    
+        </div>
+    
+      </div>
+    
+    </section>
+
+    <section id="questions" class="section-shell reveal">
+      <div class="section-heading">
+        <span class="section-number">01</span>
+        <div>
+          <h2>Research Questions</h2>
+         
+        </div>
+      </div>
+
+      <div class="question-grid">
+        <article class="feature-card large-question">
+          <span class="mini-label">Primary Question</span>
+          <h3>How do optimization-oriented navigation systems shape attention, spatial memory, agency, and tolerance for uncertainty?</h3>
+          <div class="route-divider" aria-hidden="true"><span></span><i></i><span></span></div>
+        </article>
+
+        <article class="feature-card question-card">
+          <span class="question-icon">↝</span>
+          <h3>Can uncertainty make wayfinding more participatory?</h3>
+        </article>
+        <article class="feature-card question-card">
+          <span class="question-icon">✺</span>
+          <h3>Can curiosity and sensory experience matter without becoming another score?</h3>
+        </article>
+
+        <figure class="question-image-card">
+          <img
+            src="assets/tra_map.png"
+            alt="Alternative navigation and urban exploration"
+          />
+      
+        </figure>
+
+        
+      </div>
+    </section>
+    <section id="keywords-fields" class="section-shell reveal">
+
+      <div class="section-heading compact">
+        <span class="section-number">02</span>
+    
+        <div>
+          <h2>Keywords & Intersecting Fields</h2>
+        </div>
+      </div>
+    
+    
+      <div class="framework-grid">
+    
+        <!-- =========================
+             FIVE KEYWORDS
+        ========================== -->
+    
+        <article class="framework-card keywords-card">
+    
+          <div class="framework-card-header">
+            <span class="mini-label">Five Keywords</span>
+
+          </div>
+    
+          <ul class="framework-list keyword-list">
+    
+            <li>
+              <span class="list-number">01</span>
+              <strong>Algorithm</strong>
+            </li>
+    
+            <li>
+              <span class="list-number">02</span>
+              <strong>Wayfinding</strong>
+            </li>
+    
+            <li>
+              <span class="list-number">03</span>
+              <strong>Serendipity</strong>
+            </li>
+    
+            <li>
+              <span class="list-number">04</span>
+              <strong>Embodied Perception</strong>
+            </li>
+    
+            <li>
+              <span class="list-number">05</span>
+              <strong>Sense of Agency</strong>
+            </li>
+    
+          </ul>
+    
+        </article>
+    
+    
+        <!-- =========================
+             INTERSECTING FIELDS
+        ========================== -->
+    
+        <article class="framework-card fields-card">
+    
+          <div class="framework-card-header">
+            <span class="mini-label">Intersecting Fields</span>
+          </div>
+
+          <img
+      src="assets/intersection.png"
+      alt="Historical Lineage"
+    />
+    
+ 
+    
+        </article>
+    
+      </div>
+    
+    </section>
+
+
+
+    <section id="lineage" class="section-shell reveal">
+      <div class="section-heading">
+        <span class="section-number">03</span>
+        <div>
+          <h2>Historical Lineage</h2>
+        </div>
+      </div>
+      <img
+      src="assets/history.png"
+      alt="Historical Lineage"
+    />
+
+    </section>
+
+    <section id="community" class="section-shell reveal">
+      <div class="section-heading">
+        <span class="section-number">04</span>
+        <div>
+          <h2>Community of Practice</h2>
+        </div>
+      </div>
+
+      <img
+              src="assets/communityOfPractice.png"
+              alt="Community of Practices"
+            />
+
+            <section id="bibliography" class="section-shell reveal">
+
+            
+              <div class="bibliography-list">
+            
+                <article class="bib-entry">
+                  <span class="bib-number">01</span>
+                  <div>
+                    <p>
+                      Debord, Guy.
+                      <a
+                        href="https://www.situationist.org/periodical/si/issue-2-1958-en/theory-of-the-derive-73"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <em>Theory of the Dérive</em>
+                      </a>.
+                      Situationist International, 1958.
+                    </p>
+                  </div>
+                </article>
+            
+                <article class="bib-entry">
+                  <span class="bib-number">02</span>
+                  <div>
+                    <p>
+                      Shepard, Mark.
+                      <a
+                        href="https://survival.sentientcity.net/serendipitor.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <em>Serendipitor</em>
+                      </a>.
+                      Sentient City Survival Kit.
+                    </p>
+                  </div>
+                </article>
+            
+                <article class="bib-entry">
+                  <span class="bib-number">03</span>
+                  <div>
+                    <p>
+                      Langlois, Justin, and Broken City Lab.
+                      <a
+                        href="https://www.brokencitylab.org/drift/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <em>Drift: An App for Getting Lost in Familiar Places</em>
+                      </a>.
+                    </p>
+                  </div>
+                </article>
+            
+                <article class="bib-entry">
+                  <span class="bib-number">04</span>
+                  <div>
+                    <p>
+                      Quercia, Daniele, Rossano Schifanella, and Luca Maria Aiello.
+                      <a
+                        href="https://arxiv.org/abs/1407.1031"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <em>The Shortest Path to Happiness: Recommending Beautiful, Quiet, and Happy Routes in the City</em>
+                      </a>.
+                      2014.
+                    </p>
+                  </div>
+                </article>
+            
+                <article class="bib-entry">
+                  <span class="bib-number">05</span>
+                  <div>
+                    <p>
+                      McLean, Kate.
+                      <a
+                        href="https://sensorymaps.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <em>Sensory Maps</em>
+                      </a>.
+                      Smellwalking and sensory mapping practice.
+                    </p>
+            
+                    <p class="bib-secondary">
+                      See also: Quercia, Daniele, Rossano Schifanella, Luca Maria Aiello,
+                      and Kate McLean.
+                      <a
+                        href="https://arxiv.org/abs/1505.06851"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        “Smelly Maps: The Digital Life of Urban Smellscapes.”
+                      </a>
+                      2015.
+                    </p>
+                  </div>
+                </article>
+            
+                <article class="bib-entry">
+                  <span class="bib-number">06</span>
+                  <div>
+                    <p>
+                      Clemenson, Gregory D., Antonella Maselli, Alexander J. Fiannaca,
+                      Amos Miller, and Mar Gonzalez-Franco.
+                      <a
+                        href="https://www.nature.com/articles/s41598-021-87148-4"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <em>Rethinking GPS Navigation: Creating Cognitive Maps through Auditory Clues</em>
+                      </a>.
+                      <em>Scientific Reports</em>, 2021.
+                    </p>
+                  </div>
+                </article>
+            
+                <article class="bib-entry">
+                  <span class="bib-number">07</span>
+                  <div>
+                    <p>
+                      Molleindustria.
+                      <a
+                        href="https://molleindustria.org/GND/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <em>Green New Deal Simulator</em>
+                      </a>.
+                      2023.
+                    </p>
+            
+                    <p class="bib-secondary">
+                      <a
+                        href="https://www.molleindustria.org/blog/green-new-deal-simulator-release-notes/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Green New Deal Simulator — Release Notes
+                      </a>.
+                    </p>
+                  </div>
+                </article>
+            
+              </div>
+            </section>
+
+      
+    </section>
+
+    <section id="situated" class="section-shell reveal">
+
+      <div class="section-heading">
+        <span class="section-number">05</span>
+    
+        <div>
+          <h2>
+            Situated Technology
+          </h2>
+          <span class="eyebrow">Readings that frame how I understand navigation, algorithms, and agency.</span>
+        </div>
+      </div>
+    
+    
+      <div class="situated-book-grid">
+    
+        <!-- Atlas of AI -->
+        <article class="book-card">
+    
+          <img
+            src="assets/readings/altas.avif"
+            alt="Atlas of AI book cover"
+          />
+    
+          <div class="book-card-content">
+    
+            <span class="book-index">01</span>
+    
+            <h3>Atlas of AI</h3>
+    
+            <span class="book-author">Kate Crawford</span>
+    
+            <p>
+              Technology is never neutral; data, classification, infrastructure,
+              and human decisions shape what a system can see.
+            </p>
+    
+            <div class="book-relation">
+              <span>My connection</span>
+              <strong>
+                Navigation algorithms also encode particular values while leaving
+                other urban experiences invisible.
+              </strong>
+            </div>
+    
+          </div>
+    
+        </article>
+    
+    
+        <!-- Algorithmic Management -->
+        <article class="book-card">
+    
+          <img
+            src="assets/readings/Cyberboss.webp"
+            alt="Cyberboss book cover"
+          />
+    
+          <div class="book-card-content">
+    
+            <span class="book-index">02</span>
+    
+            <h3>Cyberboss</h3>
+    
+            <span class="book-author">Craig Gent</span>
+    
+            <p>
+              Algorithmic systems increasingly automate decisions and direct human
+              behavior through digital interfaces.
+            </p>
+    
+            <div class="book-relation">
+              <span>My connection</span>
+              <strong>
+                Turn-by-turn navigation similarly shifts spatial judgment from the
+                walker toward the system.
+              </strong>
+            </div>
+    
+          </div>
+    
+        </article>
+    
+    
+        <!-- Surveillance Capitalism -->
+        <article class="book-card">
+    
+          <img
+            src="assets/readings/Surveillance.jpg"
+            alt="The Age of Surveillance Capitalism book cover"
+          />
+    
+          <div class="book-card-content">
+    
+            <span class="book-index">03</span>
+    
+            <h3>The Age of Surveillance Capitalism</h3>
+    
+            <span class="book-author">Shoshana Zuboff</span>
+    
+            <p>
+              Digital systems increasingly predict, optimize, and shape behavior
+              by turning human activity into data.
+            </p>
+    
+            <div class="book-relation">
+              <span>My connection</span>
+              <strong>
+                My project asks what happens when uncertainty is treated as a design
+                resource rather than something to eliminate.
+              </strong>
+            </div>
+    
+          </div>
+    
+        </article>
+    
+    
+        <!-- Against Solutionism -->
+        <article class="book-card">
+    
+          <img
+            src="assets/readings/Solutionism.png"
+            alt="To Save Everything Click Here book cover"
+          />
+    
+          <div class="book-card-content">
+    
+            <span class="book-index">04</span>
+    
+            <h3>Against Solutionism</h3>
+    
+            <span class="book-author">Evgeny Morozov</span>
+    
+            <p>
+              Not every social condition should be framed as a technical problem
+              waiting for a more efficient solution.
+            </p>
+    
+            <div class="book-relation">
+              <span>My connection</span>
+              <strong>
+                Not the Shortest Path does not propose a universally “better” route;
+                it questions what navigation systems are designed to optimize.
+              </strong>
+            </div>
+    
+          </div>
+    
+        </article>
+    
+      </div>
+    
+    
+      <div class="situated-position">
+    
+        <span>My Position</span>
+    
+        <p>
+          <strong>Not the Shortest Path</strong> treats navigation as a negotiation
+          between system guidance and human agency rather than a process of pure optimization.
+        </p>
+    
+      </div>
+    
+    </section>
+
+    <section id="methods" class="section-shell reveal">
+      <div class="section-heading">
+        <span class="section-number">06</span>
+        <div>
+          <h2>Methods</h2>
+        </div>
+      </div>
+
+      <div class="methods-layout">
+        <article class="method-panel">
+          <span class="mini-label">Computational Prototyping</span>
+          <div class="tool-cloud">
+            <span>Python</span><span>GeoPandas</span><span>NetworkX</span><span>OSMnx</span><span>Mapbox GL JS</span><span>Leaflet</span>
+          </div>
+          <p>Build alternative routes, compare path metrics, and expose how each rule changes the result.</p>
+        </article>
+
+        <article class="method-panel data-stack">
+          <span class="mini-label">Data Collection</span>
+          <div class="layer-row"><i></i><strong>Street networks + POIs</strong></div>
+          <div class="layer-row"><i></i><strong>Parks, trees + public art</strong></div>
+          <div class="layer-row"><i></i><strong>Slope + intersection type</strong></div>
+          <div class="layer-row"><i></i><strong>Walking diaries + surveys</strong></div>
+          <div class="layer-row"><i></i><strong>Smell, sound + visual walks</strong></div>
+        </article>
+      </div>
+
+
+    </section>
+
+
+
+    <section id="visual" class="section-shell reveal">
+      <div class="section-heading">
+        <span class="section-number">07</span>
+    
+        <div>
+          <h2>Visual Representation</h2>
+        </div>
+      </div>
+    
+      <div class="visual-grid">
+    
+        <!-- Card 1 -->
+        <figure class="visual-card">
+          <img src="assets/visualRef/vis1.jpg" alt="Line-based minimal city illustration reference" />
+          <figcaption>
+            <span class="visual-index">01</span>
+            <h3>Line-Based Minimal Mapping</h3>
+            <p>
+              A simplified isometric city with thin linework, restrained color, and a clean spatial structure.
+            </p>
+            <div class="visual-note">
+              <span>How I might use it</span>
+              <strong>For route diagrams, lightweight city scenes, and a calm navigational graphic language.</strong>
+            </div>
+          </figcaption>
+        </figure>
+    
+        <!-- Card 2 -->
+        <figure class="visual-card">
+          <img src="assets/visualRef/vis2.jpg" alt="Flat illustration urban map reference" />
+          <figcaption>
+            <span class="visual-index">02</span>
+            <h3>Flat Illustration Urban Scene</h3>
+            <p>
+              A more graphic, planar, and diagrammatic city image that feels playful while staying legible.
+            </p>
+            <div class="visual-note">
+              <span>How I might use it</span>
+              <strong>For building a friendly visual identity that feels less like a utilitarian map and more like an invitation to explore.</strong>
+            </div>
+          </figcaption>
+        </figure>
+    
+        <!-- Card 3 -->
+        <figure class="visual-card">
+
+          <img
+            src="assets/visualRef/vis3.jpg"
+            alt="Flat illustrated map with a strong color palette"
+          />
+        
+          <figcaption>
+        
+            <span class="visual-index">03</span>
+        
+            <h3>Color as Navigation Logic</h3>
+        
+            <p>
+              The color palette suggests that color can function as more than a visual
+              style. It can become a system for connecting digital input with physical
+              places.
+            </p>
+        
+            <div class="visual-note">
+        
+              <span>How I might use it</span>
+        
+              <strong>
+                Three user-generated values form an RGB color that reveals storefronts,
+                signs, entrances, and facades with related colors.
+              </strong>
+        
+            </div>
+        
+          </figcaption>
+        
+        </figure>
+    
+        <!-- Card 4 -->
+        <figure class="visual-card">
+          <img src="assets/visualRef/vis4.jpg" alt="Stylized city illustration with game-like atmosphere reference" />
+          <figcaption>
+            <span class="visual-index">04</span>
+            <h3>Stylized / Game-Like World</h3>
+            <p>
+              A more stylized city illustration with a playful atmosphere, closer to a game environment than a conventional map.
+            </p>
+            <div class="visual-note">
+              <span>How I might use it</span>
+              <strong>For emphasizing curiosity, discovery, and the feeling of wandering through an interactive world.</strong>
+            </div>
+          </figcaption>
+        </figure>
+    
+        <!-- Card 5 -->
+        <figure class="visual-card">
+          <img src="assets/visualRef/vis5.jpg" alt="Route-based social interface reference" />
+          <figcaption>
+            <span class="visual-index">05</span>
+            <h3>Social / Community Interface</h3>
+            <p>
+              A clean platform interface showing how route traces, profiles, and shared discoveries might be organized socially.
+            </p>
+            <div class="visual-note">
+              <span>How I might use it</span>
+              <strong>As inspiration for a future social layer where users share routes, notes, and personal interpretations.</strong>
+            </div>
+          </figcaption>
+        </figure>
+    
+        <!-- Card 6 -->
+        <figure class="visual-card">
+          <img src="assets/visualRef/vis6.jpg" alt="Traditional map-based interface reference" />
+          <figcaption>
+            <span class="visual-index">06</span>
+            <h3>Conventional Map UI</h3>
+            <p>
+              A more familiar map interface with markers, panels, and location-based controls.
+            </p>
+            <div class="visual-note">
+              <span>How I might use it</span>
+              <strong>As a baseline reference for usability, helping the project stay readable even when it departs from standard navigation logic.</strong>
+            </div>
+          </figcaption>
+        </figure>
+    
+      </div>
+    </section>
+
+    <section id="argument" class="section-shell reveal">
+      <div class="section-heading">
+        <span class="section-number">08</span>
+        <div>
+          <h2>Rhetorical Argument</h2>
+        </div>
+      </div>
+
+      <div class="argument-card">
+        <blockquote>“Navigation technologies do not simply describe the shortest path, they should help us to experience the space.”</blockquote>
+        <div class="argument-comparison">
+          <article>
+            <span class="mini-label">The Default</span>
+            <svg viewBox="0 0 360 160" aria-hidden="true"><path class="short-line" d="M25 125 L330 28"/><circle cx="25" cy="125" r="9"/><circle cx="330" cy="28" r="9"/></svg>
+            <strong>Fastest. Shortest. Predictable.</strong>
+          </article>
+          <article>
+            <span class="mini-label">The Proposal</span>
+            <svg viewBox="0 0 360 160" aria-hidden="true"><path class="curious-line" d="M25 125 C66 92 92 140 128 102 C167 60 200 126 237 77 C274 28 306 63 330 28"/><circle cx="25" cy="125" r="9"/><circle cx="330" cy="28" r="9"/></svg>
+            <strong>Curious. Legible. Open to surprise.</strong>
+          </article>
+        </div>
+        <p>Efficiency should be an available mode, not the unquestioned default for every journey.</p>
+      </div>
+    </section>
+
+    <section id="capstone" class="section-shell reveal">
+
+      <div class="section-heading">
+        <span class="section-number">09</span>
+    
+        <div>
+          <h2>Potential Capstone Project</h2>
+          <span class="eyebrow">
+            A web-based prototype for generating destinations through numbers,
+            color, and embodied interaction.
+          </span>
+        </div>
+      </div>
+    
+    
+      <!-- =====================================
+           INTRODUCTION
+           ===================================== -->
+    
+      <div class="capstone-intro-panel">
+    
+        <span class="mini-label">Possible Final Form</span>
+    
+        <h3>
+          A navigation website where three user-generated numbers become an RGB
+          color, the color reveals places, and the user constructs the route.
+        </h3>
+    
+        <p>
+          Instead of choosing destinations through distance, popularity, ratings,
+          or an automatically calculated “best” result, the prototype uses color
+          as an alternative relationship between the user and the city.
+        </p>
+    
+        <strong class="capstone-tagline">
+          Three numbers create a color. The color reveals places.
+          The user makes the route.
+        </strong>
+    
+      </div>
+    
+    
+      <!-- =====================================
+           CORE PROCESS
+           ===================================== -->
+    
+      <div class="capstone-process-grid">
+    
+        <article class="capstone-process-card">
+          <span class="process-number">01</span>
+          <h3>Generate Three Numbers</h3>
+          <p>
+            The user completes three rounds of interaction. Each round produces
+            one number between 0 and 255.
+          </p>
+        </article>
+    
+    
+        <article class="capstone-process-card">
+          <span class="process-number">02</span>
+          <h3>Build an RGB Color</h3>
+          <p>
+            The first value becomes red, the second becomes green, and the third
+            becomes blue.
+          </p>
+        </article>
+    
+    
+        <article class="capstone-process-card">
+          <span class="process-number">03</span>
+          <h3>Reveal Places</h3>
+          <p>
+            The resulting color reveals storefronts, signs, entrances, and
+            building facades with related colors.
+          </p>
+        </article>
+    
+    
+        <article class="capstone-process-card">
+          <span class="process-number">04</span>
+          <h3>Construct the Route</h3>
+          <p>
+            The user selects the places that catch their attention, decides their
+            order, and connects them into a route.
+          </p>
+        </article>
+    
+      </div>
+    
+    
+      <!-- =====================================
+           RGB INPUT PROTOTYPE
+           ===================================== -->
+    
+      <div class="rgb-prototype">
+    
+        <div class="rgb-prototype-copy">
+    
+          <span class="mini-label">Three Input Rounds</span>
+    
+          <h3>Each action contributes one part of the color.</h3>
+    
+          <p>
+            The user can choose a different interaction method for every round.
+            This allows the final color to be partly intentional, partly bodily,
+            and partly unpredictable.
+          </p>
+    
+    
+          <div class="rgb-round-list">
+    
+            <div class="rgb-round">
+              <span class="rgb-letter red-channel">R</span>
+    
+              <div>
+                <small>Round 01</small>
+                <strong>Red Value</strong>
+              </div>
+    
+              <span class="rgb-value">218</span>
+            </div>
+    
+    
+            <div class="rgb-round">
+              <span class="rgb-letter green-channel">G</span>
+    
+              <div>
+                <small>Round 02</small>
+                <strong>Green Value</strong>
+              </div>
+    
+              <span class="rgb-value">74</span>
+            </div>
+    
+    
+            <div class="rgb-round">
+              <span class="rgb-letter blue-channel">B</span>
+    
+              <div>
+                <small>Round 03</small>
+                <strong>Blue Value</strong>
+              </div>
+    
+              <span class="rgb-value">126</span>
+            </div>
+    
+          </div>
+    
+        </div>
+    
+    
+        <div
+          class="rgb-result-card"
+          style="--generated-color: rgb(218, 74, 126);"
+        >
+    
+          <span class="mini-label">Your Color</span>
+    
+          <div class="rgb-swatch"></div>
+    
+          <h3>RGB 218 · 74 · 126</h3>
+          <p>#DA4A7E</p>
+    
+          <span class="rgb-result-caption">
+            This color becomes the condition through which places are revealed.
+          </span>
+    
+        </div>
+    
+      </div>
+    
+    
+      <!-- =====================================
+           INPUT METHODS
+           ===================================== -->
+    
+      <div class="capstone-subsection">
+    
+        <div class="capstone-subsection-heading">
+          <span class="mini-label">Input Methods</span>
+    
+          <h3>One numerical system, multiple ways to participate.</h3>
+    
+          <p>
+            Direct input provides control, while physical and sensory interactions
+            introduce different degrees of uncertainty.
+          </p>
+        </div>
+    
+    
+        <div class="input-method-grid">
+    
+          <article class="input-method-card">
+            <span class="input-method-icon">123</span>
+    
+            <h4>Direct Input</h4>
+    
+            <p>
+              Enter a number from 0 to 255 directly.
+            </p>
+    
+            <small>Most controlled</small>
+          </article>
+    
+    
+          <article class="input-method-card">
+            <span class="input-method-icon">◒</span>
+    
+            <h4>Device Tilt</h4>
+    
+            <p>
+              Tilt the device and lock the value when the angle feels right.
+            </p>
+    
+            <small>Movement-based</small>
+          </article>
+    
+    
+          <article class="input-method-card">
+            <span class="input-method-icon">↗</span>
+    
+            <h4>Launch</h4>
+    
+            <p>
+              Drag, aim, and release. The launch distance becomes a number.
+            </p>
+    
+            <small>Game-like</small>
+          </article>
+    
+    
+          <article class="input-method-card">
+            <span class="input-method-icon">◖)))</span>
+    
+            <h4>Sound</h4>
+    
+            <p>
+              Produce a sound. Its volume is translated into a value.
+            </p>
+    
+            <small>Sound is measured, not recorded</small>
+          </article>
+    
+        </div>
+    
+      </div>
+    
+    
+      <!-- =====================================
+           PLACE OUTPUT
+           ===================================== -->
+    
+      <div class="capstone-output-layout">
+    
+        <div class="place-collection-panel">
+    
+          <div class="capstone-subsection-heading">
+            <span class="mini-label">Places Revealed by the Color</span>
+    
+            <h3>A field of possibilities, not a ranked answer.</h3>
+    
+            <p>
+              The system does not display a match percentage or identify one
+              location as the best result. It reveals a collection of places
+              related to the generated color.
+            </p>
+          </div>
+    
+    
+          <div class="place-concept-grid">
+    
+            <article class="place-concept-card">
+    
+              <div class="place-image-placeholder">
+                <span>PLACE IMAGE</span>
+              </div>
+    
+              <div>
+                <small>Bookstore</small>
+                <h4>Place Name</h4>
+                <p>123 Example Street</p>
+    
+                <button type="button">
+                  Add to My Route
+                </button>
+              </div>
+    
+            </article>
+    
+    
+            <article class="place-concept-card">
+    
+              <div class="place-image-placeholder">
+                <span>PLACE IMAGE</span>
+              </div>
+    
+              <div>
+                <small>Restaurant</small>
+                <h4>Place Name</h4>
+                <p>456 Example Avenue</p>
+    
+                <button type="button">
+                  Add to My Route
+                </button>
+              </div>
+    
+            </article>
+    
+    
+            <article class="place-concept-card">
+    
+              <div class="place-image-placeholder">
+                <span>PLACE IMAGE</span>
+              </div>
+    
+              <div>
+                <small>Public Artwork</small>
+                <h4>Place Name</h4>
+                <p>789 Example Road</p>
+    
+                <button type="button">
+                  Add to My Route
+                </button>
+              </div>
+    
+            </article>
+    
+          </div>
+    
+        </div>
+    
+    
+        <div class="route-construction-panel">
+    
+          <span class="mini-label">User Agency</span>
+    
+          <h3>The user decides what becomes a route.</h3>
+    
+          <p>
+            The system provides possible locations, but it does not decide which
+            ones are important or how they should be connected.
+          </p>
+    
+    
+          <div class="route-action-list">
+    
+            <div>
+              <span>01</span>
+              <strong>Select places</strong>
+            </div>
+    
+            <div>
+              <span>02</span>
+              <strong>Remove places</strong>
+            </div>
+    
+            <div>
+              <span>03</span>
+              <strong>Choose the order</strong>
+            </div>
+    
+            <div>
+              <span>04</span>
+              <strong>Add another place</strong>
+            </div>
+    
+            <div>
+              <span>05</span>
+              <strong>Connect the route</strong>
+            </div>
+    
+          </div>
+    
+    
+          <blockquote>
+            The algorithm reveals possibilities; the user constructs the route.
+          </blockquote>
+    
+        </div>
+    
+      </div>
+    
+    
+      <!-- =====================================
+           PROTOTYPE SCOPE
+           ===================================== -->
+    
+      <div class="capstone-scope-panel">
+    
+        <div>
+          <span class="mini-label">Prototype Scope</span>
+    
+          <h3>A focused pilot rather than a complete citywide system.</h3>
+        </div>
+    
+    
+        <div class="capstone-scope-grid">
+    
+          <article>
+            <span>01</span>
+    
+            <div>
+              <h4>Selected Pilot Area</h4>
+              <p>
+                The first prototype would focus on one defined area rather than
+                attempting to map all of New York City.
+              </p>
+            </div>
+          </article>
+    
+    
+          <article>
+            <span>02</span>
+    
+            <div>
+              <h4>Curated Place Dataset</h4>
+              <p>
+                Approximately 30–50 publicly accessible storefronts, signs,
+                entrances, artworks, or building facades.
+              </p>
+            </div>
+          </article>
+    
+    
+          <article>
+            <span>03</span>
+    
+            <div>
+              <h4>Color-Based Records</h4>
+              <p>
+                Each location includes an image, dominant color, name, address,
+                category, and geographic coordinates.
+              </p>
+            </div>
+          </article>
+    
+    
+          <article>
+            <span>04</span>
+    
+            <div>
+              <h4>User-Defined Route Logic</h4>
+              <p>
+                The user chooses the stops and their order. The map can connect
+                those choices through walkable streets without selecting the
+                destinations for them.
+              </p>
+            </div>
+          </article>
+    
+        </div>
+    
+      </div>
+    
+    
+      <!-- =====================================
+           FINAL OUTCOMES
+           ===================================== -->
+    
+
+    
+    </section>
+
+    <!-- =====================================
+         EXHIBITION
+         ===================================== -->
+
+    <section id="exhibition" class="section-shell reveal">
+
+      <div class="section-heading">
+        <span class="section-number">10</span>
+
+        <div>
+          <h2>Exhibition</h2>
+          <span class="eyebrow">
+            A research drawing and an interactive mini prototype.
+          </span>
+        </div>
+      </div>
+
+
+      <div class="exhibition-layout">
+
+        <!-- Drawing -->
+        <figure class="exhibition-drawing">
+
+          <div class="exhibition-drawing-image">
+            <img
+              src="assets/drawing1.png"
+              alt="The Algorithmic Navigation of Everyday Life research drawing"
+            />
+          </div>
+
+          <figcaption>
+            <span class="mini-label">Printed Research Drawing</span>
+
+            <h3>The Algorithmic Navigation of Everyday Life</h3>
+
+            <p>
+              A layered research drawing that traces how algorithmic interfaces,
+              embedded values, and everyday behaviors shape movement, attention,
+              sensory experience, and tolerance for uncertainty.
+            </p>
+          </figcaption>
+
+        </figure>
+
+
+        <!-- Mini Prototype -->
+        <article class="exhibition-prototype">
+
+          <div>
+            <span class="mini-label">Interactive Mini Prototype</span>
+
+            <h3>Sound → Number → Color → Place → Route</h3>
+
+            <p>
+              This reduced-scale prototype focuses on sound as an embodied input.
+              Three volume readings become RGB values, which reveal color-related
+              locations. The user then selects and connects the places into a route.
+            </p>
+
+
+            <div class="prototype-flow" aria-label="Mini prototype interaction flow">
+              <span>01 · Generate three sound values</span>
+              <span>02 · Build an RGB color</span>
+              <span>03 · Reveal color-related locations</span>
+              <span>04 · Select places and connect a route</span>
+            </div>
+          </div>
+
+
+          <div>
+            <a
+              class="exhibition-link"
+              href="sound-color-location-demo/index.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Open Mini Prototype</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <p class="exhibition-note">
+              The microphone interaction requires permission and should be opened
+              through HTTPS or localhost.
+            </p>
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <footer>
+      <div>
+        <strong>Not the Shortest Path</strong>
+        <span>Research Foundations + Project Outline</span>
+      </div>
+      <a href="#home">Return to start ↑</a>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

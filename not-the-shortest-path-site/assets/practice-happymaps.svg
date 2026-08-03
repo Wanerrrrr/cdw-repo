@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Happy Maps placeholder">
+    <rect width="800" height="500" rx="34" fill="#f4ecd8"/>
+    <rect x="18" y="18" width="764" height="464" rx="27" fill="none" stroke="#2f513c" stroke-opacity=".14" stroke-width="2"/>
+    
+<rect width="800" height="500" fill="#cbd3b7"/>
+<path d="M80 410 C140 328 225 374 276 292 C320 220 410 280 455 210 C510 126 608 180 715 78" fill="none" stroke="#2f513c" stroke-width="15" stroke-linecap="round"/>
+<g fill="#f4ecd8" stroke="#98583f" stroke-width="5"><circle cx="180" cy="340" r="44"/><circle cx="390" cy="250" r="44"/><circle cx="615" cy="165" r="44"/></g>
+<g fill="none" stroke="#98583f" stroke-width="6" stroke-linecap="round"><path d="M160 342q20 22 40 0"/><path d="M370 252q20 22 40 0"/><path d="M595 167q20 22 40 0"/></g>
+
+    </svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Sensory prompts experiment placeholder">
+    <rect width="800" height="500" rx="34" fill="#f4ecd8"/>
+    <rect x="18" y="18" width="764" height="464" rx="27" fill="none" stroke="#2f513c" stroke-opacity=".14" stroke-width="2"/>
+    
+<rect width="800" height="500" fill="#9eb6b0"/>
+<path d="M78 410 C160 340 230 390 290 315 C350 240 430 310 492 220 C550 136 630 180 720 72" fill="none" stroke="#f4ecd8" stroke-width="16" stroke-linecap="round"/>
+<g fill="#2f513c" stroke="#c99a58" stroke-width="5"><circle cx="290" cy="315" r="31"/><circle cx="492" cy="220" r="31"/><circle cx="650" cy="145" r="31"/></g>
+<g fill="#f4ecd8" font-family="sans-serif" font-size="22" font-weight="700"><text x="246" y="370">QUIET</text><text x="450" y="275">WIND</text><text x="606" y="200">LIGHT</text></g>
+
+    </svg>

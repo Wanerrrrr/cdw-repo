@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Affective routing illustration">
+    <rect width="800" height="500" rx="34" fill="#f4ecd8"/>
+    <rect x="18" y="18" width="764" height="464" rx="27" fill="none" stroke="#2f513c" stroke-opacity=".14" stroke-width="2"/>
+    
+<rect width="800" height="500" fill="#cbd3b7"/>
+<path d="M45 365 C130 300 210 350 288 285 C360 225 440 275 525 190 C600 115 675 135 755 78" fill="none" stroke="#2f513c" stroke-width="14" stroke-linecap="round"/>
+<g>
+<circle cx="155" cy="330" r="52" fill="#f4ecd8"/><path d="M135 326q20 26 40 0" fill="none" stroke="#98583f" stroke-width="7" stroke-linecap="round"/><circle cx="137" cy="311" r="5" fill="#26372d"/><circle cx="175" cy="311" r="5" fill="#26372d"/>
+<circle cx="405" cy="245" r="52" fill="#f4ecd8"/><path d="M385 241q20 26 40 0" fill="none" stroke="#98583f" stroke-width="7" stroke-linecap="round"/><circle cx="387" cy="226" r="5" fill="#26372d"/><circle cx="425" cy="226" r="5" fill="#26372d"/>
+<circle cx="655" cy="132" r="52" fill="#f4ecd8"/><path d="M635 128q20 26 40 0" fill="none" stroke="#98583f" stroke-width="7" stroke-linecap="round"/><circle cx="637" cy="113" r="5" fill="#26372d"/><circle cx="675" cy="113" r="5" fill="#26372d"/>
+</g>
+
+    </svg>

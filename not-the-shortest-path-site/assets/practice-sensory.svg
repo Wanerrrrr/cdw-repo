@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Sensory mapping placeholder">
+    <rect width="800" height="500" rx="34" fill="#f4ecd8"/>
+    <rect x="18" y="18" width="764" height="464" rx="27" fill="none" stroke="#2f513c" stroke-opacity=".14" stroke-width="2"/>
+    
+<rect width="800" height="500" fill="#f4ecd8"/>
+<path d="M0 380 C130 325 245 405 360 350 C480 290 615 350 800 265V500H0Z" fill="#cbd3b7"/>
+<g fill="none" stroke-linecap="round"><path d="M110 160c55-60 110-60 165 0" stroke="#9eb6b0" stroke-width="12"/><path d="M140 200c35-38 70-38 105 0" stroke="#9eb6b0" stroke-width="8"/><path d="M495 120c35 60 35 120 0 180" stroke="#c99a58" stroke-width="11"/><path d="M560 95c38 74 38 145 0 220" stroke="#c99a58" stroke-width="7"/></g>
+<g fill="#2f513c"><circle cx="330" cy="295" r="16"/><circle cx="365" cy="265" r="12"/><circle cx="400" cy="305" r="14"/></g>
+
+    </svg>
