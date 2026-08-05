@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A draggable sound-card navigation experiment using a real New York City map." />
+  <title>Not the Shortest Path — NYC Sound Map</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="board" aria-label="Interactive New York sound map board">
+    <header class="board-header">
+      <div>
+        <p class="eyebrow">Not the Shortest Path · Hearing Map Study</p>
+        <h1>Listen first.<br><em>Place the sound.</em></h1>
+      </div>
+
+      <div class="intro-card">
+        <p>
+          Hover over a card to hear its sound. Drag it onto the map and the system will
+          choose one possible New York location that could contain that sound.
+        </p>
+        <p class="intro-note">
+          Each result is random within a sound-specific group—for example, water appears
+          near waterfronts and birds appear in parks.
+        </p>
+      </div>
+    </header>
+
+    <section class="workspace" aria-label="Sound cards and New York City map">
+      <div class="map-frame" id="mapFrame">
+        <div class="map-caption">
+          <span>New York City · hearing map</span>
+          <small>Drop a speaker card anywhere on the map</small>
+        </div>
+
+        <div id="nycMap" class="nyc-map" role="application" aria-label="Interactive map of New York City"></div>
+
+        <div class="map-empty" id="mapEmpty" aria-hidden="true">
+          <span class="map-empty-icon">⌖</span>
+          <p>Drag a sound card here</p>
+        </div>
+      </div>
+
+      <button class="thread-control" id="threadControl" type="button" aria-pressed="false" aria-label="Start connecting sound locations">
+        <span class="thread-spool" aria-hidden="true">
+          <svg viewBox="0 0 120 110" role="img">
+            <path class="thread-tail" d="M79 72 C100 77 106 91 91 100 C79 107 72 98 77 90"/>
+            <path class="spool-top" d="M36 19 C48 11 73 11 85 19 L78 31 C66 25 54 25 42 31 Z"/>
+            <path class="spool-bottom" d="M34 82 C48 91 75 91 89 82 L80 70 C68 77 55 77 43 70 Z"/>
+            <path class="spool-core" d="M42 29 C53 25 69 25 79 30 L80 70 C69 76 54 76 43 70 Z"/>
+            <path class="thread-wrap" d="M43 35 C55 40 69 40 79 35 M43 44 C55 49 69 49 79 44 M43 53 C55 58 69 58 79 53 M43 62 C55 67 69 67 80 62"/>
+          </svg>
+        </span>
+        <span class="thread-label">Connect</span>
+      </button>
+
+      <div class="connection-status" id="connectionStatus" role="status" aria-live="polite">
+        Enable audio, then hover over a card.
+      </div>
+
+      <button class="sound-card card-1" data-sound="wind" type="button" aria-label="Unrevealed sound card 1">
+        <span class="speaker-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg>
+        </span>
+      </button>
+
+      <button class="sound-card card-2" data-sound="water" type="button" aria-label="Unrevealed sound card 2">
+        <span class="speaker-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg></span>
+      </button>
+
+      <button class="sound-card card-3" data-sound="birds" type="button" aria-label="Unrevealed sound card 3">
+        <span class="speaker-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg></span>
+      </button>
+
+      <button class="sound-card card-4" data-sound="door" type="button" aria-label="Unrevealed sound card 4">
+        <span class="speaker-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg></span>
+      </button>
+
+      <button class="sound-card card-5" data-sound="restaurant" type="button" aria-label="Unrevealed sound card 5">
+        <span class="speaker-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg></span>
+      </button>
+
+      <button class="sound-card card-6" data-sound="market" type="button" aria-label="Unrevealed sound card 6">
+        <span class="speaker-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg></span>
+      </button>
+
+      <button class="sound-card card-7" data-sound="concrete" type="button" aria-label="Unrevealed sound card 7">
+        <span class="speaker-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg></span>
+      </button>
+
+      <button class="sound-card card-8" data-sound="grass" type="button" aria-label="Unrevealed sound card 8">
+        <span class="speaker-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg></span>
+      </button>
+
+      <button class="sound-card card-9" data-sound="mud" type="button" aria-label="Unrevealed sound card 9">
+        <span class="speaker-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg></span>
+      </button>
+
+      <button class="sound-card card-10" data-sound="traffic-light" type="button" aria-label="Unrevealed sound card 10">
+        <span class="speaker-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg></span>
+      </button>
+
+      <button class="sound-card card-11" data-sound="crosswalk" type="button" aria-label="Unrevealed sound card 11">
+        <span class="speaker-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg></span>
+      </button>
+
+      <button class="sound-card card-12" data-sound="cars" type="button" aria-label="Unrevealed sound card 12">
+        <span class="speaker-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg></span>
+      </button>
+    </section>
+
+    <footer class="board-footer">
+      <div class="legend">
+        <span><i class="legend-card"></i> Hidden sound card</span>
+        <span><i class="legend-pin"></i> Random matching location</span>
+        <span><i class="legend-thread"></i> User-connected line</span>
+      </div>
+
+      <div class="footer-actions">
+        <button id="audioButton" type="button">Enable sounds</button>
+        <button id="resetButton" type="button">Reset board</button>
+      </div>
+    </footer>
+  </main>
+
+  <div class="drag-ghost" id="dragGhost" aria-hidden="true">
+    <span class="speaker-mark">
+      <svg viewBox="0 0 64 64"><path d="M10 25h12l16-13v40L22 39H10z"/><path d="M45 23c5 5 5 13 0 18"/><path d="M51 16c10 9 10 23 0 32"/></svg>
+    </span>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

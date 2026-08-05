@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Sensory traces placeholder">
-    <rect width="800" height="500" rx="34" fill="#f4ecd8"/>
-    <rect x="18" y="18" width="764" height="464" rx="27" fill="none" stroke="#2f513c" stroke-opacity=".14" stroke-width="2"/>
-    
-<rect width="800" height="500" fill="#2f513c"/>
-<g fill="none" stroke-linecap="round"><path d="M80 320c100-170 215-170 315 0" stroke="#9eb6b0" stroke-width="15"/><path d="M170 365c70-115 150-115 220 0" stroke="#c99a58" stroke-width="10"/><path d="M470 120c80 75 80 190 0 265" stroke="#f4ecd8" stroke-width="13"/><path d="M570 90c115 105 115 250 0 355" stroke="#f4ecd8" stroke-width="7" opacity=".7"/></g>
-<g fill="#98583f"><circle cx="400" cy="250" r="28"/><circle cx="620" cy="250" r="18"/></g>
-
-    </svg>

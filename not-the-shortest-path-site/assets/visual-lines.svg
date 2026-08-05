@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Wandering lines placeholder">
-    <rect width="800" height="500" rx="34" fill="#f4ecd8"/>
-    <rect x="18" y="18" width="764" height="464" rx="27" fill="none" stroke="#2f513c" stroke-opacity=".14" stroke-width="2"/>
-    
-<rect width="800" height="500" fill="#f4ecd8"/>
-<g fill="none" stroke-linecap="round"><path d="M70 420 C160 310 240 410 315 300 C390 190 470 290 735 70" stroke="#98583f" stroke-width="13"/><path d="M70 390 C160 290 260 370 330 280 C410 180 500 250 720 95" stroke="#2f513c" stroke-width="8" opacity=".8"/><path d="M90 445 C200 350 255 440 360 330 C455 230 590 270 748 125" stroke="#c99a58" stroke-width="5" stroke-dasharray="7 12"/></g>
-
-    </svg>

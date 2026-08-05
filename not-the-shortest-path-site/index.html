@@ -142,6 +142,67 @@
       font-size: 0.8rem !important;
     }
 
+    .exhibition-video-block {
+      margin-top: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(49, 80, 59, 0.16);
+      border-radius: 30px;
+      background: var(--cream-2, #f5f0e2);
+      box-shadow: 0 14px 34px rgba(48, 64, 45, 0.06);
+    }
+
+    .exhibition-video-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 28px 30px 22px;
+    }
+
+    .exhibition-video-heading h3 {
+      margin: 8px 0 0;
+      color: var(--green-dark, #1f4834);
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(1.45rem, 2.2vw, 2.2rem);
+      line-height: 1.2;
+    }
+
+    .exhibition-video-heading p {
+      max-width: 520px;
+      margin: 0;
+      color: #5d665f;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .exhibition-video-frame {
+  position: relative;
+  background:
+    radial-gradient(circle at 24% 28%, rgba(155, 85, 63, 0.18), transparent 28%),
+    linear-gradient(135deg, #dfe3cf, #efe4c9 55%, #d8d2bd);
+}
+
+.exhibition-video-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+}
+
+    .exhibition-video-file-note {
+      margin: 0;
+      padding: 14px 30px 20px;
+      color: #6b716b;
+      font-size: 0.78rem;
+      line-height: 1.55;
+    }
+
+    .exhibition-video-file-note code {
+      color: var(--green-dark, #1f4834);
+      font-weight: 700;
+    }
+
     @media (max-width: 1000px) {
       .exhibition-layout {
         grid-template-columns: 1fr;
@@ -161,6 +222,16 @@
       .exhibition-drawing-image,
       .exhibition-drawing-image img {
         min-height: 360px;
+      }
+
+      .exhibition-video-heading {
+        align-items: start;
+        flex-direction: column;
+        padding: 24px 24px 18px;
+      }
+
+      .exhibition-video-file-note {
+        padding: 12px 24px 18px;
       }
     }
   </style>
@@ -189,7 +260,7 @@
       <a href="#methods"><span>⚒</span>Methods</a>
       <a href="#visual"><span>◫</span>Visual Language</a>
       <a href="#argument"><span>“</span>Argument</a>
-      <a href="#capstone"><span>➜</span>Capstone Idea</a>
+      <a href="#capstone"><span>➜</span>Capstone Direction</a>
       <a href="#exhibition"><span>▣</span>Exhibition</a>
     </nav>
 
@@ -1174,463 +1245,297 @@
 
       <div class="section-heading">
         <span class="section-number">09</span>
-    
+
         <div>
-          <h2>Potential Capstone Project</h2>
+          <h2>Potential Capstone Direction</h2>
           <span class="eyebrow">
-            A web-based prototype for generating destinations through numbers,
-            color, and embodied interaction.
+            An open research direction for exploring navigation through sight,
+            sound, smell, taste, and touch.
           </span>
         </div>
       </div>
-    
-    
+
+
       <!-- =====================================
-           INTRODUCTION
+           RESEARCH DIRECTION
            ===================================== -->
-    
+
       <div class="capstone-intro-panel">
-    
-        <span class="mini-label">Possible Final Form</span>
-    
+
+        <span class="mini-label">Research Stage</span>
+
         <h3>
-          A navigation website where three user-generated numbers become an RGB
-          color, the color reveals places, and the user constructs the route.
+          Rather than defining one finished navigation product, I am exploring how
+          five sensory maps could offer different ways of noticing and moving through the city.
         </h3>
-    
+
         <p>
-          Instead of choosing destinations through distance, popularity, ratings,
-          or an automatically calculated “best” result, the prototype uses color
-          as an alternative relationship between the user and the city.
+          The project asks how navigation might include personal perception, memory,
+          and unexpected discovery alongside practical information. At this stage,
+          the goal is to test several possibilities instead of fixing one final system.
         </p>
-    
+
         <strong class="capstone-tagline">
-          Three numbers create a color. The color reveals places.
-          The user makes the route.
+          Five senses. Many possible places. No single best route.
         </strong>
-    
+
       </div>
-    
-    
+
+
       <!-- =====================================
-           CORE PROCESS
+           BROAD PROCESS
            ===================================== -->
-    
+
       <div class="capstone-process-grid">
-    
+
         <article class="capstone-process-card">
           <span class="process-number">01</span>
-          <h3>Generate Three Numbers</h3>
+          <h3>Choose a Sensory Map</h3>
           <p>
-            The user completes three rounds of interaction. Each round produces
-            one number between 0 and 255.
+            The user begins with sight, sound, smell, taste, or touch as a way of
+            reading the city.
           </p>
         </article>
-    
-    
+
         <article class="capstone-process-card">
           <span class="process-number">02</span>
-          <h3>Build an RGB Color</h3>
+          <h3>Find a Location</h3>
           <p>
-            The first value becomes red, the second becomes green, and the third
-            becomes blue.
+            A place can be selected directly by the user or drawn through a playful,
+            game-like random process.
           </p>
         </article>
-    
-    
+
         <article class="capstone-process-card">
           <span class="process-number">03</span>
-          <h3>Reveal Places</h3>
+          <h3>Navigate and Notice</h3>
           <p>
-            The resulting color reveals storefronts, signs, entrances, and
-            building facades with related colors.
+            The route becomes an invitation to pay attention to sensory details that
+            standard navigation may filter out.
           </p>
         </article>
-    
-    
+
         <article class="capstone-process-card">
           <span class="process-number">04</span>
-          <h3>Construct the Route</h3>
+          <h3>Record a Sensory Address</h3>
           <p>
-            The user selects the places that catch their attention, decides their
-            order, and connects them into a route.
+            Users can save a place and describe the sensory experience they associate
+            with it.
           </p>
         </article>
-    
+
       </div>
-    
-    
+
+
       <!-- =====================================
-           RGB INPUT PROTOTYPE
+           FIVE SENSORY MAPS
            ===================================== -->
-    
-      <div class="rgb-prototype">
-    
-        <div class="rgb-prototype-copy">
-    
-          <span class="mini-label">Three Input Rounds</span>
-    
-          <h3>Each action contributes one part of the color.</h3>
-    
-          <p>
-            The user can choose a different interaction method for every round.
-            This allows the final color to be partly intentional, partly bodily,
-            and partly unpredictable.
-          </p>
-    
-    
-          <div class="rgb-round-list">
-    
-            <div class="rgb-round">
-              <span class="rgb-letter red-channel">R</span>
-    
-              <div>
-                <small>Round 01</small>
-                <strong>Red Value</strong>
-              </div>
-    
-              <span class="rgb-value">218</span>
-            </div>
-    
-    
-            <div class="rgb-round">
-              <span class="rgb-letter green-channel">G</span>
-    
-              <div>
-                <small>Round 02</small>
-                <strong>Green Value</strong>
-              </div>
-    
-              <span class="rgb-value">74</span>
-            </div>
-    
-    
-            <div class="rgb-round">
-              <span class="rgb-letter blue-channel">B</span>
-    
-              <div>
-                <small>Round 03</small>
-                <strong>Blue Value</strong>
-              </div>
-    
-              <span class="rgb-value">126</span>
-            </div>
-    
-          </div>
-    
-        </div>
-    
-    
-        <div
-          class="rgb-result-card"
-          style="--generated-color: rgb(218, 74, 126);"
-        >
-    
-          <span class="mini-label">Your Color</span>
-    
-          <div class="rgb-swatch"></div>
-    
-          <h3>RGB 218 · 74 · 126</h3>
-          <p>#DA4A7E</p>
-    
-          <span class="rgb-result-caption">
-            This color becomes the condition through which places are revealed.
-          </span>
-    
-        </div>
-    
-      </div>
-    
-    
-      <!-- =====================================
-           INPUT METHODS
-           ===================================== -->
-    
+
       <div class="capstone-subsection">
-    
+
         <div class="capstone-subsection-heading">
-          <span class="mini-label">Input Methods</span>
-    
-          <h3>One numerical system, multiple ways to participate.</h3>
-    
+          <span class="mini-label">Five Sensory Maps</span>
+
+          <h3>Each map makes a different layer of the city visible.</h3>
+
           <p>
-            Direct input provides control, while physical and sensory interactions
-            introduce different degrees of uncertainty.
+            The five maps do not claim to describe the city completely. They collect
+            situated and personal observations that may change across people, places,
+            weather, and time.
           </p>
         </div>
-    
-    
+
         <div class="input-method-grid">
-    
+
           <article class="input-method-card">
-            <span class="input-method-icon">123</span>
-    
-            <h4>Direct Input</h4>
-    
-            <p>
-              Enter a number from 0 to 255 directly.
-            </p>
-    
-            <small>Most controlled</small>
+            <span class="input-method-icon">◉</span>
+            <h4>Sight</h4>
+            <p>Color, light, signs, views, movement, and visual details.</p>
+            <small>What catches the eye?</small>
           </article>
-    
-    
-          <article class="input-method-card">
-            <span class="input-method-icon">◒</span>
-    
-            <h4>Device Tilt</h4>
-    
-            <p>
-              Tilt the device and lock the value when the angle feels right.
-            </p>
-    
-            <small>Movement-based</small>
-          </article>
-    
-    
-          <article class="input-method-card">
-            <span class="input-method-icon">↗</span>
-    
-            <h4>Launch</h4>
-    
-            <p>
-              Drag, aim, and release. The launch distance becomes a number.
-            </p>
-    
-            <small>Game-like</small>
-          </article>
-    
-    
+
           <article class="input-method-card">
             <span class="input-method-icon">◖)))</span>
-    
             <h4>Sound</h4>
-    
-            <p>
-              Produce a sound. Its volume is translated into a value.
-            </p>
-    
-            <small>Sound is measured, not recorded</small>
+            <p>Voices, traffic, music, quietness, echoes, and urban rhythms.</p>
+            <small>What can be heard here?</small>
           </article>
-    
+
+          <article class="input-method-card">
+            <span class="input-method-icon">≈</span>
+            <h4>Smell</h4>
+            <p>Food, plants, rain, materials, pollution, and passing street smells.</p>
+            <small>What remains in the air?</small>
+          </article>
+
+          <article class="input-method-card">
+            <span class="input-method-icon">✦</span>
+            <h4>Taste</h4>
+            <p>Restaurants, street food, ingredients, and personal taste memories.</p>
+            <small>What flavor defines this place?</small>
+          </article>
+
+          <article class="input-method-card">
+            <span class="input-method-icon">✋</span>
+            <h4>Touch</h4>
+            <p>Texture, temperature, wind, surfaces, and material encounters.</p>
+            <small>How does the place feel?</small>
+          </article>
+
         </div>
-    
+
       </div>
-    
-    
+
+
       <!-- =====================================
-           PLACE OUTPUT
+           LOCATION SELECTION + CONTRIBUTION
            ===================================== -->
-    
+
       <div class="capstone-output-layout">
-    
+
         <div class="place-collection-panel">
-    
+
           <div class="capstone-subsection-heading">
-            <span class="mini-label">Places Revealed by the Color</span>
-    
-            <h3>A field of possibilities, not a ranked answer.</h3>
-    
+            <span class="mini-label">Location Selection</span>
+
+            <h3>Routes can begin with choice, chance, or a combination of both.</h3>
+
             <p>
-              The system does not display a match percentage or identify one
-              location as the best result. It reveals a collection of places
-              related to the generated color.
+              The project will explore different ways of entering the city rather
+              than automatically selecting the fastest or most popular destination.
             </p>
           </div>
-    
-    
+
           <div class="place-concept-grid">
-    
+
             <article class="place-concept-card">
-    
               <div class="place-image-placeholder">
-                <span>PLACE IMAGE</span>
+                <span>USER CHOICE</span>
               </div>
-    
               <div>
-                <small>Bookstore</small>
-                <h4>Place Name</h4>
-                <p>123 Example Street</p>
-    
-                <button type="button">
-                  Add to My Route
-                </button>
+                <small>Intentional</small>
+                <h4>Choose a Place</h4>
+                <p>Select a location that already feels personally meaningful or interesting.</p>
               </div>
-    
             </article>
-    
-    
+
             <article class="place-concept-card">
-    
               <div class="place-image-placeholder">
-                <span>PLACE IMAGE</span>
+                <span>PLAYFUL DRAW</span>
               </div>
-    
               <div>
-                <small>Restaurant</small>
-                <h4>Place Name</h4>
-                <p>456 Example Avenue</p>
-    
-                <button type="button">
-                  Add to My Route
-                </button>
+                <small>Unexpected</small>
+                <h4>Draw a Place</h4>
+                <p>Use a simple game-like interaction to randomly reveal a destination.</p>
               </div>
-    
             </article>
-    
-    
+
             <article class="place-concept-card">
-    
               <div class="place-image-placeholder">
-                <span>PLACE IMAGE</span>
+                <span>MIXED ROUTE</span>
               </div>
-    
               <div>
-                <small>Public Artwork</small>
-                <h4>Place Name</h4>
-                <p>789 Example Road</p>
-    
-                <button type="button">
-                  Add to My Route
-                </button>
+                <small>Participatory</small>
+                <h4>Combine Both</h4>
+                <p>Move between self-selected places and unexpected sensory prompts.</p>
               </div>
-    
             </article>
-    
+
           </div>
-    
+
         </div>
-    
-    
+
+
         <div class="route-construction-panel">
-    
-          <span class="mini-label">User Agency</span>
-    
-          <h3>The user decides what becomes a route.</h3>
-    
+
+          <span class="mini-label">Sensory Addresses</span>
+
+          <h3>Users can add their own sensory knowledge to the map.</h3>
+
           <p>
-            The system provides possible locations, but it does not decide which
-            ones are important or how they should be connected.
+            A sensory address is a geolocated observation: a place connected to a
+            sound, smell, taste, texture, visual detail, or personal memory.
           </p>
-    
-    
+
           <div class="route-action-list">
-    
-            <div>
-              <span>01</span>
-              <strong>Select places</strong>
-            </div>
-    
-            <div>
-              <span>02</span>
-              <strong>Remove places</strong>
-            </div>
-    
-            <div>
-              <span>03</span>
-              <strong>Choose the order</strong>
-            </div>
-    
-            <div>
-              <span>04</span>
-              <strong>Add another place</strong>
-            </div>
-    
-            <div>
-              <span>05</span>
-              <strong>Connect the route</strong>
-            </div>
-    
+            <div><span>01</span><strong>Notice an experience</strong></div>
+            <div><span>02</span><strong>Save the location</strong></div>
+            <div><span>03</span><strong>Choose the sense</strong></div>
+            <div><span>04</span><strong>Add a short description</strong></div>
+            <div><span>05</span><strong>Contribute to the map</strong></div>
           </div>
-    
-    
+
           <blockquote>
-            The algorithm reveals possibilities; the user constructs the route.
+            The map does not only guide users through the city; users also help build
+            the map through their own perceptions.
           </blockquote>
-    
+
         </div>
-    
+
       </div>
-    
-    
+
+
       <!-- =====================================
-           PROTOTYPE SCOPE
+           RESEARCH SCOPE
            ===================================== -->
-    
+
       <div class="capstone-scope-panel">
-    
+
         <div>
-          <span class="mini-label">Prototype Scope</span>
-    
-          <h3>A focused pilot rather than a complete citywide system.</h3>
+          <span class="mini-label">Current Research Scope</span>
+          <h3>A framework to test, not a fixed final product.</h3>
         </div>
-    
-    
+
         <div class="capstone-scope-grid">
-    
+
           <article>
             <span>01</span>
-    
             <div>
-              <h4>Selected Pilot Area</h4>
+              <h4>Five Parallel Studies</h4>
               <p>
-                The first prototype would focus on one defined area rather than
-                attempting to map all of New York City.
+                Sight, sound, smell, taste, and touch can first be explored separately
+                before deciding how they may connect.
               </p>
             </div>
           </article>
-    
-    
+
           <article>
             <span>02</span>
-    
             <div>
-              <h4>Curated Place Dataset</h4>
+              <h4>Small Situated Tests</h4>
               <p>
-                Approximately 30–50 publicly accessible storefronts, signs,
-                entrances, artworks, or building facades.
+                Early studies can focus on selected areas, short walks, and limited
+                groups of sensory locations.
               </p>
             </div>
           </article>
-    
-    
+
           <article>
             <span>03</span>
-    
             <div>
-              <h4>Color-Based Records</h4>
+              <h4>Participatory Records</h4>
               <p>
-                Each location includes an image, dominant color, name, address,
-                category, and geographic coordinates.
+                Sensory addresses can come from field observation, user contribution,
+                and personal memory rather than only existing platform data.
               </p>
             </div>
           </article>
-    
-    
+
           <article>
             <span>04</span>
-    
             <div>
-              <h4>User-Defined Route Logic</h4>
+              <h4>Open Final Form</h4>
               <p>
-                The user chooses the stops and their order. The map can connect
-                those choices through walkable streets without selecting the
-                destinations for them.
+                The current mini prototype is one experiment, but it does not define
+                the final interaction or final navigation system.
               </p>
             </div>
           </article>
-    
-        </div>
-    
-      </div>
-    
-    
-      <!-- =====================================
-           FINAL OUTCOMES
-           ===================================== -->
-    
 
-    
+        </div>
+
+      </div>
+
     </section>
 
     <!-- =====================================
@@ -1658,7 +1563,7 @@
 
           <div class="exhibition-drawing-image">
             <img
-              src="assets/drawing1.png"
+              src="assets/wl3103_FinalPoster_Heavyweight_36x72_final.jpg"
               alt="The Algorithmic Navigation of Everyday Life research drawing"
             />
           </div>
@@ -1684,43 +1589,75 @@
           <div>
             <span class="mini-label">Interactive Mini Prototype</span>
 
-            <h3>Sound → Number → Color → Place → Route</h3>
+            <h3>Sound Cards → Sensory Places → User-Drawn Route</h3>
 
             <p>
-              This reduced-scale prototype focuses on sound as an embodied input.
-              Three volume readings become RGB values, which reveal color-related
-              locations. The user then selects and connects the places into a route.
+              This early prototype tests one part of the larger five-sense mapping
+              idea: sound. Users listen to hidden sound cards and drag a card onto a
+              real New York City map. The system then reveals one possible location
+              where that sound could occur—for example, water near the waterfront or
+              birds near a park.
             </p>
 
+            <p style="margin-top: 16px;">
+              Because many places can share the same sound, the location is selected
+              from several plausible options rather than presented as one correct
+              answer. Users can then connect the discovered points in their own order
+              with a red thread. A future version may also allow people to record and
+              share their own sensory addresses.
+            </p>
 
             <div class="prototype-flow" aria-label="Mini prototype interaction flow">
-              <span>01 · Generate three sound values</span>
-              <span>02 · Build an RGB color</span>
-              <span>03 · Reveal color-related locations</span>
-              <span>04 · Select places and connect a route</span>
+              <span>01 · Hover over a card and listen</span>
+              <span>02 · Drag the card onto the NYC map</span>
+              <span>03 · Reveal a random, plausible sound location</span>
+              <span>04 · Connect the points with a red thread</span>
             </div>
           </div>
-
 
           <div>
             <a
               class="exhibition-link"
-              href="sound-color-location-demo/index.html"
+              href="sensory-sound-map-demo-nyc-thread-centered/index.html"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span>Open Mini Prototype</span>
+              <span>Open Sound Map Prototype</span>
               <span aria-hidden="true">↗</span>
             </a>
 
             <p class="exhibition-note">
-              The microphone interaction requires permission and should be opened
-              through HTTPS or localhost.
+              The current prototype uses a small set of sound cards and plausible
+              NYC locations as an early interaction test, not a complete sound map.
             </p>
           </div>
 
         </article>
 
+      </div>
+
+      <!-- Demo Video -->
+      <div class="exhibition-video-block">
+        <div class="exhibition-video-heading">
+          <div>
+            <span class="mini-label">Prototype Walkthrough</span>
+            <h3>Demo Video</h3>
+          </div>
+
+          <p>
+            A short screen recording can show how visitors listen to the cards,
+            place sounds on the map, and connect the resulting locations.
+          </p>
+        </div>
+
+        <div class="exhibition-video-frame">
+          <video controls preload="metadata" aria-label="Sound map prototype demonstration video">
+            <source src="sensory-sound-map-demo-nyc-thread-centered/demo.mp4" type="video/mp4" />
+            Your browser does not support the video element.
+          </video>
+        </div>
+
+        
       </div>
 
     </section>
